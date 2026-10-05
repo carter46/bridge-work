@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Jobs | Hubjob Platform</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17786385681');
+</script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      color: #222;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo img {
+      height: 55px;
+      width: auto;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover, nav a.active {
+      color: #00bcd4;
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      color: #00bcd4;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      }
+      nav.open {
+        max-height: 350px;
+        padding: 15px 30px;
+      }
+      nav a {
+        padding: 10px 0;
+        width: 100%;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(120deg, #007bff, #00bcd4);
+      color: white;
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    /* JOBS SECTION */
+    .jobs {
+      max-width: 1100px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+    .job {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 80px;
+      gap: 40px;
+    }
+    .job:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .job img {
+      width: 45%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .job-content {
+      width: 55%;
+    }
+    .job-content h2 {
+      color: #0056b3;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .job-content p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .job-content ul {
+      list-style: none;
+      margin: 10px 0 15px;
+    }
+    .job-content ul li {
+      margin-bottom: 6px;
+    }
+    .job-content ul li::before {
+      content: "› ";
+      color: #00bcd4;
+      font-weight: 600;
+    }
+    .apply-btn {
+      background: #00bcd4;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .apply-btn:hover {
+      background: #009cb4;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      padding: 60px 20px 20px;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-col {
+      flex: 1 1 300px;
+      min-width: 250px;
+    }
+    .footer-logo {
+      color: #00bcd4;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .footer-about {
+      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #cfcfcf;
+    }
+    .footer-col h3 {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-col ul li {
+      margin: 8px 0;
+    }
+    .footer-col ul li a {
+      color: #cfcfcf;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-col ul li a:hover {
+      color: #00bcd4;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .contact-list i {
+      color: #00bcd4;
+      font-size: 1rem;
+      margin-top: 3px;
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+      padding-top: 15px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    @media (max-width: 900px) {
+      .job {
+        flex-direction: column;
+      }
+      .job:nth-child(even) {
+        flex-direction: column;
+      }
+      .job img, .job-content {
+        width: 100%;
+      }
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-list li {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="static/images/logo22.png" alt="Hubjob Platform Logo">
+      </a>
+    </div>
+    <i class="fa-solid fa-bars menu-toggle"></i>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="jobs.html" class="active">Jobs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="apply.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Our Jobs</h1>
+    <p>Explore flexible, high-paying roles across industries — connecting you to trusted employers worldwide.</p>
+  </section>
+
+  <!-- JOB LISTINGS -->
+  <section class="jobs">
+    <div class="job">
+      <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Operations">
+      <div class="job-content">
+        <h2>Operations & Support ($25–$55/Hr)</h2>
+        <p>Empower businesses with essential remote operations and support services.</p>
+        <ul>
+          <li>Data Entry Clerk</li>
+          <li>Executive Assistant</li>
+          <li>Operations Coordinator</li>
+          <li>Customer Support Agent</li>
+          <li>Virtual Assistant</li>
+        </ul>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Marketing">
+      <div class="job-content">
+        <h2>Marketing & Content ($30–$65/Hr)</h2>
+        <p>Help brands grow through creativity, communication, and strategy.</p>
+        <ul>
+          <li>Social Media Manager</li>
+          <li>Content Writer</li>
+          <li>Email Marketing Assistant</li>
+          <li>SEO Specialist</li>
+          <li>Video Editor</li>
+        </ul>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job">
+      <img src="https://images.unsplash.com/photo-1758691736484-4914d363a3cc?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Sales">
+      <div class="job-content">
+        <h2>Sales & Growth ($30–$75/Hr)</h2>
+        <p>Work with global brands to drive customer engagement and increase revenue.</p>
+        <ul>
+          <li>Sales Representative</li>
+          <li>Lead Generator</li>
+          <li>Business Development Rep</li>
+          <li>Affiliate Manager</li>
+          <li>Account Executive</li>
+        </ul>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Design">
+      <div class="job-content">
+        <h2>Design & Creative ($30–$70/Hr)</h2>
+        <p>Shape the visual identity of global brands through creative design.</p>
+        <ul>
+          <li>Graphic Designer</li>
+          <li>UI/UX Designer</li>
+          <li>Presentation Designer</li>
+          <li>Brand Designer</li>
+          <li>Motion Graphics Artist</li>
+        </ul>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job">
+      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Tech">
+      <div class="job-content">
+        <h2>Tech & Development ($35–$90/Hr)</h2>
+        <p>Develop websites, apps, and tools that empower modern businesses.</p>
+        <ul>
+          <li>Frontend Developer</li>
+          <li>Backend Developer</li>
+          <li>Full-Stack Developer</li>
+          <li>Web Tester</li>
+          <li>Technical Support Specialist</li>
+        </ul>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job">
+      <img src="https://images.unsplash.com/photo-1712904124132-857e6577aab9?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Education">
+      <div class="job-content">
+        <h2>Education & Training ($15–$35/Hr)</h2>
+        <p>Empower learners worldwide through flexible online education roles.</p>
+        <ul>
+          <li>Online Tutor</li>
+          <li>Course Content Assistant</li>
+          <li>eLearning Coordinator</li>
+          <li>Language Coach</li>
+          <li>Academic Proofreader</li>
+        </ul>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h2 class="footer-logo">Hubjob Platform</h2>
+        <p class="footer-about">We connect talented individuals with remote and in-demand jobs worldwide. Our goal is to simplify hiring and build trusted, borderless careers.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="apply.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+441202958648">+44 1202 958648</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hubjob Platform. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT for Mobile Menu -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

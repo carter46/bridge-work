@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Hubjob Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17786385681');
+</script>
+
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body { background: #fff; color: #222; line-height: 1.6; }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      backdrop-filter: blur(6px);
+    }
+    .nav-logo { color: #00bcd4; font-weight: 700; font-size: 1.4rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav-links a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+    .nav-links a:hover { color: #00bcd4; }
+    .menu-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px; right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        width: 100%; text-align: center;
+        padding: 15px 0;
+      }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: block; }
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      background: linear-gradient(180deg, #e8f3ff, #ffffff);
+      text-align: center;
+      padding: 140px 20px 100px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      color: #004c91;
+      font-weight: 700;
+      margin-bottom: 15px;
+      animation: fadeIn 1.2s ease forwards;
+    }
+    .hero p {
+      color: #333;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    /* ===== WHO WE ARE ===== */
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+    .about-text {
+      flex: 1 1 500px;
+      animation: fadeInUp 1s ease forwards;
+    }
+    .about-text h2 {
+      font-size: 2rem;
+      color: #004c91;
+      margin-bottom: 15px;
+    }
+    .about-text p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .about-image {
+      flex: 1 1 450px;
+      text-align: center;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+    .about-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    /* ===== MISSION & VISION ===== */
+    .mission-vision {
+      background: #f8fbff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .mission-vision h2 {
+      color: #004c91;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+    .mv-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .mv-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      flex: 1 1 300px;
+      max-width: 450px;
+      animation: fadeInUp 1s ease forwards;
+    }
+    .mv-card i {
+      font-size: 2rem;
+      color: #00bcd4;
+      margin-bottom: 15px;
+    }
+    .mv-card h3 {
+      color: #004c91;
+      margin-bottom: 10px;
+    }
+    .mv-card p {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===== GLOBAL REACH ===== */
+    .global-reach {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1517638851339-4ab3d7eb7a2b?auto=format&amp;fit=crop&amp;w=1400&amp;q=80') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .global-reach::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 40, 70, 0.6);
+    }
+    .global-reach h2, .global-reach p, .global-reach a {
+      position: relative;
+      z-index: 2;
+    }
+    .global-reach h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .global-reach p {
+      max-width: 700px;
+      margin: 0 auto 25px;
+      font-size: 1.1rem;
+    }
+    .global-reach a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #00bcd4;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    .global-reach a:hover { background: #009cb4; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      padding: 60px 20px 20px;
+      margin-top: 60px;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-col { flex: 1 1 300px; min-width: 250px; }
+    .footer-logo { color: #00bcd4; font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+    .footer-about { line-height: 1.6; font-size: 0.95rem; color: #cfcfcf; }
+    .footer-col h3 { color: #fff; font-size: 1.1rem; margin-bottom: 15px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col ul li { margin: 8px 0; }
+    .footer-col ul li a { color: #cfcfcf; text-decoration: none; transition: color 0.3s ease; }
+    .footer-col ul li a:hover { color: #00bcd4; }
+    .contact-list li { display: flex; align-items: flex-start; gap: 10px; }
+    .contact-list i { color: #00bcd4; font-size: 1rem; margin-top: 3px; }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+      padding-top: 15px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .about-section { flex-direction: column; text-align: center; }
+      .footer-container { flex-direction: column; text-align: center; }
+      .contact-list li { justify-content: center; }
+    }
+
+    /* ===== FADE ANIMATION ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="static/images/logo22.png"
+           alt="Hubjob Platform Logo"
+           style="height:50px; width:auto; filter: brightness(0) invert(1);">
+    </a>
+    <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="apply.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <h1>About Hubjob Platform</h1>
+    <p>Empowering global talent with life-changing opportunities in the UK and beyond.</p>
+  </section>
+
+  <!-- ===== WHO WE ARE ===== -->
+  <section class="about-section">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Hubjob Platform Team">
+    </div>
+    <div class="about-text">
+      <h2>Who We Are</h2>
+      <p>Hubjob Platform connects talented professionals with employers across Europe and the UK.
+      We focus on building sustainable, fair, and transparent recruitment solutions that empower
+      both candidates and businesses. With our experience and network, we make the hiring process
+      faster, easier, and more reliable — helping people achieve their dreams abroad.</p>
+    </div>
+  </section>
+
+  <!-- ===== MISSION & VISION ===== -->
+  <section class="mission-vision">
+    <h2>Our Mission & Vision</h2>
+    <div class="mv-cards">
+      <div class="mv-card">
+        <i class="fa-solid fa-bullseye"></i>
+        <h3>Our Mission</h3>
+        <p>To create a bridge between international talent and trusted employers,
+        ensuring ethical recruitment practices and professional growth for every individual.</p>
+      </div>
+      <div class="mv-card">
+        <i class="fa-solid fa-eye"></i>
+        <h3>Our Vision</h3>
+        <p>To be a global leader in workforce mobility — transforming lives by connecting
+        passionate individuals with opportunities that matter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GLOBAL REACH ===== -->
+  <section class="global-reach">
+    <h2>Our Global Reach</h2>
+    <p>Hubjob Platform operates across multiple countries, enabling individuals from diverse
+    backgrounds to build careers in top industries across the UK and Switzerland.</p>
+    <a href="apply.html">Contact Us</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h2 class="footer-logo">Hubjob Platform</h2>
+        <p class="footer-about">
+          We connect talented individuals with remote and in-demand jobs worldwide. Our goal is to simplify the hiring process and build trusted, borderless careers.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="apply.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+441202958648">+44 1202 958648</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hubjob Platform. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

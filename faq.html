@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | Hubjob Platform</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17786385681');
+</script>
+
+
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif;}
+    body {color: #222; background: #f8faff; line-height: 1.6;}
+
+    /* HEADER */
+    header {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo img {height: 55px; width: auto;}
+    nav {display: flex; align-items: center; gap: 25px;}
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover, nav a.active {color: #00bcd4;}
+    .menu-toggle {display: none; font-size: 1.6rem; color: #00bcd4; cursor: pointer;}
+
+    @media (max-width: 900px) {
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      }
+      nav.open {max-height: 350px; padding: 15px 30px;}
+      nav a {padding: 10px 0; width: 100%;}
+      .menu-toggle {display: block;}
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(120deg, #007bff, #00bcd4);
+      color: white;
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    /* FAQ SECTION */
+    .faq-section {
+      max-width: 900px;
+      margin: 70px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .faq-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #111;
+    }
+    .faq-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-item {
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      text-align: left;
+      padding: 18px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #0056b3;
+    }
+    .faq-question:hover {background: #f5f9ff;}
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 25px;
+      color: #444;
+      background: #fdfdfd;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 15px 25px 25px;
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+      color: #00bcd4;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      padding: 60px 20px 20px;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-col {flex: 1 1 300px; min-width: 250px;}
+    .footer-logo {color: #00bcd4; font-size: 1.6rem; font-weight: 700; margin-bottom: 10px;}
+    .footer-about {line-height: 1.6; font-size: 0.95rem; color: #cfcfcf;}
+    .footer-col h3 {color: #fff; font-size: 1.1rem; margin-bottom: 15px;}
+    .footer-col ul {list-style: none; padding: 0; margin: 0;}
+    .footer-col ul li {margin: 8px 0;}
+    .footer-col ul li a {
+      color: #cfcfcf;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-col ul li a:hover {color: #00bcd4;}
+    .contact-list li {display: flex; align-items: flex-start; gap: 10px;}
+    .contact-list i {color: #00bcd4; font-size: 1rem; margin-top: 3px;}
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+      padding-top: 15px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    @media (max-width: 900px) {
+      .footer-container {flex-direction: column; text-align: center;}
+      .contact-list li {justify-content: center;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="nav-logo">
+      <img src="static/images/logo22.png" alt="Hubjob Platform Logo" style="height:50px; width:auto;">
+    </a>
+    <i class="fa-solid fa-bars menu-toggle"></i>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="faq.html" class="active">FAQ</a>
+      <a href="apply.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>FAQ</h1>
+    <p>Find answers to common questions about how Hubjob Platform helps professionals connect with global opportunities.</p>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+
+      <div class="faq-item active">
+        <button class="faq-question">
+          How do I apply for a remote job with Hubjob Platform?
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>You can browse our open roles, submit your application online, and our team will review and match you with suitable positions. No fees, just opportunities.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is Hubjob Platform and how does it work?
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Hubjob Platform connects skilled professionals with verified international employers. We simplify hiring by matching your skills and preferences to global job opportunities.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Which companies partner with Hubjob Platform?
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>We collaborate with trusted employers across industries including tech, healthcare, marketing, logistics, and education — ensuring every company is verified and reliable.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is my personal information safe and private?
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Your data is securely stored and shared only with verified employers for relevant opportunities, following strict GDPR and privacy guidelines.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Who is eligible to join Hubjob Platform?
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Anyone with the right skills and motivation to work globally or remotely is eligible. We welcome applicants from diverse professional backgrounds.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What benefits do members receive after joining?
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Members get personalized job matching, interview coaching, onboarding support, and continuous career guidance for long-term growth.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h2 class="footer-logo">Hubjob Platform</h2>
+        <p class="footer-about">We connect talented individuals with remote and in-demand jobs worldwide. Our goal is to simplify hiring and build trusted, borderless careers.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+441202958648">+44 1202 958648</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hubjob Platform. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Mobile Menu Toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

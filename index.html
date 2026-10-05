@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hubjob Platform - Connecting Talent Worldwide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17786385681');
+</script>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      color: #222;
+      line-height: 1.6;
+      background-color: #fff;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      backdrop-filter: blur(6px);
+    }
+    .nav-logo {
+      color: #00bcd4;
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #00bcd4;
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* ===== HERO SECTION ===== */
+    header {
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80') center/cover no-repeat;
+      position: relative;
+      color: #fff;
+      padding: 160px 20px 100px;
+      text-align: center;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+    header .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 1.1rem;
+      margin: 15px 0 25px;
+    }
+    .hero-buttons a {
+      display: inline-block;
+      padding: 10px 22px;
+      margin: 5px;
+      color: #fff;
+      background-color: #00bcd4;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    .hero-buttons a:hover {
+      background-color: #009cb4;
+    }
+
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+      color: #111;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .feature-card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    .feature-card i {
+      font-size: 2rem;
+      color: #00bcd4;
+      margin-bottom: 10px;
+    }
+
+    /* ===== JOB TYPES ===== */
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+    }
+    .job-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    .job-card:hover {
+      transform: translateY(-5px);
+    }
+    .job-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .job-card-content {
+      padding: 20px;
+    }
+    .job-card-content h3 {
+      margin-bottom: 10px;
+      color: #111;
+    }
+    .job-card-content p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ===== HOW TO APPLY ===== */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .step {
+      background: #f5f5f5;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .step i {
+      font-size: 2rem;
+      color: #00bcd4;
+      margin-bottom: 10px;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      text-align: center;
+      padding: 60px 20px;
+      background: #f8f9fa;
+    }
+    .testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .swiper {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .swiper-slide {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 40px 30px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .swiper-slide h4 {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: #333;
+    }
+    .swiper-pagination-bullet-active {
+      background: #00bcd4;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      padding: 60px 20px 20px;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-col {
+      flex: 1 1 300px;
+      min-width: 250px;
+    }
+    .footer-logo {
+      color: #00bcd4;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .footer-about {
+      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #cfcfcf;
+    }
+    .footer-col h3 {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-col ul li {
+      margin: 8px 0;
+    }
+    .footer-col ul li a {
+      color: #cfcfcf;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-col ul li a:hover {
+      color: #00bcd4;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .contact-list i {
+      color: #00bcd4;
+      font-size: 1rem;
+      margin-top: 3px;
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+      padding-top: 15px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-list li {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="static/images/logo22.png"
+           alt="Hubjob Platform Logo"
+           style="height:50px; width:auto; filter: brightness(0) invert(1);">
+    </a>
+    <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="apply.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <header>
+    <div class="content">
+      <h1>Hubjob Platform – Connecting Ambitious People with Global Opportunities</h1>
+      <p>We help talents worldwide find remote & in-demand jobs with top companies. Let us handle the process, so you can focus on growing your career.</p>
+      <div class="hero-buttons">
+        <a href="apply.html">Apply Now</a>
+        <a href="jobs.html">View Open Roles</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== WHY CHOOSE US ===== -->
+  <section>
+    <h2>Built for Global Talent Like You</h2>
+    <div class="features">
+      <div class="feature-card"><i class="fa-solid fa-user-check"></i><h3>Personalized Job Matching</h3><p>We match your skills, experience, and goals with verified employers worldwide.</p></div>
+      <div class="feature-card"><i class="fa-solid fa-briefcase"></i><h3>End-to-End Career Support</h3><p>From interview prep to onboarding, we help you every step of the way.</p></div>
+      <div class="feature-card"><i class="fa-solid fa-globe"></i><h3>Verified Global Employers</h3><p>Work with trusted, vetted companies across various industries.</p></div>
+      <div class="feature-card"><i class="fa-solid fa-laptop"></i><h3>Remote-First Opportunities</h3><p>Find flexible jobs designed for remote work.</p></div>
+      <div class="feature-card"><i class="fa-solid fa-rocket"></i><h3>Fast Hiring Process</h3><p>Get matched quickly and start your new role in days.</p></div>
+      <div class="feature-card"><i class="fa-solid fa-handshake"></i><h3>Continuous Growth Support</h3><p>We provide ongoing advice, training, and growth tools.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== JOB TYPES ===== -->
+  <section>
+    <h2>Explore Job Types That Suit Your Lifestyle</h2>
+    <div class="jobs">
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1521790361543-f645cf042ec4?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="">
+        <div class="job-card-content">
+          <h3>Full-Time</h3>
+          <p>Enjoy long-term stability, benefits, and global career growth opportunities with top employers.</p>
+        </div>
+      </div>
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="">
+        <div class="job-card-content">
+          <h3>Part-Time</h3>
+          <p>Find flexible roles that balance your lifestyle, education, or family schedule.</p>
+        </div>
+      </div>
+      <div class="job-card">
+        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="">
+        <div class="job-card-content">
+          <h3>Freelance</h3>
+          <p>Work independently on projects across industries, anywhere in the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW TO APPLY ===== -->
+  <section>
+    <h2>How To Apply</h2>
+    <div class="steps">
+      <div class="step"><i class="fa-solid fa-search"></i><h3>1. Browse Open Roles</h3><p>Find full-time or remote jobs that match your goals.</p></div>
+      <div class="step"><i class="fa-solid fa-file-lines"></i><h3>2. Submit Your Application</h3><p>Upload your CV and fill the quick form to get started.</p></div>
+      <div class="step"><i class="fa-solid fa-video"></i><h3>3. Attend the Interview</h3><p>Meet with global employers and present your best self.</p></div>
+      <div class="step"><i class="fa-solid fa-laptop-house"></i><h3>4. Start Working Remotely</h3><p>Join trusted companies and work from anywhere in the world.</p></div>
+    </div>
+  </section>
+
+  <!-- ✅ TESTIMONIALS SECTION -->
+  <section class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><p>"This service was amazing! Highly recommend."</p><h4>- Daniel, UK</h4></div>
+        <div class="swiper-slide"><p>"Thanks to Hubjob Platform, I found part-time work in London easily."</p><h4>- Sarah, UK</h4></div>
+        <div class="swiper-slide"><p>"The team guided me through every step of the visa process. Fantastic support!"</p><h4>- Ahmed, Dubai</h4></div>
+        <div class="swiper-slide"><p>"Loved working with this team. Professional and super fast placement!"</p><h4>- Michael Lee</h4></div>
+        <div class="swiper-slide"><p>"Hubjob Platform helped me land my first healthcare job in the UK."</p><h4>- Sofia, Spain</h4></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h2 class="footer-logo">Hubjob Platform</h2>
+        <p class="footer-about">
+          We connect talented individuals with remote and in-demand jobs worldwide. Our goal is to simplify the hiring process and build trusted, borderless careers.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></li>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+441202958648">+44 1202 958648</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Hubjob Platform. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      effect: "fade",
+      fadeEffect: { crossFade: true },
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      speed: 1000
+    });
+  </script>
+
+  <!-- ===== JS for mobile menu ===== -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+<!-- Floating Apply Button -->
+<a href="apply.html" id="floatingApplyBtn" class="floating-apply-btn">
+  📄 Submit Your Details with CV
+</a>
+
+<style>
+/* Floating Button */
+.floating-apply-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #007bff;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  z-index: 999;
+}
+
+/* When visible */
+.floating-apply-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* Hide near footer */
+.floating-apply-btn.hide {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+/* Hover style */
+.floating-apply-btn:hover {
+  background: #005fcc;
+  transform: translateY(-3px);
+}
+</style>
+
+<script>
+window.addEventListener("load", function() {
+  const btn = document.getElementById("floatingApplyBtn");
+  const footer = document.querySelector("footer");
+
+  // Show button with fade-in after 5 seconds
+  setTimeout(() => {
+    btn.classList.add("show");
+  }, 5000);
+
+  // Hide smoothly near footer
+  window.addEventListener("scroll", () => {
+    if (!footer) return;
+    const footerRect = footer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    if (footerRect.top < windowHeight - 50) {
+      btn.classList.add("hide");
+    } else {
+      btn.classList.remove("hide");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
