@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nationality = isset($_POST['nationality']) ? htmlspecialchars($_POST['nationality']) : '';
     $nationality_code = isset($_POST['nationality_code']) ? htmlspecialchars($_POST['nationality_code']) : '';
     $work_type = isset($_POST['work_type']) ? htmlspecialchars($_POST['work_type']) : '';
+    $role = isset($_POST['role']) ? htmlspecialchars(trim($_POST['role'])) : '';
     
     // Set JSON content type header
     header('Content-Type: application/json');
@@ -92,7 +93,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Email content
         $mail->isHTML(true);
-        $mail->Subject = "New Job Application - " . $fullname;
+        $mail->Subject = "New Job Application - " . $fullname . ($role !== '' ? " (" . html_entity_decode($role, ENT_QUOTES, 'UTF-8') . ")" : "");
+
+        $role_field = $role !== '' ?
+            "<div class='field'><div class='label'>Position of Interest:</div><div class='value'>{$role}</div></div>" : "";
         
         $cv_attachment = (isset($_FILES['cv']) && $_FILES['cv']['error'] == UPLOAD_ERR_OK) ? 
             "<div class='field'><div class='label'>CV Attached:</div><div class='value'>" . htmlspecialchars($_FILES['cv']['name']) . "</div></div>" : "";
@@ -103,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <style>
                 body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
                 .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-                .header { background-color: #00bcd4; color: white; padding: 20px; text-align: center; }
+                .header { background-color: #070235; color: white; padding: 20px; text-align: center; }
                 .content { background-color: #f9f9f9; padding: 20px; }
                 .field { margin-bottom: 15px; }
                 .label { font-weight: bold; color: #555; }
@@ -140,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class='label'>Work Type:</div>
                         <div class='value'>{$work_type}</div>
                     </div>
+                    {$role_field}
                     {$cv_attachment}
                 </div>
             </div>
@@ -150,6 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Plain text version
         $cv_text = (isset($_FILES['cv']) && $_FILES['cv']['error'] == UPLOAD_ERR_OK) ? 
             "\nCV Attached: " . htmlspecialchars($_FILES['cv']['name']) : "";
+        $role_text = $role !== '' ? "\nPosition of Interest: {$role}" : "";
         
         $mail->AltBody = "
 New Job Application Received
@@ -159,7 +165,7 @@ Email: {$email}
 Phone: {$phone}
 Age: {$age}
 Nationality: {$nationality} ({$nationality_code})
-Work Type: {$work_type}{$cv_text}
+Work Type: {$work_type}{$role_text}{$cv_text}
         ";
         
         // Send email

@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hubjob Platform - Connecting Talent Worldwide</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hubjob Platform — Connecting Ambitious People with Global Opportunities</title>
+<meta content="Hubjob Platform helps talent worldwide find remote and in-demand jobs with verified international employers across the UK and beyond." name="description"/>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
@@ -16,561 +12,413 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-17786385681');
 </script>
 
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-    body {
-      color: #222;
-      line-height: 1.6;
-      background-color: #fff;
-    }
-
-    /* ===== NAVBAR ===== */
-    nav {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      backdrop-filter: blur(6px);
-    }
-    .nav-logo {
-      color: #00bcd4;
-      font-weight: 700;
-      font-size: 1.4rem;
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 25px;
-    }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .nav-links a:hover {
-      color: #00bcd4;
-    }
-
-    /* Mobile Menu */
-    .menu-toggle {
-      display: none;
-      font-size: 1.5rem;
-      color: #fff;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: rgba(0, 0, 0, 0.9);
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        padding: 15px 0;
-      }
-      .nav-links.active {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-    }
-
-    /* ===== HERO SECTION ===== */
-    header {
-      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80') center/cover no-repeat;
-      position: relative;
-      color: #fff;
-      padding: 160px 20px 100px;
-      text-align: center;
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.55);
-      z-index: 0;
-    }
-    header .content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.1rem;
-      margin: 15px 0 25px;
-    }
-    .hero-buttons a {
-      display: inline-block;
-      padding: 10px 22px;
-      margin: 5px;
-      color: #fff;
-      background-color: #00bcd4;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-    }
-    .hero-buttons a:hover {
-      background-color: #009cb4;
-    }
-
-    section {
-      padding: 70px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 50px;
-      color: #111;
-    }
-
-    /* ===== WHY CHOOSE US ===== */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-    .feature-card {
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 25px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    }
-    .feature-card i {
-      font-size: 2rem;
-      color: #00bcd4;
-      margin-bottom: 10px;
-    }
-
-    /* ===== JOB TYPES ===== */
-    .jobs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 35px;
-    }
-    .job-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
-    }
-    .job-card:hover {
-      transform: translateY(-5px);
-    }
-    .job-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .job-card-content {
-      padding: 20px;
-    }
-    .job-card-content h3 {
-      margin-bottom: 10px;
-      color: #111;
-    }
-    .job-card-content p {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    /* ===== HOW TO APPLY ===== */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .step {
-      background: #f5f5f5;
-      padding: 25px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .step i {
-      font-size: 2rem;
-      color: #00bcd4;
-      margin-bottom: 10px;
-    }
-
-    /* ===== TESTIMONIALS ===== */
-    .testimonials {
-      text-align: center;
-      padding: 60px 20px;
-      background: #f8f9fa;
-    }
-    .testimonials h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
-    .swiper {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .swiper-slide {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      padding: 40px 30px;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-    .swiper-slide h4 {
-      margin-top: 15px;
-      font-weight: 600;
-      color: #444;
-    }
-    .swiper-button-next, .swiper-button-prev {
-      color: #333;
-    }
-    .swiper-pagination-bullet-active {
-      background: #00bcd4;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background-color: #1a1a1a;
-      color: #e0e0e0;
-      padding: 60px 20px 20px;
-    }
-    .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .footer-col {
-      flex: 1 1 300px;
-      min-width: 250px;
-    }
-    .footer-logo {
-      color: #00bcd4;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .footer-about {
-      line-height: 1.6;
-      font-size: 0.95rem;
-      color: #cfcfcf;
-    }
-    .footer-col h3 {
-      color: #fff;
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .footer-col ul li {
-      margin: 8px 0;
-    }
-    .footer-col ul li a {
-      color: #cfcfcf;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .footer-col ul li a:hover {
-      color: #00bcd4;
-    }
-    .contact-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .contact-list i {
-      color: #00bcd4;
-      font-size: 1rem;
-      margin-top: 3px;
-    }
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid #333;
-      margin-top: 40px;
-      padding-top: 15px;
-      font-size: 0.9rem;
-      color: #999;
-    }
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .contact-list li {
-        justify-content: center;
-      }
-    }
-  </style>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script src="assets/js/tailwind-config.js"></script>
 </head>
-<body>
+<body class="bg-white text-text-main font-sans antialiased selection:bg-slate-200">
 
-  <!-- ===== NAVBAR ===== -->
-  <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="static/images/logo22.png"
-           alt="Hubjob Platform Logo"
-           style="height:50px; width:auto; filter: brightness(0) invert(1);">
-    </a>
-    <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
-    <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="faq.html">FAQ</a>
-      <a href="apply.html">Contact</a>
-    </div>
-  </nav>
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-surface-border">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+<a aria-label="Hubjob Platform home" class="flex items-center flex-shrink-0" href="index.html">
+<img alt="Hubjob Platform" class="h-9 w-auto object-contain" src="static/images/logo22.png"/>
+</a>
+<nav aria-label="Main" class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px]">
+<a class="text-text-muted hover:text-primary transition-colors" href="jobs.html">Find Jobs</a>
+<a class="text-text-muted hover:text-primary transition-colors" href="about.html">About Us</a>
+<a class="text-text-muted hover:text-primary transition-colors" href="index.html#how-it-works">How It Works</a>
+<a class="text-text-muted hover:text-primary transition-colors" href="faq.html">FAQ</a>
+<a class="text-text-muted hover:text-primary transition-colors" href="contact.html">Contact</a>
+</nav>
+<div class="flex items-center gap-2 sm:gap-3">
+<a class="hidden sm:inline-flex text-[14px] font-medium text-slate-700 hover:text-primary px-3 py-1.5 transition-colors" href="apply.html">Upload CV</a>
+<a class="inline-flex items-center justify-center text-[13px] font-semibold text-white bg-secondary hover:bg-secondary-hover px-4 py-2 rounded-md transition-colors shadow-sm" href="apply.html">Apply Now</a>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-md text-primary hover:bg-slate-100 transition-colors" id="mobile-menu-toggle" type="button">
+<span class="material-symbols-outlined text-[26px]">menu</span>
+</button>
+</div>
+</div>
+<div class="md:hidden hidden border-t border-surface-border bg-white" id="mobile-menu">
+<nav aria-label="Mobile" class="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex flex-col text-[15px]">
+<a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="jobs.html">Find Jobs</a>
+<a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="about.html">About Us</a>
+<a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="index.html#how-it-works">How It Works</a>
+<a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="faq.html">FAQ</a>
+<a class="py-3 text-slate-700 hover:text-primary" href="contact.html">Contact</a>
+<a class="sm:hidden my-3 inline-flex items-center justify-center gap-2 rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold text-primary" href="apply.html"><span class="material-symbols-outlined text-[18px]">upload_file</span>Upload CV</a>
+</nav>
+</div>
+</header>
 
-  <!-- ===== HERO SECTION ===== -->
-  <header>
-    <div class="content">
-      <h1>Hubjob Platform – Connecting Ambitious People with Global Opportunities</h1>
-      <p>We help talents worldwide find remote & in-demand jobs with top companies. Let us handle the process, so you can focus on growing your career.</p>
-      <div class="hero-buttons">
-        <a href="apply.html">Apply Now</a>
-        <a href="jobs.html">View Open Roles</a>
-      </div>
-    </div>
-  </header>
+<main class="w-full">
 
-  <!-- ===== WHY CHOOSE US ===== -->
-  <section>
-    <h2>Built for Global Talent Like You</h2>
-    <div class="features">
-      <div class="feature-card"><i class="fa-solid fa-user-check"></i><h3>Personalized Job Matching</h3><p>We match your skills, experience, and goals with verified employers worldwide.</p></div>
-      <div class="feature-card"><i class="fa-solid fa-briefcase"></i><h3>End-to-End Career Support</h3><p>From interview prep to onboarding, we help you every step of the way.</p></div>
-      <div class="feature-card"><i class="fa-solid fa-globe"></i><h3>Verified Global Employers</h3><p>Work with trusted, vetted companies across various industries.</p></div>
-      <div class="feature-card"><i class="fa-solid fa-laptop"></i><h3>Remote-First Opportunities</h3><p>Find flexible jobs designed for remote work.</p></div>
-      <div class="feature-card"><i class="fa-solid fa-rocket"></i><h3>Fast Hiring Process</h3><p>Get matched quickly and start your new role in days.</p></div>
-      <div class="feature-card"><i class="fa-solid fa-handshake"></i><h3>Continuous Growth Support</h3><p>We provide ongoing advice, training, and growth tools.</p></div>
-    </div>
-  </section>
+<!-- 1. Hero: search-first -->
+<section class="w-full bg-[#0b1324] text-white pt-14 pb-16 sm:pt-16 sm:pb-20 md:pt-24 md:pb-28">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+<h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4">
+Connecting Ambitious People with Global Opportunities
+</h1>
+<p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 font-normal">
+We help talents worldwide find remote &amp; in-demand jobs with top verified companies. Let us handle the process, so you can focus on growing your career.
+</p>
+<form action="jobs.html" class="bg-white rounded-lg p-2 shadow-lg text-text-main flex flex-col md:flex-row items-stretch gap-1 md:gap-2 border border-slate-200" method="get" role="search">
+<div class="flex-1 flex items-center px-3 py-2 gap-2.5">
+<span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+<div class="flex flex-col text-left w-full min-w-0">
+<label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider" for="search-what">What</label>
+<input class="w-full p-0 border-0 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:ring-0 leading-normal" id="search-what" name="q" placeholder="Job title, skill, or keyword" type="text"/>
+</div>
+</div>
+<div class="md:hidden h-px mx-3 bg-slate-200"></div>
+<div class="hidden md:block w-px self-stretch bg-slate-200 my-1"></div>
+<div class="flex-1 flex items-center px-3 py-2 gap-2.5">
+<span class="material-symbols-outlined text-slate-400 text-xl">location_on</span>
+<div class="flex flex-col text-left w-full min-w-0">
+<label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider" for="search-where">Where</label>
+<input class="w-full p-0 border-0 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:ring-0 leading-normal" id="search-where" name="loc" placeholder='City, country, or "Remote"' type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-end pt-1 md:pt-0">
+<button class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold rounded-md transition-colors" type="submit">
+<span>Find Jobs</span>
+</button>
+</div>
+</form>
+</div>
+</section>
 
-  <!-- ===== JOB TYPES ===== -->
-  <section>
-    <h2>Explore Job Types That Suit Your Lifestyle</h2>
-    <div class="jobs">
-      <div class="job-card">
-        <img src="https://images.unsplash.com/photo-1521790361543-f645cf042ec4?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="">
-        <div class="job-card-content">
-          <h3>Full-Time</h3>
-          <p>Enjoy long-term stability, benefits, and global career growth opportunities with top employers.</p>
-        </div>
-      </div>
-      <div class="job-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="">
-        <div class="job-card-content">
-          <h3>Part-Time</h3>
-          <p>Find flexible roles that balance your lifestyle, education, or family schedule.</p>
-        </div>
-      </div>
-      <div class="job-card">
-        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="">
-        <div class="job-card-content">
-          <h3>Freelance</h3>
-          <p>Work independently on projects across industries, anywhere in the world.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- 2. Featured opportunities -->
+<section class="w-full py-14 md:py-20 bg-white border-b border-surface-border">
+<div class="max-w-4xl mx-auto px-4 sm:px-6">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 pb-4 border-b border-slate-100">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-primary">Featured Opportunities</h2>
+<p class="text-sm text-text-muted mt-1">Verified direct contracts and permanent roles added this week.</p>
+</div>
+<a class="text-sm font-medium text-secondary hover:text-secondary-hover mt-2 sm:mt-0 inline-flex items-center gap-1" href="jobs.html">Browse all jobs →</a>
+</div>
+<div class="divide-y divide-slate-200 border-t border-b border-slate-200">
 
-  <!-- ===== HOW TO APPLY ===== -->
-  <section>
-    <h2>How To Apply</h2>
-    <div class="steps">
-      <div class="step"><i class="fa-solid fa-search"></i><h3>1. Browse Open Roles</h3><p>Find full-time or remote jobs that match your goals.</p></div>
-      <div class="step"><i class="fa-solid fa-file-lines"></i><h3>2. Submit Your Application</h3><p>Upload your CV and fill the quick form to get started.</p></div>
-      <div class="step"><i class="fa-solid fa-video"></i><h3>3. Attend the Interview</h3><p>Meet with global employers and present your best self.</p></div>
-      <div class="step"><i class="fa-solid fa-laptop-house"></i><h3>4. Start Working Remotely</h3><p>Join trusted companies and work from anywhere in the world.</p></div>
-    </div>
-  </section>
+<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
+<div class="min-w-0 flex-1">
+<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Senior%20Frontend%20Engineer">Senior Frontend Engineer</a>
+<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
+<span class="font-medium text-slate-700">NexaTech Global</span><span aria-hidden="true">•</span>
+<span>Remote (Worldwide)</span><span aria-hidden="true">•</span>
+<span>$65,000 – $95,000/yr</span><span aria-hidden="true">•</span>
+<span>Full-Time</span>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
+<span class="text-xs text-text-subtle">Posted 2h ago</span>
+<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Senior%20Frontend%20Engineer">Apply →</a>
+</div>
+</div>
 
-  <!-- ✅ TESTIMONIALS SECTION -->
-  <section class="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><p>"This service was amazing! Highly recommend."</p><h4>- Daniel, UK</h4></div>
-        <div class="swiper-slide"><p>"Thanks to Hubjob Platform, I found part-time work in London easily."</p><h4>- Sarah, UK</h4></div>
-        <div class="swiper-slide"><p>"The team guided me through every step of the visa process. Fantastic support!"</p><h4>- Ahmed, Dubai</h4></div>
-        <div class="swiper-slide"><p>"Loved working with this team. Professional and super fast placement!"</p><h4>- Michael Lee</h4></div>
-        <div class="swiper-slide"><p>"Hubjob Platform helped me land my first healthcare job in the UK."</p><h4>- Sofia, Spain</h4></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
+<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
+<div class="min-w-0 flex-1">
+<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Global%20Operations%20Specialist">Global Operations Specialist</a>
+<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
+<span class="font-medium text-slate-700">Horizon Logistics UK</span><span aria-hidden="true">•</span>
+<span>London, UK (Hybrid)</span><span aria-hidden="true">•</span>
+<span>£38,000 – £48,000/yr</span><span aria-hidden="true">•</span>
+<span>Full-Time</span>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
+<span class="text-xs text-text-subtle">Posted 5h ago</span>
+<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Global%20Operations%20Specialist">Apply →</a>
+</div>
+</div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h2 class="footer-logo">Hubjob Platform</h2>
-        <p class="footer-about">
-          We connect talented individuals with remote and in-demand jobs worldwide. Our goal is to simplify the hiring process and build trusted, borderless careers.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="jobs.html">Jobs</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Contact Info</h3>
-        <ul class="contact-list">
-          <li><i class="fa-solid fa-location-dot"></i><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></li>
-          <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></li>
-          <li><i class="fa-solid fa-phone"></i><a href="tel:+441202958648">+44 1202 958648</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Hubjob Platform. All Rights Reserved.</p>
-    </div>
-  </footer>
+<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
+<div class="min-w-0 flex-1">
+<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Growth%20Marketing%20Lead">Growth Marketing Lead</a>
+<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
+<span class="font-medium text-slate-700">Apex Media Group</span><span aria-hidden="true">•</span>
+<span>Remote (Europe/US)</span><span aria-hidden="true">•</span>
+<span>$70,000 – $100,000/yr</span><span aria-hidden="true">•</span>
+<span>Full-Time</span>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
+<span class="text-xs text-text-subtle">Posted 1d ago</span>
+<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Growth%20Marketing%20Lead">Apply →</a>
+</div>
+</div>
 
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
+<div class="min-w-0 flex-1">
+<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Customer%20Success%20Manager">Customer Success Manager</a>
+<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
+<span class="font-medium text-slate-700">CloudScale Systems</span><span aria-hidden="true">•</span>
+<span>Remote</span><span aria-hidden="true">•</span>
+<span>$45,000 – $65,000/yr</span><span aria-hidden="true">•</span>
+<span>Full-Time</span>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
+<span class="text-xs text-text-subtle">Posted 1d ago</span>
+<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Customer%20Success%20Manager">Apply →</a>
+</div>
+</div>
 
-    var swiper = new Swiper(".mySwiper", {
-      loop: true,
-      effect: "fade",
-      fadeEffect: { crossFade: true },
-      autoplay: { delay: 4000, disableOnInteraction: false },
-      pagination: { el: ".swiper-pagination", clickable: true },
-      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      speed: 1000
-    });
-  </script>
+<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
+<div class="min-w-0 flex-1">
+<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Product%20Designer%20(UI%2FUX)">Product Designer (UI/UX)</a>
+<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
+<span class="font-medium text-slate-700">FinFlow Labs</span><span aria-hidden="true">•</span>
+<span>Remote</span><span aria-hidden="true">•</span>
+<span>$40 – $75/hr</span><span aria-hidden="true">•</span>
+<span>Contract</span>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
+<span class="text-xs text-text-subtle">Posted 2d ago</span>
+<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Product%20Designer%20(UI%2FUX)">Apply →</a>
+</div>
+</div>
 
-  <!-- ===== JS for mobile menu ===== -->
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
+<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
+<div class="min-w-0 flex-1">
+<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Healthcare%20Support%20Coordinator">Healthcare Support Coordinator</a>
+<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
+<span class="font-medium text-slate-700">MedVance UK</span><span aria-hidden="true">•</span>
+<span>Bournemouth, UK</span><span aria-hidden="true">•</span>
+<span>£32,000 – £40,000/yr</span><span aria-hidden="true">•</span>
+<span>Full-Time</span>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
+<span class="text-xs text-text-subtle">Posted 3d ago</span>
+<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Healthcare%20Support%20Coordinator">Apply →</a>
+</div>
+</div>
 
-<!-- Floating Apply Button -->
-<a href="apply.html" id="floatingApplyBtn" class="floating-apply-btn">
-  📄 Submit Your Details with CV
+</div>
+<div class="mt-8 text-center sm:text-left">
+<a class="inline-flex items-center text-sm font-semibold text-slate-800 hover:text-secondary transition-colors" href="jobs.html">View all open positions <span class="ml-1.5">→</span></a>
+</div>
+</div>
+</section>
+
+<!-- 3. Explore jobs by category -->
+<section class="w-full py-14 md:py-20 bg-surface-muted border-b border-surface-border" id="categories">
+<div class="max-w-4xl mx-auto px-4 sm:px-6">
+<div class="mb-8 md:mb-10">
+<h2 class="text-2xl font-bold tracking-tight text-primary">Explore Jobs by Category</h2>
+<p class="text-sm text-text-muted mt-1">Specialized career paths supported through the Hubjob network.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7 md:gap-y-8">
+<a class="group block" href="jobs.html?category=operations">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Operations &amp; Support <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Logistics, coordination, admin, and supply chain management.</p>
+</a>
+<a class="group block" href="jobs.html?category=marketing">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Marketing &amp; Content <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Growth marketing, SEO, paid media, copywriting, and brand storytelling.</p>
+</a>
+<a class="group block" href="jobs.html?category=sales">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Sales &amp; Growth <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Account management, SDRs, enterprise partnerships, and client success.</p>
+</a>
+<a class="group block" href="jobs.html?category=design">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Design &amp; Creative <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Product UI/UX, visual design, design systems, and creative direction.</p>
+</a>
+<a class="group block" href="jobs.html?category=tech">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Tech &amp; Development <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Full-stack, mobile engineering, DevOps, cloud architecture, and security.</p>
+</a>
+<a class="group block" href="jobs.html?category=education">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Education &amp; Training <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Instructional design, corporate coaching, curriculum, and language learning.</p>
+</a>
+</div>
+</div>
+</section>
+
+<!-- 4. How to apply -->
+<section class="w-full py-14 md:py-20 bg-white border-b border-surface-border" id="how-it-works">
+<div class="max-w-4xl mx-auto px-4 sm:px-6">
+<div class="mb-10 md:mb-12">
+<h2 class="text-2xl font-bold tracking-tight text-primary">How To Apply</h2>
+<p class="text-sm text-text-muted mt-1">A transparent four-step hiring sequence from profile submission to placement.</p>
+</div>
+<ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<li class="border-t-2 border-primary pt-4">
+<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">01</span>
+<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Browse Open Roles</h3>
+<p class="text-sm text-text-muted leading-relaxed">Find full-time or remote jobs that match your goals.</p>
+</li>
+<li class="border-t-2 border-slate-300 pt-4">
+<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">02</span>
+<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Submit Your Application</h3>
+<p class="text-sm text-text-muted leading-relaxed">Upload your CV and fill the quick form to get started.</p>
+</li>
+<li class="border-t-2 border-slate-300 pt-4">
+<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">03</span>
+<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Attend the Interview</h3>
+<p class="text-sm text-text-muted leading-relaxed">Meet with global employers and present your best self.</p>
+</li>
+<li class="border-t-2 border-slate-300 pt-4">
+<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">04</span>
+<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Start Working Remotely</h3>
+<p class="text-sm text-text-muted leading-relaxed">Join trusted companies and work from anywhere in the world.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- 5. Why Hubjob Platform -->
+<section class="w-full py-14 md:py-20 bg-surface-muted border-b border-surface-border" id="why-hubjob">
+<div class="max-w-4xl mx-auto px-4 sm:px-6">
+<div class="mb-10 md:mb-12">
+<h2 class="text-2xl font-bold tracking-tight text-primary">Why Hubjob Platform</h2>
+<p class="text-sm text-text-muted mt-1">Our platform standards designed to support candidates throughout their career lifecycle.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 md:gap-y-10">
+<div>
+<h3 class="text-base font-bold text-slate-900 mb-2">Personalized Job Matching</h3>
+<p class="text-sm text-text-muted leading-relaxed">We match your skills, experience, and goals with verified employers worldwide.</p>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 mb-2">End-to-End Career Support</h3>
+<p class="text-sm text-text-muted leading-relaxed">From interview prep to onboarding, we help you every step of the way.</p>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 mb-2">Verified Global Employers</h3>
+<p class="text-sm text-text-muted leading-relaxed">Work with trusted, vetted companies across various industries.</p>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 mb-2">Remote-First Opportunities</h3>
+<p class="text-sm text-text-muted leading-relaxed">Find flexible jobs designed for remote work.</p>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 mb-2">Fast Hiring Process</h3>
+<p class="text-sm text-text-muted leading-relaxed">Get matched quickly and start your new role in days.</p>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 mb-2">Continuous Growth Support</h3>
+<p class="text-sm text-text-muted leading-relaxed">We provide ongoing advice, training, and growth tools.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 6. Testimonials -->
+<section class="w-full py-14 md:py-20 bg-white border-b border-surface-border" id="testimonials">
+<div class="max-w-4xl mx-auto px-4 sm:px-6">
+<div class="mb-8 md:mb-10">
+<h2 class="text-2xl font-bold tracking-tight text-primary">Candidate Experiences</h2>
+<p class="text-sm text-text-muted mt-1">Direct feedback from professionals placed through the network.</p>
+</div>
+<figure class="pb-10 mb-10 border-b border-slate-200">
+<blockquote class="text-xl sm:text-2xl font-medium text-slate-900 leading-snug">“The team guided me through every step of the visa process. Fantastic support!”</blockquote>
+<figcaption class="mt-4 text-sm"><span class="font-bold text-slate-900">Ahmed</span><span class="text-text-muted"> — Dubai, UAE</span></figcaption>
+</figure>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<figure>
+<blockquote class="text-sm text-slate-800 leading-relaxed italic">“This service was amazing! Highly recommend.”</blockquote>
+<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Daniel</span><span class="block text-text-muted">United Kingdom</span></figcaption>
+</figure>
+<figure>
+<blockquote class="text-sm text-slate-800 leading-relaxed italic">“Thanks to Hubjob Platform, I found part-time work in London easily.”</blockquote>
+<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Sarah</span><span class="block text-text-muted">London, UK</span></figcaption>
+</figure>
+<figure>
+<blockquote class="text-sm text-slate-800 leading-relaxed italic">“Loved working with this team. Professional and super fast placement!”</blockquote>
+<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Michael Lee</span><span class="block text-text-muted">Software Specialist</span></figcaption>
+</figure>
+<figure>
+<blockquote class="text-sm text-slate-800 leading-relaxed italic">“Hubjob Platform helped me land my first healthcare job in the UK.”</blockquote>
+<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Sofia</span><span class="block text-text-muted">Spain</span></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- 7. Closing CTA -->
+<section class="w-full py-14 md:py-20 bg-surface-muted" id="cv-upload">
+<div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+<h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-primary mb-3">Ready to take the next step in your career?</h2>
+<p class="text-sm sm:text-base text-text-muted mb-8 leading-relaxed">Submit your CV today to be considered for open positions across top international companies.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 sm:py-2.5 bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold rounded-md transition-colors" href="apply.html">Submit Your CV</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 sm:py-2.5 bg-white border border-slate-300 hover:border-slate-400 text-slate-800 text-sm font-semibold rounded-md transition-colors" href="jobs.html">Browse Jobs</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full bg-[#f8fafc] text-slate-700 border-t border-slate-200">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10 md:mb-12">
+<div class="col-span-2 md:col-span-1">
+<a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" src="static/images/logo22.png"/></a>
+<p class="text-xs text-text-muted leading-relaxed mb-4">A career and job discovery platform connecting talent with organisations across the United Kingdom and globally.</p>
+<div class="text-xs text-text-muted space-y-1.5">
+<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" href="tel:+441202958648">+44 1202 958648</a></p>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Quick Links</h4>
+<ul class="space-y-2 text-text-muted text-sm md:text-xs">
+<li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="jobs.html">Jobs</a></li>
+<li><a class="hover:text-primary transition-colors" href="about.html">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="faq.html">FAQ</a></li>
+<li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Job Seekers</h4>
+<ul class="space-y-2 text-text-muted text-sm md:text-xs">
+<li><a class="hover:text-primary transition-colors" href="index.html#categories">Browse Categories</a></li>
+<li><a class="hover:text-primary transition-colors" href="jobs.html?work=remote">Remote Opportunities</a></li>
+<li><a class="hover:text-primary transition-colors" href="apply.html">Upload CV</a></li>
+<li><a class="hover:text-primary transition-colors" href="index.html#how-it-works">How It Works</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Employers</h4>
+<ul class="space-y-2 text-text-muted text-sm md:text-xs">
+<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">Post a Job</a></li>
+<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Talent%20Search">Search Talent</a></li>
+<li><a class="hover:text-primary transition-colors" href="about.html#global-reach">Hiring Solutions</a></li>
+<li><a class="hover:text-primary transition-colors" href="contact.html">Contact Support</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-text-subtle gap-4 text-center">
+<p>© <span data-year>2025</span> Hubjob Platform. All Rights Reserved.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-slate-600 transition-colors" href="faq.html">FAQ</a>
+<a class="hover:text-slate-600 transition-colors" href="contact.html">Contact</a>
+<a class="hover:text-slate-600 transition-colors" href="apply.html">Apply</a>
+</div>
+</div>
+</div>
+</footer>
+
+<a class="floating-apply-btn fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 rounded-full bg-secondary hover:bg-secondary-hover px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-secondary/30" href="apply.html" id="floatingApplyBtn">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+<span class="sm:hidden">Submit Your CV</span>
+<span class="hidden sm:inline">Submit Your Details with CV</span>
 </a>
 
-<style>
-/* Floating Button */
-.floating-apply-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #007bff;
-  color: #fff;
-  padding: 14px 22px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  z-index: 999;
-}
-
-/* When visible */
-.floating-apply-btn.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
-
-/* Hide near footer */
-.floating-apply-btn.hide {
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-}
-
-/* Hover style */
-.floating-apply-btn:hover {
-  background: #005fcc;
-  transform: translateY(-3px);
-}
-</style>
-
-<script>
-window.addEventListener("load", function() {
-  const btn = document.getElementById("floatingApplyBtn");
-  const footer = document.querySelector("footer");
-
-  // Show button with fade-in after 5 seconds
-  setTimeout(() => {
-    btn.classList.add("show");
-  }, 5000);
-
-  // Hide smoothly near footer
-  window.addEventListener("scroll", () => {
-    if (!footer) return;
-    const footerRect = footer.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    if (footerRect.top < windowHeight - 50) {
-      btn.classList.add("hide");
-    } else {
-      btn.classList.remove("hide");
-    }
-  });
-});
-</script>
-
+<script src="assets/js/site.js"></script>
 </body>
 </html>
