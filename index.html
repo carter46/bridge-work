@@ -21,9 +21,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css?v=2" rel="stylesheet"/>
+<link href="assets/css/site.css?v=3" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="assets/js/tailwind-config.js"></script>
+<script src="assets/js/tailwind-config.js?v=3"></script>
 </head>
 <body class="bg-white text-text-main font-sans antialiased selection:bg-slate-200">
 
@@ -65,7 +65,7 @@
 <main class="w-full">
 
 <!-- 1. Hero: search-first, fills the screen; photo behind a navy overlay -->
-<section class="hero-fullscreen relative w-full flex items-center text-white overflow-hidden">
+<section class="hero-fullscreen relative z-20 w-full flex items-center text-white">
 <div aria-hidden="true" class="absolute inset-0 bg-[#0b1324]/80"></div>
 <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#0b1324]/40 via-transparent to-[#0b1324]/70"></div>
 <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
@@ -75,7 +75,8 @@ Connecting Ambitious People with Global Opportunities
 <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 font-normal">
 We help talents worldwide find remote &amp; in-demand jobs with trusted companies. Let us handle the process, so you can focus on growing your career.
 </p>
-<form action="jobs.html" class="bg-white rounded-lg p-2 shadow-lg text-text-main flex flex-col md:flex-row items-stretch gap-1 md:gap-2 border border-slate-200" method="get" role="search">
+<div class="relative text-left">
+<form action="jobs.html" autocomplete="off" class="bg-white rounded-lg p-2 shadow-lg text-text-main flex flex-col md:flex-row items-stretch gap-1 md:gap-2 border border-slate-200" id="hero-search" method="get" role="search">
 <div class="flex-1 flex items-center px-3 py-2 gap-2.5">
 <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
 <div class="flex flex-col text-left w-full min-w-0">
@@ -98,6 +99,9 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 </button>
 </div>
 </form>
+<!-- Live matches while typing (home.js) -->
+<div aria-live="polite" class="hidden absolute left-0 right-0 top-full mt-2 z-30 rounded-lg bg-white text-text-main shadow-2xl border border-slate-200 overflow-hidden" id="hero-search-results"></div>
+</div>
 </div>
 </section>
 
@@ -377,8 +381,8 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 <span class="hidden sm:inline">Submit Your Details with CV</span>
 </a>
 
-<script src="assets/js/site.js?v=2"></script>
-<script src="assets/js/settings.js?v=2"></script>
-<script src="assets/js/home.js?v=2"></script>
+<script src="assets/js/site.js?v=3"></script>
+<script src="assets/js/settings.js?v=3"></script>
+<script src="assets/js/home.js?v=3"></script>
 </body>
 </html>

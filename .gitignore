@@ -10,6 +10,7 @@ storage/backups/*
 uploads/*
 !uploads/.htaccess
 
-# Temp files from snapshot writes
+# Public data copies written by the server on every admin save
+assets/data/live-*.json
 assets/data/*.tmp
 *.log

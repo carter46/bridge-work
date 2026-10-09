@@ -1,12 +1,19 @@
 Options -Indexes
 
-# Public data files are rewritten when an admin saves; never serve a stale copy.
+# Pages, scripts and styles change with every git deploy and the JSON data with every admin save.
+# Browsers may keep a copy but must check for a newer one first (cheap 304 when unchanged),
+# otherwise visitors run an old script against a new page.
+<IfModule mod_expires.c>
+    <FilesMatch "\.(html?|js|css|json)$">
+        ExpiresActive Off
+    </FilesMatch>
+</IfModule>
 <IfModule mod_headers.c>
-    <FilesMatch "\.json$">
+    <FilesMatch "\.(html?|js|css|json)$">
+        Header unset Expires
         Header set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
 </IfModule>
-
 # Hidden files (.git, .env, .gitignore) and server-only file types
 <FilesMatch "(^\.|\.(md|sql|log|key|tmp|lock|dist)$|^composer\.(json|lock)$)">
     <IfModule mod_authz_core.c>

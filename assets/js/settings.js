@@ -9,7 +9,7 @@
  * The site name written into the HTML ("Hubjob Platform") is replaced in page text and the tab title.
  */
 (function () {
-  var SOURCES = ["api/settings.php", "assets/data/site-settings.json?v=" + Date.now()];
+  var SOURCES = window.HJ.SETTINGS_SOURCES;
   var HTML_SITE_NAME = "Hubjob Platform";
 
   function renameSite(name) {

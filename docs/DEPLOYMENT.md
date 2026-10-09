@@ -114,7 +114,7 @@ Open these in a browser:
 | `/api/jobs.php` | JSON with 30 jobs and 8 categories |
 | `/api/settings.php` | JSON with contact details only. **No** `smtp_*`, `notification_email`, password or secret keys |
 | `/api/form-token.php` | `{"token": "..."}` |
-| `/assets/data/jobs-snapshot.json` | Same jobs as the API |
+| `/assets/data/live-jobs.json` | Same jobs as the API (written by the server on every admin save, so it appears after the first save; never committed to git) |
 | `/config/config.php`, `/includes/db.php`, `/storage/`, `/storage/app.key`, `/database/fixtures/jobs.php`, `/docs/DEPLOYMENT.md` | **403 Forbidden** |
 | `/uploads/` | 403 (no listing) |
 
@@ -128,6 +128,8 @@ Upload together, in one go:
 
 If you use Cloudflare or another cache, purge it afterwards.
 
+Every page loads its scripts and styles as `file.js?v=N`. When you change a file in `assets/js/` or `assets/css/`, raise `N` in the HTML pages that load it, otherwise some browsers keep running the old file against the new page.
+
 ## 11. How links and forms behave during the switch
 
 | Situation | What happens |
@@ -139,7 +141,7 @@ If you use Cloudflare or another cache, purge it afterwards.
 | Old links `jobs.html?category=...` | Work, including after a category is renamed (old URL names are remembered). |
 | Old links `apply.html?role=Content%20Writer` | The role is pre-filled; if it exactly matches a job title, the application is linked to that job. Otherwise it's kept as free text. |
 | New links `apply.html?job=12&role=...` | The form shows "Applying for ..." and links the application to job 12. |
-| API down (PHP error, database down) | Jobs and homepage use `assets/data/jobs-snapshot.json` with a notice; if that fails too, an error card with Retry, "Send us your CV anyway" and contact details. Contact details fall back to the values in the HTML. |
+| API down (PHP error, database down) | Jobs and homepage use `assets/data/live-jobs.json` (the server's last saved copy), then the committed `assets/data/jobs-snapshot.json`, with a notice; if that fails too, an error card with Retry, "Send us your CV anyway" and contact details. Contact details fall back to the values in the HTML. |
 | Database down when someone applies | The form shows an error with the contact email, and nothing is lost silently. |
 
 ## 12. Test matrix (run after cutover)

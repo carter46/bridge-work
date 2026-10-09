@@ -75,7 +75,7 @@ $categorySlugs = array_column(hj_db_all('SELECT slug FROM categories'), 'slug');
 $missingCategories = array_values(array_diff(array_column($fixtureCategories, 'slug'), $categorySlugs));
 $duplicateRefs = (int)hj_db_value('SELECT COUNT(*) FROM (SELECT ref_code FROM jobs GROUP BY ref_code HAVING COUNT(*) > 1) d');
 
-$snapshotPath = hj_snapshot_dir() . '/jobs-snapshot.json';
+$snapshotPath = hj_snapshot_dir() . '/' . HJ_SNAPSHOT_JOBS;
 $snapshot = is_file($snapshotPath) ? json_decode((string)file_get_contents($snapshotPath), true) : null;
 $snapshotCount = is_array($snapshot) && isset($snapshot['jobs']) ? count($snapshot['jobs']) : null;
 $liveCount = count(hj_public_jobs_payload()['jobs']);

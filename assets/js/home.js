@@ -3,7 +3,7 @@
  * If neither source loads, the static fallback in index.html stays visible.
  */
 (function () {
-  var SOURCES = ["api/jobs.php", "assets/data/jobs-snapshot.json"];
+  var SOURCES = window.HJ.JOB_SOURCES;
   var EMPLOYMENT_LABELS = { full_time: "Full-time", part_time: "Part-time", contract: "Contract", temporary: "Temporary" };
   var ARRANGEMENT_LABELS = { remote: "Remote", hybrid: "Hybrid", onsite: "On-site" };
   var MAX_FEATURED = 6;
@@ -68,6 +68,89 @@
     window.HJ.observeReveal(tilesBox);
   }
 
+  /* ---------- Hero search: matching jobs appear while typing ---------- */
+
+  var MAX_SUGGESTIONS = 6;
+  var searchForm = document.getElementById("hero-search");
+  var whatInput = document.getElementById("search-what");
+  var whereInput = document.getElementById("search-where");
+  var resultsBox = document.getElementById("hero-search-results");
+
+  function jobsUrl(what, where) {
+    var params = new URLSearchParams();
+    if (what) params.set("q", what);
+    if (where) params.set("loc", where);
+    var query = params.toString();
+    return "jobs.html" + (query ? "?" + query : "");
+  }
+
+  function setupSearch(data, names) {
+    if (!searchForm || !whatInput || !whereInput || !resultsBox) return;
+    data.jobs.forEach(function (job) {
+      job._search = window.HJ.jobSearchText(job, names[job.category]);
+      job._place = window.HJ.jobPlaceWords(job);
+    });
+
+    function find(what, where) {
+      var terms = what.toLowerCase().split(/\s+/).filter(Boolean);
+      var byWhat = data.jobs.filter(function (job) {
+        return terms.every(function (t) { return job._search.indexOf(t) !== -1; });
+      });
+      var byBoth = byWhat.filter(function (job) { return window.HJ.placeMatches(job._place, where); });
+      // Nothing listed for that place: fall back to the "What" matches and say so.
+      return { jobs: byBoth.length || !where ? byBoth : byWhat, placeMissed: !!where && !byBoth.length && byWhat.length > 0 };
+    }
+
+    function suggestion(job) {
+      var meta = [names[job.category], job.location_text || ARRANGEMENT_LABELS[job.work_arrangement], job.pay_label].filter(Boolean);
+      var href = "apply.html?job=" + encodeURIComponent(job.id) + "&role=" + encodeURIComponent(job.title);
+      return '<a class="flex items-center justify-between gap-3 px-4 py-3 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none" href="' + esc(href) + '">' +
+        '<span class="min-w-0"><span class="block font-semibold text-slate-900 truncate">' + esc(job.title) + "</span>" +
+        '<span class="block text-xs text-text-muted truncate">' + esc(meta.join(" · ")) + "</span></span>" +
+        '<span class="shrink-0 text-xs font-semibold text-secondary">Apply →</span></a>';
+    }
+
+    function show() {
+      var what = whatInput.value.trim();
+      var where = whereInput.value.trim();
+      if (!what && !where) {
+        resultsBox.classList.add("hidden");
+        resultsBox.innerHTML = "";
+        return;
+      }
+      var found = find(what, where);
+      var html = "";
+      if (found.placeMissed) {
+        html += '<p class="px-4 py-2 text-xs text-text-muted bg-slate-50 border-b border-slate-100">No roles listed for “' + esc(where) + "” yet. Most roles below are remote:</p>";
+      }
+      if (found.jobs.length) {
+        html += '<div class="divide-y divide-slate-100">' + found.jobs.slice(0, MAX_SUGGESTIONS).map(suggestion).join("") + "</div>";
+        html += '<a class="block px-4 py-3 text-sm font-semibold text-secondary border-t border-slate-200 hover:bg-slate-50" href="' + esc(jobsUrl(what, where)) + '">' +
+          (found.jobs.length > MAX_SUGGESTIONS ? "See all " + found.jobs.length + " matching roles →" : "Open in job search →") + "</a>";
+      } else {
+        html += '<div class="px-4 py-4 text-sm text-text-muted">No roles match “' + esc(what || where) + '” right now. ' +
+          '<a class="font-semibold text-secondary hover:underline" href="apply.html">Send us your CV</a> and we\'ll match you when one opens.</div>';
+      }
+      resultsBox.innerHTML = html;
+      resultsBox.classList.remove("hidden");
+    }
+
+    whatInput.addEventListener("input", show);
+    whereInput.addEventListener("input", show);
+    whatInput.addEventListener("focus", show);
+    whereInput.addEventListener("focus", show);
+    document.addEventListener("click", function (e) {
+      if (!searchForm.parentNode.contains(e.target)) resultsBox.classList.add("hidden");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") resultsBox.classList.add("hidden");
+    });
+    searchForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      window.location.href = jobsUrl(whatInput.value.trim(), whereInput.value.trim());
+    });
+  }
+
   window.HJ.fetchJson(SOURCES, function (d) {
     return d && Array.isArray(d.jobs) && Array.isArray(d.categories);
   }).then(function (data) {
@@ -75,6 +158,7 @@
     data.categories.forEach(function (c) { names[c.slug] = c.name; });
     renderFeatured(data, names);
     renderTiles(data);
+    setupSearch(data, names);
   }, function () {
     // Leave the static fallback content in place.
   });

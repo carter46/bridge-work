@@ -1,9 +1,15 @@
 <?php
 /**
- * Static JSON copies of the public data (assets/data/*.json).
+ * Static JSON copies of the public data (assets/data/live-*.json).
  * The public pages fall back to these when the PHP API is unreachable, so they are rewritten
  * every time an admin saves settings, jobs or categories.
+ * They must stay out of git: a deploy that pulls over server-written files either fails or
+ * resets them to stale content. The committed jobs-snapshot.json / site-settings.json are only
+ * the last-resort fallback and are never written by the server.
  */
+
+const HJ_SNAPSHOT_JOBS = 'live-jobs.json';
+const HJ_SNAPSHOT_SETTINGS = 'live-settings.json';
 
 function hj_snapshot_dir(): string
 {
@@ -41,8 +47,8 @@ function hj_regenerate_snapshots(): void
         return;
     }
     hj_setting_set('snapshot_version', gmdate('YmdHis'));
-    hj_write_json_atomic(hj_snapshot_dir() . '/site-settings.json', hj_public_settings());
-    hj_write_json_atomic(hj_snapshot_dir() . '/jobs-snapshot.json', hj_public_jobs_payload());
+    hj_write_json_atomic(hj_snapshot_dir() . '/' . HJ_SNAPSHOT_SETTINGS, hj_public_settings());
+    hj_write_json_atomic(hj_snapshot_dir() . '/' . HJ_SNAPSHOT_JOBS, hj_public_jobs_payload());
 }
 
 /** For admin save handlers: regenerate and flash a warning instead of failing the save. */

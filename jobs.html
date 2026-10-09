@@ -19,9 +19,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css" rel="stylesheet"/>
+<link href="assets/css/site.css?v=3" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="assets/js/tailwind-config.js"></script>
+<script src="assets/js/tailwind-config.js?v=3"></script>
 </head>
 <body class="bg-surface text-on-surface font-sans antialiased selection:bg-slate-200">
 
@@ -65,17 +65,6 @@
 <!-- Page header -->
 <section class="w-full bg-surface-container-low py-10 md:py-space-xl">
 <div class="max-w-6xl mx-auto px-4 sm:px-6">
-<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
-<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
-<a class="hover:text-primary transition-colors" href="index.html">Home</a>
-<span class="material-symbols-outlined text-[14px]">chevron_right</span>
-<span class="text-primary font-bold">Jobs</span>
-</nav>
-<div class="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm tracking-wider uppercase">
-<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-<span>Live Opportunities • Remote &amp; Global</span>
-</div>
-</div>
 <div class="max-w-3xl">
 <h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-primary mb-space-sm">Explore Open Roles &amp; Career Pathways</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant">Explore flexible roles across industries, with transparent pay rates, ethical placement and zero fees for job seekers.</p>
@@ -194,10 +183,6 @@
 </div>
 
 <div class="bg-primary text-on-primary p-space-lg rounded-xl shadow-md relative overflow-hidden flex flex-col gap-space-md">
-<div class="flex items-center gap-space-sm text-secondary-fixed">
-<span class="material-symbols-outlined text-[24px]">support_agent</span>
-<span class="font-label-lg text-label-lg uppercase tracking-wide">Talent Advisory</span>
-</div>
 <div>
 <h3 class="font-headline-sm text-headline-sm text-on-primary mb-space-xs">Need Professional CV Guidance?</h3>
 <p class="font-body-md text-body-md text-inverse-primary">Our UK career team reviews candidate applications for free within <span data-setting="response_time">24 business hours</span> to maximise interview conversions.</p>
@@ -233,10 +218,10 @@
 </select>
 </div>
 </div>
-<p class="hidden items-start gap-space-xs bg-surface-container p-space-sm rounded-lg font-body-sm text-body-sm text-primary" id="location-note">
-<span class="material-symbols-outlined text-[18px]">info</span>
-<span>Searching from “<span id="location-text"></span>”? Use the applicant location filter above to see roles open to candidates in your region.</span>
-</p>
+<div class="hidden flex-wrap items-center justify-between gap-space-sm bg-surface-container p-space-sm rounded-lg font-body-sm text-body-sm text-primary" id="location-note">
+<span id="location-text"></span>
+<button class="font-label-md text-label-md text-secondary hover:underline" id="location-clear" type="button">Clear location</button>
+</div>
 </div>
 
 <p class="hidden items-start gap-space-xs bg-amber-50 border border-amber-200 p-space-sm rounded-lg font-body-sm text-body-sm text-amber-900" id="jobs-snapshot-note" role="status">
@@ -370,8 +355,8 @@
 </div>
 </footer>
 
-<script src="assets/js/site.js?v=2"></script>
-<script src="assets/js/settings.js?v=2"></script>
-<script src="assets/js/jobs.js"></script>
+<script src="assets/js/site.js?v=3"></script>
+<script src="assets/js/settings.js?v=3"></script>
+<script src="assets/js/jobs.js?v=3"></script>
 </body>
 </html>

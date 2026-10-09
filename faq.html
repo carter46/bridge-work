@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>FAQ — Hubjob Platform</title>
-<meta content="Answers about applying through Hubjob Platform, employer checks, eligibility, data privacy and member benefits." name="description"/>
+<meta content="Answers about applying through Hubjob Platform, pay, eligibility, visas, employer checks and how we handle your data." name="description"/>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
@@ -19,9 +19,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css" rel="stylesheet"/>
+<link href="assets/css/site.css?v=3" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="assets/js/tailwind-config.js"></script>
+<script src="assets/js/tailwind-config.js?v=3"></script>
 </head>
 <body class="bg-white text-text-main font-sans antialiased selection:bg-slate-200">
 
@@ -62,409 +62,138 @@
 
 <main class="w-full">
 
-<!-- Breadcrumb bar -->
-<section class="w-full bg-surface-bright pt-4 pb-0 sm:py-4 px-4 sm:px-6">
-<div class="max-w-6xl mx-auto flex items-center justify-between">
-<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant">
-<a class="hover:text-primary transition-colors flex items-center gap-1" href="index.html">
-<span class="material-symbols-outlined text-[16px]">home</span><span>Home</span>
-</a>
-<span class="text-outline-variant font-normal">/</span>
-<span class="text-primary font-semibold">FAQ</span>
-</nav>
-<div class="hidden sm:flex items-center gap-2 font-label-md text-label-md text-on-surface-variant">
-<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
-<span>Knowledge Base • UK &amp; Global Guidance</span>
+<section class="w-full pt-14 pb-16 md:pt-24 md:pb-24">
+<div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+<h1 class="text-4xl sm:text-5xl font-extrabold text-primary tracking-tight leading-[1.1]">Frequently asked questions</h1>
+<p class="mt-5 text-lg text-text-muted leading-relaxed">Answers about applying, pay, eligibility and how we look after your data. Can't find what you need? <a class="font-semibold text-primary underline hover:text-secondary" href="contact.html">Contact us</a>.</p>
+
+<div class="mt-8 relative">
+<span aria-hidden="true" class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[22px] text-slate-400">search</span>
+<label class="sr-only" for="faq-search">Search questions</label>
+<input class="w-full rounded-lg border-slate-300 bg-white pl-12 pr-4 py-3.5 text-base text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="faq-search" placeholder="Search, e.g. visa, CV, pay, delete my data" type="search"/>
 </div>
+
+<div aria-label="Filter by topic" class="mt-6 flex flex-wrap gap-2 scroll-mt-24" id="faq-topics" role="group">
+<button class="faq-topic rounded-full border px-4 py-2 text-sm font-semibold transition-colors" data-topic="all" type="button">All <span class="font-normal opacity-70" data-count=""></span></button>
+<button class="faq-topic rounded-full border px-4 py-2 text-sm font-semibold transition-colors" data-topic="applying" type="button">Applying <span class="font-normal opacity-70" data-count=""></span></button>
+<button class="faq-topic rounded-full border px-4 py-2 text-sm font-semibold transition-colors" data-topic="jobs" type="button">Jobs &amp; employers <span class="font-normal opacity-70" data-count=""></span></button>
+<button class="faq-topic rounded-full border px-4 py-2 text-sm font-semibold transition-colors" data-topic="eligibility" type="button">Eligibility &amp; visas <span class="font-normal opacity-70" data-count=""></span></button>
+<button class="faq-topic rounded-full border px-4 py-2 text-sm font-semibold transition-colors" data-topic="privacy" type="button">Your data <span class="font-normal opacity-70" data-count=""></span></button>
+</div>
+
+<p aria-live="polite" class="mt-8 text-sm text-text-muted" id="faq-status"></p>
+
+<div class="mt-3 border-t border-slate-200" id="faq-list">
+
+<details class="faq-item group border-b border-slate-200" data-topic="applying">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">How do I apply for a job?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Find the role on our <a class="underline hover:text-primary" href="jobs.html">jobs page</a> and click <strong>Apply Now</strong>. The application form opens with that role already selected. Fill in your details, attach your CV if you have one, and send it.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="applying">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Can I send my CV without applying for a specific job?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Yes. Use <a class="underline hover:text-primary" href="apply.html">Upload CV</a> and leave the role empty or describe the kind of work you want. We will contact you when a suitable role opens.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="applying">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Do I need a CV to apply?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>No. A CV helps us match you faster, but you can apply with just your contact details and we will ask for more information if we need it.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="applying">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Which CV file types can I upload?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>PDF, Word (.doc or .docx), RTF or plain text (.txt), up to 2 MB.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="applying">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">How long until I hear back?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>We review every application and reply within <span data-setting="response_time">24 business hours</span>, by email or on the WhatsApp number you give us.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="applying">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Can I apply for more than one role?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Yes. Apply to each role separately so we know which ones interest you.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="jobs">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Do I have to pay anything?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>No. Applying, interviews and placement are free for candidates. If anyone asks you for money in our name, do not pay and tell us.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="jobs">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">How is pay shown on listings?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Each listing shows its pay range and period, for example $35–$90 per hour. The hourly pay filter on the jobs page uses US dollars, and yearly or monthly pay is converted to an hourly figure for that filter.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="jobs">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Are the jobs remote?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Many are. Every listing says whether it is remote, hybrid or on-site, and which countries applicants can apply from. You can filter by both on the <a class="underline hover:text-primary" href="jobs.html">jobs page</a>.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="jobs">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">What does “Verified employer” mean?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>The employer has passed four checks: we confirmed the company is legally registered, reviewed that the pay is fair, confirmed the contract and any visa sponsorship are genuine, and the employer agreed never to charge candidates.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="jobs">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Which industries do you recruit for?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Technology, customer support, administration and operations, marketing, video, sales, design and education. The <a class="underline hover:text-primary" href="index.html#categories">categories on our homepage</a> show how many roles are open in each.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="jobs">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">I'm an employer. How do I list a role?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Email <a class="underline hover:text-primary" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">info@hubjobplatform.com</a> with the role, location and pay. We will reply with next steps and send you suitable candidates.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="eligibility">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Who can apply?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Anyone aged 18 or over. Some roles are only open to applicants in certain countries or regions, and this is shown on each listing.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="eligibility">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Do I need the right to work in the UK or EU?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Not for roles open worldwide. For roles limited to the UK or Europe, the listing says so. The application form asks about your right to work, but answering is optional.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="eligibility">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Do you help with visas?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>For roles that involve moving abroad, we guide you through the visa process and paperwork with the employer, and support you through your first weeks in the job.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="privacy">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">Is my personal information safe?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Yes. CVs are stored outside the public website and only our recruitment team can open them after signing in. We share your details only with employers relevant to the roles you apply for, in line with UK GDPR.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="privacy">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">How long do you keep my application?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p><span data-setting="retention_months">12</span> months after it was last updated. After that your CV and personal details are permanently deleted.</p></div>
+</details>
+
+<details class="faq-item group border-b border-slate-200" data-topic="privacy">
+<summary class="flex cursor-pointer items-start justify-between gap-6 py-5"><span class="text-base md:text-lg font-semibold text-primary">How do I ask you to delete my data?</span><span aria-hidden="true" class="material-symbols-outlined mt-0.5 shrink-0 text-[22px] text-slate-400 transition-transform group-open:rotate-45">add</span></summary>
+<div class="pb-6 pr-10 text-text-muted leading-relaxed"><p>Email <a class="underline hover:text-primary" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Data%20request">info@hubjobplatform.com</a> from the address you applied with. We respond within one month. Our <a class="underline hover:text-primary" href="privacy.html">privacy notice</a> has the full details.</p></div>
+</details>
+
+</div>
+
+<div class="hidden py-12 text-center" id="faq-empty">
+<p class="text-lg font-semibold text-primary">No questions match your search.</p>
+<p class="mt-2 text-text-muted">Try another word, or <a class="font-semibold text-primary underline hover:text-secondary" href="contact.html">ask us directly</a>.</p>
+<button class="mt-5 rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-primary hover:border-primary transition-colors" id="faq-reset" type="button">Show all questions</button>
+</div>
+
 </div>
 </section>
 
-<!-- Hero with search & topic filters -->
-<section class="w-full bg-surface-bright py-10 md:py-20 px-4 sm:px-6 relative overflow-hidden">
-<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-surface-container-high/60 blur-3xl pointer-events-none"></div>
-<div class="absolute left-1/4 -bottom-20 w-80 h-80 rounded-full bg-secondary-fixed/40 blur-3xl pointer-events-none"></div>
-<div class="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm uppercase tracking-wider mb-5 shadow-sm">
-<span class="material-symbols-outlined text-[15px] text-secondary">help_center</span>
-<span>Knowledge Base &amp; Support</span>
-</div>
-<h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-primary mb-4">Frequently Asked Questions</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-8 md:mb-10">
-Find clear answers about how Hubjob Platform connects international professionals with global opportunities, visa navigation, and ethical placement.
-</p>
-<div class="w-full max-w-2xl bg-surface-container-lowest p-1.5 sm:p-2 rounded-full shadow-lg flex items-center gap-1 sm:gap-2 mb-8">
-<div class="pl-3 sm:pl-4 flex items-center text-outline">
-<span class="material-symbols-outlined text-[22px]">search</span>
-</div>
-<input aria-label="Search FAQ" class="flex-1 min-w-0 bg-transparent border-0 focus:ring-0 text-on-surface placeholder:text-outline font-body-md text-body-md py-2.5 px-1 sm:px-2" id="faq-search" placeholder="Search questions (e.g. remote, GDPR, fees)" type="search"/>
-<button class="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 rounded-full bg-secondary text-on-secondary hover:bg-on-secondary-fixed-variant transition-colors font-label-lg text-label-lg shadow-sm flex-shrink-0" id="faq-search-btn" type="button">Search</button>
-</div>
-<div class="flex flex-wrap items-center justify-center gap-2 pt-1" id="category-pills">
-<button class="filter-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all bg-primary text-on-primary shadow-sm" data-filter="all" type="button">All Questions</button>
-<button class="filter-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all bg-surface-container text-on-surface-variant hover:bg-surface-variant" data-filter="application" type="button">Application Process</button>
-<button class="filter-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all bg-surface-container text-on-surface-variant hover:bg-surface-variant" data-filter="platform" type="button">Platform Overview</button>
-<button class="filter-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all bg-surface-container text-on-surface-variant hover:bg-surface-variant" data-filter="partners" type="button">Employer Partnerships</button>
-<button class="filter-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all bg-surface-container text-on-surface-variant hover:bg-surface-variant" data-filter="safety" type="button">Eligibility &amp; Safety</button>
-</div>
-</div>
-</section>
-
-<!-- Trust strip -->
-<section class="w-full bg-surface-container-low py-8 px-4 sm:px-6">
-<div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-<div class="flex items-center gap-3 bg-surface-container-lowest p-4 rounded-xl shadow-sm">
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined text-[22px]">money_off</span></div>
-<div class="min-w-0">
-<p class="font-label-lg text-label-lg text-primary">100% Free for Talent</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">No hidden fees, ever</p>
-</div>
-</div>
-<div class="flex items-center gap-3 bg-surface-container-lowest p-4 rounded-xl shadow-sm">
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary flex-shrink-0"><span class="material-symbols-outlined text-[22px]">verified_user</span></div>
-<div class="min-w-0">
-<p class="font-label-lg text-label-lg text-primary">Employer Checks</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Look for the Verified badge</p>
-</div>
-</div>
-<div class="flex items-center gap-3 bg-surface-container-lowest p-4 rounded-xl shadow-sm">
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined text-[22px]">security</span></div>
-<div class="min-w-0">
-<p class="font-label-lg text-label-lg text-primary">GDPR &amp; UK Privacy</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Encrypted candidate data</p>
-</div>
-</div>
-<div class="flex items-center gap-3 bg-surface-container-lowest p-4 rounded-xl shadow-sm">
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary flex-shrink-0"><span class="material-symbols-outlined text-[22px]">support_agent</span></div>
-<div class="min-w-0">
-<p class="font-label-lg text-label-lg text-primary">Live Specialist Help</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Bournemouth &amp; London team</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- FAQ accordion -->
-<section class="w-full bg-white py-14 md:py-24 px-4 sm:px-6">
-<div class="max-w-4xl mx-auto flex flex-col gap-6 md:gap-8">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-3 md:gap-4 pb-2 md:pb-4">
+<section class="w-full bg-surface-muted py-14 md:py-16">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
 <div>
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Frequently Asked Questions</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mt-1">Everything You Need to Know</h2>
+<h2 class="text-xl md:text-2xl font-bold text-primary tracking-tight">Still have a question?</h2>
+<p class="mt-2 text-text-muted">We reply within <span data-setting="response_time">24 business hours</span>.</p>
 </div>
-<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs md:text-right">Direct insights into Hubjob's placement framework, eligibility benchmarks, and member safety.</p>
-</div>
-
-<div class="flex flex-col gap-4" id="faq-list">
-
-<article class="faq-item group bg-surface-container-lowest rounded-xl shadow-sm ring-1 ring-slate-200/70 transition-all duration-200" data-category="application" data-keywords="apply application remote fee fees free roles open match candidate">
-<button aria-controls="faq-ans-1" aria-expanded="true" class="faq-toggle w-full text-left p-5 sm:p-7 flex items-start justify-between gap-3 sm:gap-4 select-none" type="button">
-<div class="flex items-start gap-3 sm:gap-4">
-<span class="hidden sm:inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex-shrink-0 mt-0.5 font-bold">01</span>
-<div>
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary mb-2">Application Process</span>
-<h3 class="font-title-md text-title-md text-primary group-hover:text-secondary transition-colors">How do I apply for a remote job with Hubjob Platform?</h3>
-</div>
-</div>
-<div class="faq-icon-box w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 transition-transform duration-200 rotate-180">
-<span class="material-symbols-outlined text-[20px]">expand_more</span>
-</div>
-</button>
-<div class="faq-body px-5 sm:px-7 pb-5 sm:pb-7 pt-0" id="faq-ans-1">
-<div class="sm:pl-12 pt-1">
-<p class="font-body-lg text-body-lg text-on-surface-variant">You can browse our open roles, submit your application online, and our team will review and match you with suitable positions. No fees, just opportunities.</p>
-<div class="mt-4 flex flex-wrap items-center gap-3 pt-3">
-<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-2.5 py-1 rounded"><span class="material-symbols-outlined text-[14px]">check_circle</span>Zero placement charges</span>
-<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2.5 py-1 rounded"><span class="material-symbols-outlined text-[14px]">bolt</span>Online self-paced application</span>
-</div>
-</div>
-</div>
-</article>
-
-<article class="faq-item group bg-surface-container-lowest rounded-xl shadow-sm ring-1 ring-slate-200/70 transition-all duration-200" data-category="platform" data-keywords="what how works platform verified employers skills matching global borderless">
-<button aria-controls="faq-ans-2" aria-expanded="true" class="faq-toggle w-full text-left p-5 sm:p-7 flex items-start justify-between gap-3 sm:gap-4 select-none" type="button">
-<div class="flex items-start gap-3 sm:gap-4">
-<span class="hidden sm:inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex-shrink-0 mt-0.5 font-bold">02</span>
-<div>
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary mb-2">Platform Overview</span>
-<h3 class="font-title-md text-title-md text-primary group-hover:text-secondary transition-colors">What is Hubjob Platform and how does it work?</h3>
-</div>
-</div>
-<div class="faq-icon-box w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 transition-transform duration-200 rotate-180">
-<span class="material-symbols-outlined text-[20px]">expand_more</span>
-</div>
-</button>
-<div class="faq-body px-5 sm:px-7 pb-5 sm:pb-7 pt-0" id="faq-ans-2">
-<div class="sm:pl-12 pt-1">
-<p class="font-body-lg text-body-lg text-on-surface-variant">Hubjob Platform connects skilled professionals with international employers. We simplify hiring by matching your skills and preferences to global job opportunities.</p>
-<div class="mt-4 flex flex-wrap items-center gap-3 pt-3">
-<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary bg-surface-container-high px-2.5 py-1 rounded"><span class="material-symbols-outlined text-[14px]">public</span>International mobility</span>
-<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary bg-surface-container px-2.5 py-1 rounded"><span class="material-symbols-outlined text-[14px]">psychology</span>Skill-first matching</span>
-</div>
-</div>
-</div>
-</article>
-
-<article class="faq-item group bg-surface-container-lowest rounded-xl shadow-sm ring-1 ring-slate-200/70 transition-all duration-200" data-category="partners" data-keywords="companies partner trusted employers industries tech healthcare marketing logistics education">
-<button aria-controls="faq-ans-3" aria-expanded="false" class="faq-toggle w-full text-left p-5 sm:p-7 flex items-start justify-between gap-3 sm:gap-4 select-none" type="button">
-<div class="flex items-start gap-3 sm:gap-4">
-<span class="hidden sm:inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex-shrink-0 mt-0.5 font-bold">03</span>
-<div>
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary mb-2">Employer Partnerships</span>
-<h3 class="font-title-md text-title-md text-primary group-hover:text-secondary transition-colors">Which companies partner with Hubjob Platform?</h3>
-</div>
-</div>
-<div class="faq-icon-box w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 transition-transform duration-200">
-<span class="material-symbols-outlined text-[20px]">expand_more</span>
-</div>
-</button>
-<div class="faq-body hidden px-5 sm:px-7 pb-5 sm:pb-7 pt-0" id="faq-ans-3">
-<div class="sm:pl-12 pt-1">
-<p class="font-body-lg text-body-lg text-on-surface-variant">We collaborate with trusted employers across industries including tech, healthcare, marketing, logistics, and education. Employers who complete our checks are marked “Verified employer” on their listings.</p>
-<div class="mt-4 flex flex-wrap items-center gap-2 pt-2">
-<span class="font-label-sm text-label-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant">#Technology</span>
-<span class="font-label-sm text-label-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant">#Healthcare</span>
-<span class="font-label-sm text-label-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant">#Marketing</span>
-<span class="font-label-sm text-label-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant">#Logistics</span>
-<span class="font-label-sm text-label-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant">#Education</span>
-</div>
-</div>
-</div>
-</article>
-
-<article class="faq-item group bg-surface-container-lowest rounded-xl shadow-sm ring-1 ring-slate-200/70 transition-all duration-200" data-category="safety" data-keywords="personal information safe private security privacy gdpr secure stored compliance">
-<button aria-controls="faq-ans-4" aria-expanded="false" class="faq-toggle w-full text-left p-5 sm:p-7 flex items-start justify-between gap-3 sm:gap-4 select-none" type="button">
-<div class="flex items-start gap-3 sm:gap-4">
-<span class="hidden sm:inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex-shrink-0 mt-0.5 font-bold">04</span>
-<div>
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary mb-2">Data Privacy &amp; Safety</span>
-<h3 class="font-title-md text-title-md text-primary group-hover:text-secondary transition-colors">Is my personal information safe and private?</h3>
-</div>
-</div>
-<div class="faq-icon-box w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 transition-transform duration-200">
-<span class="material-symbols-outlined text-[20px]">expand_more</span>
-</div>
-</button>
-<div class="faq-body hidden px-5 sm:px-7 pb-5 sm:pb-7 pt-0" id="faq-ans-4">
-<div class="sm:pl-12 pt-1">
-<p class="font-body-lg text-body-lg text-on-surface-variant">Yes. Your data is securely stored and shared only with employers relevant to the roles you apply for, following strict GDPR and privacy guidelines. Applications and CVs are deleted 12 months after their last update. See our <a class="text-secondary underline" href="privacy.html">privacy notice</a> for details.</p>
-<div class="mt-4 flex items-start gap-2 font-label-sm text-label-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-[16px] text-primary">lock</span>
-<span>Encrypted transit and storage adhering to UK GDPR regulatory standards.</span>
-</div>
-</div>
-</div>
-</article>
-
-<article class="faq-item group bg-surface-container-lowest rounded-xl shadow-sm ring-1 ring-slate-200/70 transition-all duration-200" data-category="safety" data-keywords="who eligible join qualifications background criteria requirements international">
-<button aria-controls="faq-ans-5" aria-expanded="false" class="faq-toggle w-full text-left p-5 sm:p-7 flex items-start justify-between gap-3 sm:gap-4 select-none" type="button">
-<div class="flex items-start gap-3 sm:gap-4">
-<span class="hidden sm:inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex-shrink-0 mt-0.5 font-bold">05</span>
-<div>
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary mb-2">Eligibility Criteria</span>
-<h3 class="font-title-md text-title-md text-primary group-hover:text-secondary transition-colors">Who is eligible to join Hubjob Platform?</h3>
-</div>
-</div>
-<div class="faq-icon-box w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 transition-transform duration-200">
-<span class="material-symbols-outlined text-[20px]">expand_more</span>
-</div>
-</button>
-<div class="faq-body hidden px-5 sm:px-7 pb-5 sm:pb-7 pt-0" id="faq-ans-5">
-<div class="sm:pl-12 pt-1">
-<p class="font-body-lg text-body-lg text-on-surface-variant">Anyone aged 18 or over with the right skills and motivation to work globally or remotely is eligible. We welcome applicants from diverse professional backgrounds. Some roles are open only to applicants in certain regions; this is shown on each listing.</p>
-</div>
-</div>
-</article>
-
-<article class="faq-item group bg-surface-container-lowest rounded-xl shadow-sm ring-1 ring-slate-200/70 transition-all duration-200" data-category="platform" data-keywords="benefits members receive coaching onboarding support guidance matching career">
-<button aria-controls="faq-ans-6" aria-expanded="false" class="faq-toggle w-full text-left p-5 sm:p-7 flex items-start justify-between gap-3 sm:gap-4 select-none" type="button">
-<div class="flex items-start gap-3 sm:gap-4">
-<span class="hidden sm:inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md flex-shrink-0 mt-0.5 font-bold">06</span>
-<div>
-<span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary mb-2">Member Benefits</span>
-<h3 class="font-title-md text-title-md text-primary group-hover:text-secondary transition-colors">What benefits do members receive after joining?</h3>
-</div>
-</div>
-<div class="faq-icon-box w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0 transition-transform duration-200">
-<span class="material-symbols-outlined text-[20px]">expand_more</span>
-</div>
-</button>
-<div class="faq-body hidden px-5 sm:px-7 pb-5 sm:pb-7 pt-0" id="faq-ans-6">
-<div class="sm:pl-12 pt-1">
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-4">Members get personalized job matching, interview coaching, onboarding support, and continuous career guidance for long-term growth.</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-<div class="flex items-start gap-2.5 p-3 rounded-lg bg-surface-bright">
-<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">person_search</span>
-<div><strong class="font-label-md text-label-md text-primary block">Personalized Job Matching</strong><span class="font-body-sm text-body-sm text-on-surface-variant">Tailored matching of skills to current openings.</span></div>
-</div>
-<div class="flex items-start gap-2.5 p-3 rounded-lg bg-surface-bright">
-<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">school</span>
-<div><strong class="font-label-md text-label-md text-primary block">Interview Coaching</strong><span class="font-body-sm text-body-sm text-on-surface-variant">Preparation for global and video assessments.</span></div>
-</div>
-<div class="flex items-start gap-2.5 p-3 rounded-lg bg-surface-bright">
-<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">flight_takeoff</span>
-<div><strong class="font-label-md text-label-md text-primary block">Onboarding Support</strong><span class="font-body-sm text-body-sm text-on-surface-variant">Cross-border setup and contract clarification.</span></div>
-</div>
-<div class="flex items-start gap-2.5 p-3 rounded-lg bg-surface-bright">
-<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">trending_up</span>
-<div><strong class="font-label-md text-label-md text-primary block">Career Guidance</strong><span class="font-body-sm text-body-sm text-on-surface-variant">Long-term advisory for international advancement.</span></div>
-</div>
-</div>
-</div>
-</div>
-</article>
-
-</div>
-
-<div class="hidden text-center py-12 px-4 bg-surface-bright rounded-2xl" id="no-results">
-<span class="material-symbols-outlined text-[48px] text-outline mb-2">find_in_page</span>
-<h4 class="font-title-md text-title-md text-primary mb-1">No matching questions found</h4>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">Try searching for other terms like 'remote', 'GDPR', 'eligibility', or contact our <span data-setting="address_city">Bournemouth</span> team directly.</p>
-<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-variant transition-colors" id="reset-search" type="button">
-<span class="material-symbols-outlined text-[18px]">restart_alt</span><span>Reset Filters</span>
-</button>
-</div>
-</div>
-</section>
-
-<!-- Verification & charter -->
-<section class="w-full bg-surface-bright py-14 md:py-20 px-4 sm:px-6">
-<div class="max-w-6xl mx-auto">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-<div class="lg:col-span-5 order-2 lg:order-1">
-<div class="bg-surface-container-lowest p-6 sm:p-8 rounded-2xl shadow-sm relative overflow-hidden">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold mb-2 block">Ethical Standards</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">How Employer Verification Works</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">Listings marked “Verified employer” have completed all four steps below, to protect applicants from fraud and misrepresentation.</p>
-<ol class="space-y-4">
-<li class="flex items-start gap-3">
-<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-primary font-label-md text-label-md font-bold flex-shrink-0">1</div>
-<div><h4 class="font-label-lg text-label-lg text-primary">Company Legal Audit</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Incorporation check and official registration cross-referencing.</p></div>
-</li>
-<li class="flex items-start gap-3">
-<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-primary font-label-md text-label-md font-bold flex-shrink-0">2</div>
-<div><h4 class="font-label-lg text-label-lg text-primary">Fair Compensation Review</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Ensuring competitive, transparent international salary benchmarks.</p></div>
-</li>
-<li class="flex items-start gap-3">
-<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-primary font-label-md text-label-md font-bold flex-shrink-0">3</div>
-<div><h4 class="font-label-lg text-label-lg text-primary">Contract &amp; Visa Feasibility</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Confirming legitimate sponsorship pathways and remote legal frameworks.</p></div>
-</li>
-<li class="flex items-start gap-3">
-<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md font-bold flex-shrink-0">4</div>
-<div><h4 class="font-label-lg text-label-lg text-primary">Zero-Fee Talent Commitment</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Candidates are NEVER billed for interviews or placement services.</p></div>
-</li>
-</ol>
-</div>
-</div>
-<div class="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-5 md:gap-6 lg:pl-6">
-<div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-primary">
-<span class="material-symbols-outlined text-[16px] text-secondary">handshake</span><span>UK &amp; Global Candidate Charter</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Connecting talented professionals with borderless careers.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-Hubjob Platform was established to simplify hiring and build trusted, borderless careers. Navigating international opportunities should not be clouded by opacity or predatory intermediaries. Our platform establishes a secure, direct conduit between your aspirations and the employers we work with.
-</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-<div class="p-4 rounded-xl bg-surface-container-low">
-<span class="material-symbols-outlined text-secondary text-[26px] mb-2 block">travel_explore</span>
-<h4 class="font-title-md text-title-md text-primary mb-1">Worldwide Reach</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Opportunities spanning UK, EU, North America, and high-growth emerging hubs.</p>
-</div>
-<div class="p-4 rounded-xl bg-surface-container-low">
-<span class="material-symbols-outlined text-primary text-[26px] mb-2 block">diversity_3</span>
-<h4 class="font-title-md text-title-md text-primary mb-1">Inclusive Access</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Welcoming qualified professionals from diverse backgrounds and career stages.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Still have questions -->
-<section class="w-full bg-white py-14 md:py-16 px-4 sm:px-6">
-<div class="max-w-6xl mx-auto">
-<div class="bg-surface-container-low rounded-2xl sm:rounded-3xl p-5 sm:p-12 shadow-sm relative overflow-hidden">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-<div class="lg:col-span-7 flex flex-col">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 w-fit">
-<span class="material-symbols-outlined text-[16px] text-secondary">contact_support</span><span>Need Direct Assistance?</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Still have questions or need personalized guidance?</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Our dedicated placement specialists in Bournemouth and London are available to assist with your application and cross-border career queries.</p>
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-2">
-<a class="flex flex-col p-3 rounded-xl bg-surface-container-lowest hover:shadow-sm transition-all group min-w-0" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">
-<span class="material-symbols-outlined text-secondary text-[22px] mb-1">mail</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Email Us</span>
-<span class="font-label-md text-label-md text-primary group-hover:text-secondary break-words mt-0.5" data-setting="contact_email">info@hubjobplatform.com</span>
-</a>
-<a class="flex flex-col p-3 rounded-xl bg-surface-container-lowest hover:shadow-sm transition-all group min-w-0" data-setting-href="phone_href" href="tel:+441202958648">
-<span class="material-symbols-outlined text-primary text-[22px] mb-1">call</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Phone UK</span>
-<span class="font-label-md text-label-md text-primary group-hover:text-secondary mt-0.5" data-setting="contact_phone">+44 1202 958648</span>
-</a>
-<div class="flex flex-col p-3 rounded-xl bg-surface-container-lowest min-w-0">
-<span class="material-symbols-outlined text-secondary text-[22px] mb-1">location_on</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">UK Head Office</span>
-<span class="font-label-md text-label-md text-primary mt-0.5" data-setting="address_region_line">Bournemouth, Dorset, UK</span>
-</div>
-</div>
-</div>
-<div class="lg:col-span-5 flex flex-col justify-center">
-<div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-7 shadow-md flex flex-col gap-5">
-<div class="flex flex-wrap items-center justify-between gap-3 pb-1">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold">HJ</div>
-<div>
-<h3 class="font-label-lg text-label-lg text-primary"><span data-setting="address_city">Bournemouth</span> Desk</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant" data-setting="office_hours">Mon – Fri: 8:30 AM – 6:00 PM GMT</p>
-</div>
-</div>
-<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">
-<span class="material-symbols-outlined text-[14px]">schedule</span>Replies within <span data-setting="response_time_short">24h</span>
-</span>
-</div>
-<div class="w-full h-32 bg-cover bg-center rounded-xl relative overflow-hidden flex items-end p-3 bg-surface-container" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABIrRM21GnBP5u3AxGY9EAUvxR64hPvGgY1YecOJmUXv28jzrW7JGrzLnnzf6jSojDGfp6LGn3SmWkSfNaSRzc7_gozuS478tou1j8EMd-BwM3e7wmUD9aBLV8oY7x7t5PQkh4CYbKKVTG74H0V3Z33P0lkYvjQETw7vgNWthbhCOxQj0oe4zmmtgnh9BHufwwV4s1fc6FF-iB5pbf_RErUGZN-GUxZugxWn4avjU-'), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;w=900&amp;q=70');">
-<div class="bg-primary/90 backdrop-blur-sm text-on-primary px-3 py-1.5 rounded-lg font-label-sm text-label-sm flex items-center gap-1.5 shadow max-w-full">
-<span class="material-symbols-outlined text-[15px] text-secondary-fixed">pin_drop</span>
-<span class="truncate" data-setting="address_short">42 Windham Road, BH1 2AW</span>
-</div>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Whether you have technical portfolio questions or need clarifications regarding international sponsorship prerequisites, our specialist advisors respond within <span data-setting="response_time">24 business hours</span>.</p>
-<div class="flex flex-col sm:flex-row gap-3 pt-1">
-<a class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-lg text-label-lg transition-colors shadow-sm text-center" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=FAQ%20Inquiry%20-%20Hubjob%20Platform">
-<span class="material-symbols-outlined text-[18px]">send</span><span>Submit an Inquiry</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-surface-container text-primary hover:bg-surface-variant font-label-lg text-label-lg transition-colors text-center" href="apply.html">Apply Online</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Pre-footer CTA -->
-<section class="w-full bg-primary text-on-primary py-14 md:py-20 px-4 sm:px-6 relative overflow-hidden">
-<div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
-<div class="absolute right-0 top-0 w-96 h-96 rounded-full bg-primary-fixed-dim/10 blur-3xl pointer-events-none"></div>
-<div class="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-secondary-container mb-6 shadow-inner">
-<span class="material-symbols-outlined text-[26px]">rocket_launch</span>
-</div>
-<h2 class="font-display-hero text-display-hero-mobile md:text-display-hero text-on-primary mb-4 max-w-2xl">Ready to take the next step in your global career?</h2>
-<p class="font-body-lg text-body-lg text-surface-container-high max-w-xl mx-auto mb-8 md:mb-10">Submit your CV today or explore our curated selection of international vacancies.</p>
-<div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto">
-<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-secondary text-on-secondary hover:bg-on-secondary-fixed-variant transition-colors font-label-lg text-label-lg shadow-lg font-bold" href="apply.html">
-<span class="material-symbols-outlined text-[20px]">upload_file</span><span>Submit Your CV</span>
-</a>
-<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-white/10 hover:bg-white/20 text-on-primary transition-colors font-label-lg text-label-lg" href="jobs.html">
-<span>Explore Open Roles</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-</div>
-<p class="font-label-sm text-label-sm text-on-primary-container mt-8 flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px] text-secondary-container">verified</span>
-<span>Trusted by international applicants in tech, healthcare, marketing &amp; logistics</span>
-</p>
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-md bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors shrink-0" href="contact.html">Contact us</a>
 </div>
 </section>
 
@@ -524,8 +253,8 @@ Hubjob Platform was established to simplify hiring and build trusted, borderless
 </div>
 </footer>
 
-<script src="assets/js/site.js?v=2"></script>
-<script src="assets/js/settings.js?v=2"></script>
-<script src="assets/js/faq.js"></script>
+<script src="assets/js/site.js?v=3"></script>
+<script src="assets/js/settings.js?v=3"></script>
+<script src="assets/js/faq.js?v=3"></script>
 </body>
 </html>

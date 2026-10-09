@@ -57,6 +57,14 @@ body {
   }
 }
 
+/* FAQ accordion: the +/× icon replaces the browser's disclosure triangle */
+.faq-item > summary {
+  list-style: none;
+}
+.faq-item > summary::-webkit-details-marker {
+  display: none;
+}
+
 /* ===== Floating apply button ===== */
 .floating-apply-btn {
   opacity: 0;

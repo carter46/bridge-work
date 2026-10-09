@@ -1,5 +1,5 @@
 (function () {
-  var SOURCES = ["api/jobs.php", "assets/data/jobs-snapshot.json"];
+  var SOURCES = window.HJ.JOB_SOURCES;
   var PILL_ACTIVE = ["bg-primary", "text-on-primary"];
   var PILL_INACTIVE = ["bg-surface-container", "text-on-surface", "hover:bg-surface-container-high"];
   var BAND_ACTIVE = ["bg-primary", "text-on-primary"];
@@ -40,6 +40,7 @@
   var sectorNoun = document.getElementById("sector-noun");
   var locationNote = document.getElementById("location-note");
   var locationText = document.getElementById("location-text");
+  var locationClear = document.getElementById("location-clear");
   var results = document.getElementById("job-results");
 
   var data = null;
@@ -47,7 +48,7 @@
   var state = freshState();
 
   function freshState() {
-    return { category: "all", type: "all", arrangement: "all", region: "all", flexible: false, band: null, hidden: {} };
+    return { category: "all", type: "all", arrangement: "all", region: "all", flexible: false, band: null, hidden: {}, loc: "" };
   }
 
   function toggleClasses(el, classes, on) {
@@ -103,9 +104,8 @@
     data.categories.forEach(function (c) { categoryBySlug[c.slug] = c; });
     data.jobs.forEach(function (job, index) {
       job._order = index;
-      job._search = [job.title, job.ref_code, job.skills, job.location_text, job.schedule_note, job.company_name,
-        categoryBySlug[job.category] ? categoryBySlug[job.category].name : ""]
-        .filter(Boolean).join(" ").toLowerCase();
+      job._search = window.HJ.jobSearchText(job, categoryBySlug[job.category] ? categoryBySlug[job.category].name : "");
+      job._place = window.HJ.jobPlaceWords(job);
     });
 
     if (loadingBox) loadingBox.classList.add("hidden");
@@ -191,7 +191,8 @@
 
   /* ---------- Filtering ---------- */
 
-  function matches(job, terms) {
+  function matches(job, terms, useLoc) {
+    if (useLoc && !window.HJ.placeMatches(job._place, state.loc)) return false;
     if (state.category !== "all" && job.category !== state.category) return false;
     if (state.hidden[job.category]) return false;
     if (state.type !== "all" && job.employment_types.indexOf(state.type) === -1) return false;
@@ -309,19 +310,41 @@
     });
   }
 
-  function render() {
-    var terms = searchInput.value.toLowerCase().split(/\s+/).filter(Boolean);
-    var html = "";
+  function collect(terms, useLoc) {
+    var groups = [];
     var total = 0;
-    var sectors = 0;
-
     data.categories.forEach(function (category) {
-      var jobs = data.jobs.filter(function (job) { return job.category === category.slug && matches(job, terms); });
+      var jobs = data.jobs.filter(function (job) { return job.category === category.slug && matches(job, terms, useLoc); });
       if (!jobs.length) return;
       total += jobs.length;
-      sectors++;
-      html += groupSection(category, sortJobs(jobs));
+      groups.push({ category: category, jobs: jobs });
     });
+    return { groups: groups, total: total };
+  }
+
+  function render() {
+    var terms = searchInput.value.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = collect(terms, !!state.loc);
+    var locMissed = false;
+    if (state.loc && found.total === 0) {
+      // Nothing listed for that place: show what matches everything else instead of an empty page.
+      var withoutLoc = collect(terms, false);
+      if (withoutLoc.total > 0) {
+        found = withoutLoc;
+        locMissed = true;
+      }
+    }
+
+    var html = found.groups.map(function (g) { return groupSection(g.category, sortJobs(g.jobs)); }).join("");
+    var total = found.total;
+    var sectors = found.groups.length;
+
+    if (state.loc) {
+      locationText.textContent = locMissed
+        ? "No roles are listed for “" + state.loc + "” yet, so we're showing every role that matches your other filters. Most roles are remote."
+        : "Showing roles for “" + state.loc + "”.";
+    }
+    setFlexVisible(locationNote, !!state.loc);
 
     groupsBox.innerHTML = html;
     resultsCount.textContent = total;
@@ -341,11 +364,12 @@
 
   function writeUrl() {
     if (!window.history || !window.history.replaceState) return;
-    // Keep parameters this page doesn't manage (utm_*, gclid, loc).
+    // Keep parameters this page doesn't manage (utm_*, gclid).
     var params = new URLSearchParams(window.location.search);
-    ["q", "category", "type", "arrangement", "region", "flexible", "band", "work"].forEach(function (key) { params.delete(key); });
+    ["q", "loc", "category", "type", "arrangement", "region", "flexible", "band", "work"].forEach(function (key) { params.delete(key); });
     var q = searchInput.value.trim();
     if (q) params.set("q", q);
+    if (state.loc) params.set("loc", state.loc);
     if (state.category !== "all") params.set("category", state.category);
     if (state.type !== "all") params.set("type", state.type);
     if (state.arrangement !== "all") params.set("arrangement", state.arrangement);
@@ -399,17 +423,13 @@
       if (legacy.flexible) state.flexible = true;
     }
 
-    if (loc && !/remote/i.test(loc)) {
-      locationText.textContent = loc.slice(0, 80);
-      setFlexVisible(locationNote, true);
-    }
+    state.loc = loc.slice(0, 80);
   }
 
   function resetFilters() {
     searchInput.value = "";
     state = freshState();
     sortSelect.value = "newest";
-    setFlexVisible(locationNote, false);
     update();
   }
 
@@ -441,6 +461,7 @@
     btn.addEventListener("click", resetFilters);
   });
 
+  if (locationClear) locationClear.addEventListener("click", function () { state.loc = ""; update(); });
   if (retryButton) retryButton.addEventListener("click", load);
 
   load();

@@ -1,6 +1,10 @@
 // Shared helpers for settings.js, jobs.js, home.js and apply-form.js.
 window.HJ = window.HJ || {};
 
+// Live API first, then the copy the server writes on every admin save, then the copy shipped in git.
+window.HJ.JOB_SOURCES = ["api/jobs.php", "assets/data/live-jobs.json", "assets/data/jobs-snapshot.json"];
+window.HJ.SETTINGS_SOURCES = ["api/settings.php", "assets/data/live-settings.json", "assets/data/site-settings.json"];
+
 // Fetch JSON from each URL in turn; resolves with the first response that passes isValid.
 window.HJ.fetchJson = function (urls, isValid) {
   var index = 0;
@@ -46,6 +50,33 @@ window.HJ.observeReveal = (function () {
     });
   };
 })();
+
+// Words a "Where" search can match: the listing's location plus plain-language names for its
+// work arrangement and the regions it accepts applicants from.
+window.HJ.jobPlaceWords = function (job) {
+  var text = [job.location_text || ""];
+  if (job.work_arrangement === "remote") text.push("remote anywhere online home");
+  if (job.work_arrangement === "hybrid") text.push("hybrid");
+  if (job.applicant_region === "worldwide") text.push("remote worldwide global international anywhere");
+  if (job.applicant_region === "uk_europe") text.push("uk united kingdom england scotland wales britain great europe eu");
+  if (job.applicant_region === "uk_only") text.push("uk united kingdom england scotland wales britain great");
+  return text.join(" ").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+};
+
+// True when any word of the visitor's "Where" text starts a word of the job's place words.
+window.HJ.placeMatches = function (placeWords, where) {
+  var terms = String(where || "").toLowerCase().split(/[^a-z0-9]+/).filter(function (t) { return t.length > 1; });
+  if (!terms.length) return true;
+  return terms.some(function (term) {
+    return placeWords.some(function (word) { return word.indexOf(term) === 0; });
+  });
+};
+
+// Lowercase text a "What" search is matched against.
+window.HJ.jobSearchText = function (job, categoryName) {
+  return [job.title, job.ref_code, job.skills, job.location_text, job.schedule_note, job.company_name, job.description, categoryName]
+    .filter(Boolean).join(" ").toLowerCase();
+};
 
 window.HJ.escape = function (value) {
   return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {

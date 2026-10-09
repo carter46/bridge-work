@@ -302,7 +302,7 @@
 
   var validJobParam = jobParam && /^\d{1,9}$/.test(jobParam);
   if (jobIdInput && (validJobParam || roleParam)) {
-    window.HJ.fetchJson(["api/jobs.php", "assets/data/jobs-snapshot.json"], function (d) {
+    window.HJ.fetchJson(window.HJ.JOB_SOURCES, function (d) {
       return d && Array.isArray(d.jobs);
     }).then(function (data) {
       var job = null;
