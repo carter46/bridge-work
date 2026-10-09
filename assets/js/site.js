@@ -63,13 +63,33 @@ window.HJ.jobPlaceWords = function (job) {
   return text.join(" ").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
 };
 
-// True when any word of the visitor's "Where" text starts a word of the job's place words.
+var PLACE_STOP_WORDS = { and: 1, or: 1, the: 1, of: 1, in: 1, only: 1 };
+
+// True when every word of the visitor's "Where" text starts a word of the job's place words
+// ("London, UK" needs both; "UK" alone matches every role open to UK applicants).
 window.HJ.placeMatches = function (placeWords, where) {
-  var terms = String(where || "").toLowerCase().split(/[^a-z0-9]+/).filter(function (t) { return t.length > 1; });
-  if (!terms.length) return true;
-  return terms.some(function (term) {
+  var terms = String(where || "").toLowerCase().split(/[^a-z0-9]+/).filter(function (t) {
+    return t.length > 1 && !PLACE_STOP_WORDS[t];
+  });
+  return terms.every(function (term) {
     return placeWords.some(function (word) { return word.indexOf(term) === 0; });
   });
+};
+
+// Places a visitor can pick in a "Where" field, with how many roles each one matches.
+window.HJ.placeOptions = function (jobs) {
+  var labels = ["Remote", "Worldwide", "UK & Europe", "United Kingdom"];
+  jobs.forEach(function (job) {
+    var text = (job.location_text || "").trim();
+    // Listing text like "Remote Europe / UK" is covered by the fixed labels; keep real places.
+    if (text && !/^remote\b/i.test(text) && labels.indexOf(text) === -1) labels.push(text);
+  });
+  return labels.map(function (label) {
+    var count = jobs.filter(function (job) {
+      return window.HJ.placeMatches(job._place || window.HJ.jobPlaceWords(job), label);
+    }).length;
+    return { label: label, count: count };
+  }).filter(function (o) { return o.count > 0; });
 };
 
 // Lowercase text a "What" search is matched against.

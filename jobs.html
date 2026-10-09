@@ -19,11 +19,11 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css?v=3" rel="stylesheet"/>
+<link href="assets/css/site.css?v=4" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="assets/js/tailwind-config.js?v=3"></script>
+<script src="assets/js/tailwind-config.js?v=4"></script>
 </head>
-<body class="bg-surface text-on-surface font-sans antialiased selection:bg-slate-200">
+<body class="bg-white text-text-main font-sans antialiased selection:bg-slate-200">
 
 <!-- Header / Navigation -->
 <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-surface-border">
@@ -62,239 +62,173 @@
 
 <main class="w-full">
 
-<!-- Page header -->
-<section class="w-full bg-surface-container-low py-10 md:py-space-xl">
-<div class="max-w-6xl mx-auto px-4 sm:px-6">
-<div class="max-w-3xl">
-<h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-primary mb-space-sm">Explore Open Roles &amp; Career Pathways</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Explore flexible roles across industries, with transparent pay rates, ethical placement and zero fees for job seekers.</p>
+<!-- Page header + search -->
+<section class="w-full bg-surface-muted border-b border-slate-200">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-10 md:pt-16 md:pb-12">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<h1 class="text-4xl sm:text-5xl font-extrabold text-primary tracking-tight leading-[1.1]">Open roles</h1>
+<p class="mt-4 text-lg text-text-muted leading-relaxed">Remote and on-site jobs with the pay shown up front. Applying is free.</p>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md mt-space-lg pt-space-lg border-t border-surface-container-high">
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary" id="stat-total">—</span><span class="font-body-sm text-body-sm text-on-surface-variant">Open Roles</span></div>
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-secondary" id="stat-sectors">—</span><span class="font-body-sm text-body-sm text-on-surface-variant">Specialist Sectors</span></div>
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary" id="stat-pay">—</span><span class="font-body-sm text-body-sm text-on-surface-variant" id="stat-pay-label">Hourly Pay Range</span></div>
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary">&lt; <span data-setting="response_time_short">24h</span></span><span class="font-body-sm text-body-sm text-on-surface-variant">Application Review</span></div>
+<dl class="grid grid-cols-3 divide-x divide-slate-200 text-left shrink-0">
+<div class="pr-4 sm:pr-6"><dt class="text-sm text-text-muted">Open roles</dt><dd class="mt-1 text-xl sm:text-2xl font-extrabold text-primary" id="stat-total">—</dd></div>
+<div class="px-4 sm:px-6"><dt class="text-sm text-text-muted">Sectors</dt><dd class="mt-1 text-xl sm:text-2xl font-extrabold text-primary" id="stat-sectors">—</dd></div>
+<div class="pl-4 sm:pl-6"><dt class="text-sm text-text-muted" id="stat-pay-label">Hourly pay</dt><dd class="mt-1 text-xl sm:text-2xl font-extrabold text-primary whitespace-nowrap" id="stat-pay">—</dd></div>
+</dl>
 </div>
-</div>
-</section>
 
-<!-- Search console -->
-<section class="w-full bg-surface-container-lowest shadow-sm py-space-lg">
-<div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col gap-space-md">
-<form class="bg-surface-container-low p-space-xs rounded-xl shadow-sm flex flex-col gap-space-xs" id="job-search-form" role="search">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-space-xs items-center">
-<div class="md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
-<span class="material-symbols-outlined text-outline">search</span>
-<label class="sr-only" for="role-search">Search jobs</label>
-<input class="w-full min-w-0 p-0 border-0 bg-transparent font-body-md text-body-md text-on-surface placeholder:text-outline focus:ring-0" id="role-search" placeholder="Search job title, skill, or keyword..." type="search"/>
+<form class="mt-10" id="job-search-form" role="search">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 rounded-xl border border-slate-200 bg-white p-2 shadow-sm">
+<div class="md:col-span-6">
+<label class="sr-only" for="role-search">Job title, skill or keyword</label>
+<input class="w-full h-12 rounded-lg border-0 bg-transparent px-4 text-base text-text-main placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20" id="role-search" placeholder="Job title, skill or keyword" type="search"/>
 </div>
-<div class="md:col-span-3 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
-<span class="material-symbols-outlined text-outline">category</span>
+<div class="md:col-span-4 md:border-l md:border-slate-200">
+<label class="sr-only" for="location-search">Location</label>
+<input autocomplete="off" class="w-full h-12 rounded-lg border-0 bg-transparent px-4 text-base text-text-main placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20" id="location-search" list="location-options" placeholder="Location or “Remote”" type="search"/>
+<datalist id="location-options"></datalist>
+</div>
+<div class="md:col-span-2">
+<button class="w-full h-12 rounded-lg bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors" type="submit">Search</button>
+</div>
+</div>
+<div class="mt-4 flex flex-wrap items-center gap-2">
 <label class="sr-only" for="category-filter">Sector</label>
-<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="category-filter">
-<option value="all">All Sectors</option>
+<select class="lg:hidden h-10 rounded-lg border-slate-300 bg-white pl-3 pr-9 text-sm text-text-main focus:border-primary focus:ring-primary" id="category-filter">
+<option value="all">All sectors</option>
 </select>
-</div>
-<div class="md:col-span-3 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
-<span class="material-symbols-outlined text-outline">work_history</span>
 <label class="sr-only" for="type-filter">Job type</label>
-<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="type-filter">
-<option value="all">All Job Types</option>
+<select class="h-10 rounded-lg border-slate-300 bg-white pl-3 pr-9 text-sm text-text-main focus:border-primary focus:ring-primary" id="type-filter">
+<option value="all">Any job type</option>
 <option value="full_time">Full-time</option>
 <option value="part_time">Part-time</option>
 <option value="contract">Contract</option>
 <option value="temporary">Temporary</option>
 </select>
-</div>
-<div class="md:col-span-2">
-<button class="w-full h-12 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-[0.98]" type="submit">
-<span class="material-symbols-outlined text-[20px]">filter_list</span><span>Find Jobs</span>
-</button>
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-space-xs items-center">
-<div class="md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
-<span class="material-symbols-outlined text-outline">home_work</span>
 <label class="sr-only" for="arrangement-filter">Work arrangement</label>
-<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="arrangement-filter">
-<option value="all">Any Work Arrangement</option>
+<select class="h-10 rounded-lg border-slate-300 bg-white pl-3 pr-9 text-sm text-text-main focus:border-primary focus:ring-primary" id="arrangement-filter">
+<option value="all">Remote, hybrid or on-site</option>
 <option value="remote">Remote</option>
 <option value="hybrid">Hybrid</option>
 <option value="onsite">On-site</option>
 </select>
-</div>
-<div class="md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
-<span class="material-symbols-outlined text-outline">public</span>
-<label class="sr-only" for="region-filter">Applicant location</label>
-<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="region-filter">
-<option value="all">Any Applicant Location</option>
-<option value="worldwide">Open Worldwide</option>
-<option value="uk_europe">UK &amp; Europe</option>
-<option value="uk_only">UK Only</option>
+<label class="sr-only" for="region-filter">Who can apply</label>
+<select class="h-10 rounded-lg border-slate-300 bg-white pl-3 pr-9 text-sm text-text-main focus:border-primary focus:ring-primary" id="region-filter">
+<option value="all">Open to any location</option>
+<option value="worldwide">Open worldwide</option>
+<option value="uk_europe">UK &amp; Europe applicants</option>
+<option value="uk_only">UK applicants only</option>
 </select>
-</div>
-<label class="sm:col-span-2 md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg cursor-pointer">
-<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" id="flexible-filter" type="checkbox"/>
-<span class="font-body-md text-body-md text-on-surface">Flexible hours only</span>
+<label class="inline-flex h-10 items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 text-sm text-text-main cursor-pointer">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" id="flexible-filter" type="checkbox"/>Flexible hours
 </label>
+<button class="h-10 px-2 text-sm font-semibold text-secondary hover:underline" data-reset-filters="" type="button">Clear all</button>
 </div>
 </form>
-<div class="flex items-center gap-space-xs overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-1 pt-1 scrollbar-none" id="quick-pills"></div>
 </div>
 </section>
 
-<!-- Job explorer -->
-<section class="w-full py-8 md:py-space-xl">
-<div class="max-w-6xl mx-auto px-4 sm:px-6">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Results -->
+<section class="w-full py-10 md:py-14">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10">
 
-<!-- Sidebar -->
-<aside class="lg:col-span-4 order-2 lg:order-1 flex flex-col gap-space-lg">
-<div class="hidden lg:flex bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex-col gap-space-lg">
-<div class="flex items-center justify-between pb-space-sm">
-<div class="flex items-center gap-space-xs font-headline-sm text-headline-sm text-primary">
-<span class="material-symbols-outlined text-[20px]">tune</span><span>Refine Roles</span>
-</div>
-<button class="font-label-md text-label-md text-secondary hover:underline" data-reset-filters="" type="button">Reset All</button>
-</div>
-<fieldset class="flex flex-col gap-space-sm">
-<legend class="font-label-lg text-label-lg text-primary uppercase tracking-wide mb-space-sm">Category</legend>
-<div class="flex flex-col gap-space-xs" id="category-checkboxes">
-<p class="font-body-sm text-body-sm text-on-surface-variant p-2">Loading categories…</p>
-</div>
-</fieldset>
-<div class="flex flex-col gap-space-sm">
-<span class="font-label-lg text-label-lg text-primary uppercase tracking-wide">Hourly Pay (USD)</span>
-<div class="grid grid-cols-2 gap-space-xs font-body-sm text-body-sm">
-<button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="35" data-min="15" type="button">$15–$35 / hr</button>
-<button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="55" data-min="25" type="button">$25–$55 / hr</button>
-<button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="70" data-min="30" type="button">$30–$70 / hr</button>
-<button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="90" data-min="35" type="button">$35–$90 / hr+</button>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Pay bands match roles paid in US dollars (yearly and monthly pay converted to an hourly equivalent).</p>
-</div>
-<div class="flex flex-col gap-space-xs p-space-sm bg-surface-container rounded-lg">
-<span class="flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-[18px] text-primary">verified</span>
-<span class="font-label-md text-label-md text-primary font-bold">Look for the Verified badge</span>
-</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant pl-[26px]">Listings marked “Verified employer” have passed our legal, pay and compliance checks.</p>
-</div>
-</div>
-
-<div class="bg-primary text-on-primary p-space-lg rounded-xl shadow-md relative overflow-hidden flex flex-col gap-space-md">
+<aside class="hidden lg:block lg:col-span-3">
+<div class="sticky top-24 flex flex-col gap-10">
+<nav aria-label="Sectors">
+<h2 class="text-sm font-semibold text-text-muted">Sectors</h2>
+<ul class="mt-3 flex flex-col" id="category-list">
+<li class="py-2 text-sm text-text-muted">Loading…</li>
+</ul>
+</nav>
 <div>
-<h3 class="font-headline-sm text-headline-sm text-on-primary mb-space-xs">Need Professional CV Guidance?</h3>
-<p class="font-body-md text-body-md text-inverse-primary">Our UK career team reviews candidate applications for free within <span data-setting="response_time">24 business hours</span> to maximise interview conversions.</p>
+<h2 class="text-sm font-semibold text-text-muted">Hourly pay (USD)</h2>
+<ul class="mt-3 flex flex-col">
+<li><button aria-pressed="false" class="band-btn w-full rounded-md px-3 py-2 text-left text-sm transition-colors" data-max="35" data-min="15" type="button">$15 – $35</button></li>
+<li><button aria-pressed="false" class="band-btn w-full rounded-md px-3 py-2 text-left text-sm transition-colors" data-max="55" data-min="25" type="button">$25 – $55</button></li>
+<li><button aria-pressed="false" class="band-btn w-full rounded-md px-3 py-2 text-left text-sm transition-colors" data-max="70" data-min="30" type="button">$30 – $70</button></li>
+<li><button aria-pressed="false" class="band-btn w-full rounded-md px-3 py-2 text-left text-sm transition-colors" data-max="90" data-min="35" type="button">$35 – $90+</button></li>
+</ul>
+<p class="mt-3 px-3 text-xs text-text-subtle leading-relaxed">Yearly and monthly pay is converted to an hourly figure.</p>
 </div>
-<a class="inline-flex items-center justify-center px-space-md py-3 bg-secondary hover:bg-secondary-container hover:text-on-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg transition-colors font-bold" href="apply.html">Upload CV for Fast Review</a>
+<div class="border-t border-slate-200 pt-6">
+<h2 class="font-bold text-primary">Can't find the right role?</h2>
+<p class="mt-2 text-sm text-text-muted leading-relaxed">Send us your CV and we'll contact you when a match opens.</p>
+<a class="mt-3 inline-block text-sm font-semibold text-secondary hover:underline" href="apply.html">Send your CV →</a>
 </div>
-
-<a class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors" data-setting-href="phone_href" href="tel:+441202958648">
-<span class="flex items-center gap-space-sm">
-<span class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">support_agent</span></span>
-<span class="flex flex-col">
-<span class="font-label-md text-label-md text-primary font-bold"><span data-setting="address_city">Bournemouth</span> Placement Hub</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant" data-setting="contact_phone">+44 1202 958648</span>
-</span>
-</span>
-<span class="material-symbols-outlined text-[20px] text-primary">call</span>
-</a>
+</div>
 </aside>
 
-<!-- Listings -->
-<div class="lg:col-span-8 order-1 lg:order-2 flex flex-col gap-8 md:gap-space-xl" id="job-results">
-<div class="flex flex-col gap-space-sm">
-<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
-<div class="flex flex-wrap items-baseline gap-x-space-sm gap-y-1">
-<span class="font-headline-sm text-headline-sm text-primary" role="status">Showing <span id="results-count">0</span> <span id="results-noun">Roles</span></span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">across <span id="sector-count">0</span> <span id="sector-noun">Sectors</span></span>
-</div>
-<div class="flex items-center gap-space-xs">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="sort-select">Sort:</label>
-<select class="bg-surface-container-low border-0 font-label-md text-label-md text-primary pl-space-sm pr-8 py-1.5 rounded focus:ring-primary cursor-pointer" id="sort-select">
-<option value="newest">Newest Opportunities</option>
-<option value="rate">Highest Hourly Rate</option>
+<div class="lg:col-span-9 flex flex-col gap-6" id="job-results">
+<div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+<p class="text-text-muted" role="status"><span class="font-bold text-primary"><span id="results-count">0</span> <span id="results-noun">roles</span></span> in <span id="sector-count">0</span> <span id="sector-noun">sectors</span></p>
+<div class="flex items-center gap-2">
+<label class="text-sm text-text-muted" for="sort-select">Sort by</label>
+<select class="h-9 rounded-md border-slate-300 bg-white pl-3 pr-9 text-sm text-text-main focus:border-primary focus:ring-primary" id="sort-select">
+<option value="newest">Newest</option>
+<option value="rate">Highest pay</option>
 </select>
 </div>
 </div>
-<div class="hidden flex-wrap items-center justify-between gap-space-sm bg-surface-container p-space-sm rounded-lg font-body-sm text-body-sm text-primary" id="location-note">
+
+<div class="hidden flex-wrap items-center justify-between gap-3 rounded-lg bg-surface-muted px-4 py-3 text-sm text-primary" id="location-note">
 <span id="location-text"></span>
-<button class="font-label-md text-label-md text-secondary hover:underline" id="location-clear" type="button">Clear location</button>
-</div>
+<button class="font-semibold text-secondary hover:underline" id="location-clear" type="button">Clear location</button>
 </div>
 
-<p class="hidden items-start gap-space-xs bg-amber-50 border border-amber-200 p-space-sm rounded-lg font-body-sm text-body-sm text-amber-900" id="jobs-snapshot-note" role="status">
-<span class="material-symbols-outlined text-[18px]">history</span>
-<span>Live listings are temporarily unavailable, so we're showing our saved list<span id="jobs-snapshot-date"></span>. You can still apply to any role below.</span>
-</p>
+<p class="hidden rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900" id="jobs-snapshot-note" role="status">Live listings are temporarily unavailable, so we're showing our saved list<span id="jobs-snapshot-date"></span>. You can still apply to any role below.</p>
 
-<!-- Listings are rendered here from api/jobs.php (or assets/data/jobs-snapshot.json if the API is unreachable). -->
-<div class="flex flex-col gap-8 md:gap-space-xl" id="job-groups" aria-live="polite">
-<div class="flex flex-col gap-space-sm" id="jobs-loading">
-<div class="h-20 rounded-xl bg-surface-container-low animate-pulse"></div>
-<div class="h-24 rounded-xl bg-surface-container-lowest shadow-sm animate-pulse"></div>
-<div class="h-24 rounded-xl bg-surface-container-lowest shadow-sm animate-pulse"></div>
-<div class="h-24 rounded-xl bg-surface-container-lowest shadow-sm animate-pulse"></div>
+<!-- Listings are rendered here from api/jobs.php (or the saved copies if the API is unreachable). -->
+<div class="flex flex-col gap-12" id="job-groups" aria-live="polite">
+<div class="flex flex-col gap-3" id="jobs-loading">
+<div class="h-6 w-48 rounded bg-slate-100 animate-pulse"></div>
+<div class="h-24 rounded-xl bg-slate-100 animate-pulse"></div>
+<div class="h-24 rounded-xl bg-slate-100 animate-pulse"></div>
+<div class="h-24 rounded-xl bg-slate-100 animate-pulse"></div>
 <span class="sr-only">Loading open roles…</span>
 </div>
 </div>
 
 <noscript>
-<div class="flex flex-col items-center text-center py-12 px-4 bg-surface-container-lowest rounded-xl shadow-sm">
-<span class="material-symbols-outlined text-[48px] text-outline mb-2">code_off</span>
-<h3 class="font-title-md text-title-md text-primary mb-1">Turn on JavaScript to browse roles</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">Our job listings need JavaScript. You can still send us your CV and our team will match you with suitable openings.</p>
-<a class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg" href="apply.html">Submit Your CV</a>
+<div class="rounded-xl border border-slate-200 px-6 py-12 text-center">
+<h3 class="text-lg font-bold text-primary">Turn on JavaScript to browse roles</h3>
+<p class="mt-2 text-text-muted">You can still send us your CV and we'll match you with suitable openings.</p>
+<a class="mt-6 inline-flex px-5 py-2.5 rounded-md bg-secondary text-white text-sm font-semibold" href="apply.html">Send your CV</a>
 </div>
 </noscript>
 
-<div class="hidden flex-col items-center text-center py-12 px-4 bg-surface-container-lowest rounded-xl shadow-sm" id="jobs-error" role="alert">
-<span class="material-symbols-outlined text-[48px] text-error mb-2">cloud_off</span>
-<h3 class="font-title-md text-title-md text-primary mb-1">We couldn’t load the job listings</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">Please check your connection and try again. You can also send us your CV and our team will match you with suitable openings.</p>
-<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-<button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-surface-container text-primary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" id="jobs-retry" type="button">
-<span class="material-symbols-outlined text-[18px]">refresh</span>Try Again
-</button>
-<a class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-hover font-label-lg text-label-lg transition-colors" href="apply.html">Send Us Your CV Anyway</a>
+<div class="hidden flex-col items-center rounded-xl border border-slate-200 px-6 py-12 text-center" id="jobs-error" role="alert">
+<h3 class="text-lg font-bold text-primary">We couldn't load the job listings</h3>
+<p class="mt-2 max-w-md text-text-muted">Please check your connection and try again, or send us your CV and we'll match you with suitable openings.</p>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<button class="px-5 py-2.5 rounded-md border border-slate-300 text-primary text-sm font-semibold hover:border-primary transition-colors" id="jobs-retry" type="button">Try again</button>
+<a class="px-5 py-2.5 rounded-md bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors" href="apply.html">Send your CV</a>
 </div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-6">Or contact us: <a class="underline hover:text-primary" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a> · <a class="underline hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
+<p class="mt-6 text-sm text-text-muted">Or contact us: <a class="underline hover:text-primary" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a> · <a class="underline hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
 </div>
 
-<div class="hidden flex-col items-center text-center py-12 px-4 bg-surface-container-lowest rounded-xl shadow-sm" id="jobs-empty">
-<span class="material-symbols-outlined text-[48px] text-outline mb-2">work_off</span>
-<h3 class="font-title-md text-title-md text-primary mb-1" id="jobs-empty-title">No roles match your filters</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md" id="jobs-empty-text">Try a different keyword or sector, or send us your CV and our team will match you with suitable openings.</p>
-<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-<button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-surface-container text-primary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" data-reset-filters="" type="button">
-<span class="material-symbols-outlined text-[18px]">restart_alt</span>Reset Filters
-</button>
-<a class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-hover font-label-lg text-label-lg transition-colors" href="apply.html">Submit Your CV</a>
+<div class="hidden flex-col items-center rounded-xl border border-slate-200 px-6 py-12 text-center" id="jobs-empty">
+<h3 class="text-lg font-bold text-primary" id="jobs-empty-title">No roles match your filters</h3>
+<p class="mt-2 max-w-md text-text-muted" id="jobs-empty-text">Try a different keyword or filter, or send us your CV and we'll match you with suitable openings.</p>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<button class="px-5 py-2.5 rounded-md border border-slate-300 text-primary text-sm font-semibold hover:border-primary transition-colors" data-reset-filters="" type="button">Clear filters</button>
+<a class="px-5 py-2.5 rounded-md bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors" href="apply.html">Send your CV</a>
 </div>
 </div>
 </div>
 
-</div>
 </div>
 </section>
 
-<!-- Direct match banner -->
-<section class="w-full bg-surface-container py-10 md:py-space-xl">
-<div class="max-w-6xl mx-auto px-4 sm:px-6">
-<div class="bg-primary text-on-primary rounded-xl p-6 sm:p-space-lg lg:p-space-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
-<div class="flex flex-col gap-space-xs max-w-2xl">
-<div class="flex items-center gap-space-xs text-secondary-fixed">
-<span class="material-symbols-outlined text-[20px]">handshake</span>
-<span class="font-label-md text-label-md uppercase font-bold tracking-wider">Direct Match Guarantee</span>
+<!-- Closing -->
+<section class="w-full border-t border-slate-200 bg-surface-muted py-14 md:py-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="max-w-xl">
+<h2 class="text-2xl md:text-3xl font-bold text-primary tracking-tight">Looking for something specific?</h2>
+<p class="mt-2 text-text-muted leading-relaxed">Tell us what you're looking for and we'll match you with roles as they open. No fees, ever.</p>
 </div>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-primary">Looking for something specific? We match candidates across all UK and European corridors.</h2>
-<p class="font-body-md text-body-md text-inverse-primary">All placements via Hubjob follow transparent compensation, guaranteed living wage tiers, and zero upfront fees for job seekers.</p>
-</div>
-<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm w-full lg:w-auto flex-shrink-0">
-<a class="px-space-lg py-3 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-full text-center transition-all font-bold shadow-sm" href="apply.html">Submit CV for Custom Matching</a>
-<a class="px-space-lg py-3 bg-primary-container hover:bg-white/20 text-on-primary font-label-lg text-label-lg rounded-full text-center transition-colors font-semibold" href="faq.html">View Requirements</a>
-</div>
+<div class="flex flex-col sm:flex-row gap-3 shrink-0">
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-md bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors" href="apply.html">Send your CV</a>
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-md border border-slate-300 bg-white hover:border-primary text-primary text-sm font-semibold transition-colors" href="faq.html">Read the FAQ</a>
 </div>
 </div>
 </section>
@@ -355,8 +289,8 @@
 </div>
 </footer>
 
-<script src="assets/js/site.js?v=3"></script>
-<script src="assets/js/settings.js?v=3"></script>
-<script src="assets/js/jobs.js?v=3"></script>
+<script src="assets/js/site.js?v=4"></script>
+<script src="assets/js/settings.js?v=4"></script>
+<script src="assets/js/jobs.js?v=4"></script>
 </body>
 </html>

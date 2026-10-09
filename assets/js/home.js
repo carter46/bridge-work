@@ -1,6 +1,6 @@
 /*
- * Homepage: featured jobs and category tiles from api/jobs.php (snapshot fallback).
- * If neither source loads, the static fallback in index.html stays visible.
+ * Homepage: featured jobs, category tiles and the hero search, all from api/jobs.php (with fallbacks).
+ * If no source loads, the static fallback in index.html stays visible.
  */
 (function () {
   var SOURCES = window.HJ.JOB_SOURCES;
@@ -12,42 +12,64 @@
   var featuredBox = document.getElementById("featured-jobs");
   var tilesBox = document.getElementById("category-tiles");
 
-  function jobRow(job, categoryName) {
-    var href = "apply.html?job=" + encodeURIComponent(job.id) + "&role=" + encodeURIComponent(job.title);
-    var meta = [];
-    if (job.company_name) meta.push('<span class="font-medium text-slate-700">' + esc(job.company_name) + "</span>");
-    if (job.location_text) meta.push("<span>" + esc(job.location_text) + "</span>");
-    else if (ARRANGEMENT_LABELS[job.work_arrangement]) meta.push("<span>" + esc(ARRANGEMENT_LABELS[job.work_arrangement]) + "</span>");
-    if (job.pay_label) meta.push("<span>" + esc(job.pay_label) + "</span>");
-    if (job.schedule_note) {
-      meta.push("<span>" + esc(job.schedule_note) + "</span>");
-    } else if (job.employment_types.length) {
-      meta.push("<span>" + esc(job.employment_types.map(function (t) { return EMPLOYMENT_LABELS[t] || t; }).join(" / ")) + "</span>");
-    }
-    if (job.employer_verified) {
-      meta.push('<span class="inline-flex items-center gap-1 text-emerald-700"><span class="material-symbols-outlined text-[16px]">verified</span>Verified employer</span>');
-    }
+  function applyHref(job) {
+    return "apply.html?job=" + encodeURIComponent(job.id) + "&role=" + encodeURIComponent(job.title);
+  }
 
-    return '<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">' +
-      '<div class="min-w-0 flex-1">' +
-      '<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="' + esc(href) + '">' + esc(job.title) + "</a>" +
-      '<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">' +
-      meta.join('<span aria-hidden="true">•</span>') +
-      "</div></div>" +
-      '<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">' +
-      '<span class="text-xs text-text-subtle">' + esc(job.badge || categoryName || "") + "</span>" +
-      '<a class="text-sm font-semibold text-secondary hover:underline" href="' + esc(href) + '">Apply →</a>' +
-      "</div></div>";
+  function placeText(job) {
+    return job.location_text || ARRANGEMENT_LABELS[job.work_arrangement] || "";
+  }
+
+  function scheduleText(job) {
+    if (job.schedule_note) return job.schedule_note;
+    return job.employment_types.map(function (t) { return EMPLOYMENT_LABELS[t] || t; }).join(" / ");
+  }
+
+  /* ---------- Featured jobs ---------- */
+
+  function jobCard(job, categoryName, index) {
+    var meta = [placeText(job), scheduleText(job)].filter(Boolean).join(" · ");
+    return '<a class="reveal group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 transition-colors hover:border-primary" href="' + esc(applyHref(job)) + '" style="--reveal-delay:' + (index % 2) * 80 + 'ms">' +
+      '<span class="text-sm text-text-muted">' + esc(categoryName || "") + "</span>" +
+      '<span class="mt-2 text-lg font-bold text-primary group-hover:text-secondary transition-colors">' + esc(job.title) + "</span>" +
+      (job.company_name ? '<span class="mt-1 text-sm font-medium text-text-main">' + esc(job.company_name) + "</span>" : "") +
+      (meta ? '<span class="mt-2 text-sm text-text-muted">' + esc(meta) + "</span>" : "") +
+      '<span class="mt-auto pt-5 flex items-center justify-between gap-3">' +
+      '<span class="font-semibold text-primary">' + esc(job.pay_label || "") + "</span>" +
+      '<span class="text-sm font-semibold text-secondary">Apply →</span></span>' +
+      (job.employer_verified ? '<span class="mt-3 text-xs font-semibold text-emerald-700">Verified employer</span>' : "") +
+      "</a>";
   }
 
   function renderFeatured(data, names) {
     if (!featuredBox) return;
     var featured = data.jobs.filter(function (job) { return job.is_featured; }).slice(0, MAX_FEATURED);
     if (!featured.length) return; // keep the "Explore every open role" card
-    featuredBox.innerHTML = '<div class="divide-y divide-slate-200 border-t border-b border-slate-200">' +
-      featured.map(function (job) { return jobRow(job, names[job.category]); }).join("") +
+    featuredBox.innerHTML = '<div class="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4">' +
+      featured.map(function (job, i) { return jobCard(job, names[job.category], i); }).join("") +
       "</div>";
+    window.HJ.observeReveal(featuredBox);
   }
+
+  function renderStats(data) {
+    var box = document.getElementById("home-stats");
+    var roles = document.getElementById("home-stat-roles");
+    var pay = document.getElementById("home-stat-pay");
+    if (!box || !roles || !pay || !data.jobs.length) return;
+    roles.textContent = data.jobs.length;
+    var label = (data.stats && data.stats.pay_label) || "";
+    if (/\/hr$/.test(label)) {
+      pay.innerHTML = esc(label.replace(/\/hr$/, "")) + '<span class="text-base font-semibold text-text-muted">/hr</span>';
+    } else if (label) {
+      pay.textContent = label;
+    } else {
+      pay.parentNode.classList.add("hidden");
+    }
+    box.classList.remove("hidden");
+    box.classList.add("grid");
+  }
+
+  /* ---------- Category tiles ---------- */
 
   // Equal-size cards; the wrapper fades in on scroll, the card keeps its own hover effects.
   function renderTiles(data) {
@@ -68,7 +90,7 @@
     window.HJ.observeReveal(tilesBox);
   }
 
-  /* ---------- Hero search: matching jobs appear while typing ---------- */
+  /* ---------- Hero search: "What" suggests jobs, "Where" suggests places ---------- */
 
   var MAX_SUGGESTIONS = 6;
   var searchForm = document.getElementById("hero-search");
@@ -90,60 +112,89 @@
       job._search = window.HJ.jobSearchText(job, names[job.category]);
       job._place = window.HJ.jobPlaceWords(job);
     });
+    var places = window.HJ.placeOptions(data.jobs);
 
-    function find(what, where) {
-      var terms = what.toLowerCase().split(/\s+/).filter(Boolean);
-      var byWhat = data.jobs.filter(function (job) {
-        return terms.every(function (t) { return job._search.indexOf(t) !== -1; });
-      });
-      var byBoth = byWhat.filter(function (job) { return window.HJ.placeMatches(job._place, where); });
-      // Nothing listed for that place: fall back to the "What" matches and say so.
-      return { jobs: byBoth.length || !where ? byBoth : byWhat, placeMissed: !!where && !byBoth.length && byWhat.length > 0 };
+    function hide() {
+      resultsBox.classList.add("hidden");
+      resultsBox.innerHTML = "";
     }
 
-    function suggestion(job) {
-      var meta = [names[job.category], job.location_text || ARRANGEMENT_LABELS[job.work_arrangement], job.pay_label].filter(Boolean);
-      var href = "apply.html?job=" + encodeURIComponent(job.id) + "&role=" + encodeURIComponent(job.title);
-      return '<a class="flex items-center justify-between gap-3 px-4 py-3 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none" href="' + esc(href) + '">' +
-        '<span class="min-w-0"><span class="block font-semibold text-slate-900 truncate">' + esc(job.title) + "</span>" +
-        '<span class="block text-xs text-text-muted truncate">' + esc(meta.join(" · ")) + "</span></span>" +
-        '<span class="shrink-0 text-xs font-semibold text-secondary">Apply →</span></a>';
-    }
-
-    function show() {
-      var what = whatInput.value.trim();
-      var where = whereInput.value.trim();
-      if (!what && !where) {
-        resultsBox.classList.add("hidden");
-        resultsBox.innerHTML = "";
-        return;
-      }
-      var found = find(what, where);
-      var html = "";
-      if (found.placeMissed) {
-        html += '<p class="px-4 py-2 text-xs text-text-muted bg-slate-50 border-b border-slate-100">No roles listed for “' + esc(where) + "” yet. Most roles below are remote:</p>";
-      }
-      if (found.jobs.length) {
-        html += '<div class="divide-y divide-slate-100">' + found.jobs.slice(0, MAX_SUGGESTIONS).map(suggestion).join("") + "</div>";
-        html += '<a class="block px-4 py-3 text-sm font-semibold text-secondary border-t border-slate-200 hover:bg-slate-50" href="' + esc(jobsUrl(what, where)) + '">' +
-          (found.jobs.length > MAX_SUGGESTIONS ? "See all " + found.jobs.length + " matching roles →" : "Open in job search →") + "</a>";
-      } else {
-        html += '<div class="px-4 py-4 text-sm text-text-muted">No roles match “' + esc(what || where) + '” right now. ' +
-          '<a class="font-semibold text-secondary hover:underline" href="apply.html">Send us your CV</a> and we\'ll match you when one opens.</div>';
-      }
+    function open(html) {
       resultsBox.innerHTML = html;
       resultsBox.classList.remove("hidden");
     }
 
-    whatInput.addEventListener("input", show);
-    whereInput.addEventListener("input", show);
-    whatInput.addEventListener("focus", show);
-    whereInput.addEventListener("focus", show);
+    function heading(text) {
+      return '<p class="px-4 pt-3 pb-1 text-xs font-semibold text-text-subtle">' + esc(text) + "</p>";
+    }
+
+    function matchingJobs(what, where) {
+      var terms = what.toLowerCase().split(/\s+/).filter(Boolean);
+      return data.jobs.filter(function (job) {
+        return terms.every(function (t) { return job._search.indexOf(t) !== -1; }) &&
+          window.HJ.placeMatches(job._place, where);
+      });
+    }
+
+    function showJobs() {
+      var what = whatInput.value.trim();
+      var where = whereInput.value.trim();
+      if (!what) { hide(); return; }
+      var found = matchingJobs(what, where);
+      if (!found.length) {
+        open('<div class="px-4 py-4 text-sm text-text-muted">No roles match “' + esc(what) + "”" + (where ? " in “" + esc(where) + "”" : "") + " right now. " +
+          '<a class="font-semibold text-secondary hover:underline" href="apply.html">Send us your CV</a> and we\'ll contact you when one opens.</div>');
+        return;
+      }
+      var rows = found.slice(0, MAX_SUGGESTIONS).map(function (job) {
+        var meta = [names[job.category], placeText(job), job.pay_label].filter(Boolean).join(" · ");
+        return '<a class="flex items-center justify-between gap-3 px-4 py-3 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none" href="' + esc(applyHref(job)) + '">' +
+          '<span class="min-w-0"><span class="block font-semibold text-slate-900 truncate">' + esc(job.title) + "</span>" +
+          '<span class="block text-xs text-text-muted truncate">' + esc(meta) + "</span></span>" +
+          '<span class="shrink-0 text-xs font-semibold text-secondary">Apply →</span></a>';
+      }).join("");
+      open(heading(found.length === 1 ? "1 matching role" : found.length + " matching roles") +
+        '<div class="divide-y divide-slate-100">' + rows + "</div>" +
+        '<a class="block px-4 py-3 text-sm font-semibold text-secondary border-t border-slate-200 hover:bg-slate-50" href="' + esc(jobsUrl(what, where)) + '">' +
+        (found.length > MAX_SUGGESTIONS ? "See all " + found.length + " roles →" : "Open in job search →") + "</a>");
+    }
+
+    function showPlaces() {
+      var typed = whereInput.value.trim().toLowerCase();
+      var list = places.filter(function (p) {
+        return !typed || p.label.toLowerCase().split(/[^a-z0-9]+/).some(function (w) { return w.indexOf(typed) === 0; }) ||
+          p.label.toLowerCase().indexOf(typed) === 0;
+      });
+      if (!list.length) {
+        open('<div class="px-4 py-4 text-sm text-text-muted">No roles are listed in “' + esc(whereInput.value.trim()) + '” yet. ' +
+          '<button class="font-semibold text-secondary hover:underline" data-place="Remote" type="button">Show remote roles</button></div>');
+        return;
+      }
+      open(heading("Locations") + '<div class="pb-2">' + list.map(function (p) {
+        return '<button class="w-full flex items-center justify-between gap-3 px-4 py-2.5 text-left hover:bg-slate-50 focus:bg-slate-50 focus:outline-none" data-place="' + esc(p.label) + '" type="button">' +
+          '<span class="font-medium text-slate-900">' + esc(p.label) + "</span>" +
+          '<span class="text-xs text-text-muted">' + p.count + (p.count === 1 ? " role" : " roles") + "</span></button>";
+      }).join("") + "</div>");
+    }
+
+    resultsBox.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-place]");
+      if (!btn) return;
+      whereInput.value = btn.getAttribute("data-place");
+      if (whatInput.value.trim()) showJobs();
+      else hide();
+    });
+
+    whatInput.addEventListener("input", showJobs);
+    whatInput.addEventListener("focus", showJobs);
+    whereInput.addEventListener("input", showPlaces);
+    whereInput.addEventListener("focus", showPlaces);
     document.addEventListener("click", function (e) {
-      if (!searchForm.parentNode.contains(e.target)) resultsBox.classList.add("hidden");
+      // A picked place re-renders the panel, so its button is already detached here.
+      if (e.target.isConnected && !searchForm.parentNode.contains(e.target)) hide();
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") resultsBox.classList.add("hidden");
+      if (e.key === "Escape") hide();
     });
     searchForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -156,6 +207,7 @@
   }).then(function (data) {
     var names = {};
     data.categories.forEach(function (c) { names[c.slug] = c.name; });
+    renderStats(data);
     renderFeatured(data, names);
     renderTiles(data);
     setupSearch(data, names);

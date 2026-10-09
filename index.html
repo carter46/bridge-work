@@ -21,9 +21,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css?v=3" rel="stylesheet"/>
+<link href="assets/css/site.css?v=4" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="assets/js/tailwind-config.js?v=3"></script>
+<script src="assets/js/tailwind-config.js?v=4"></script>
 </head>
 <body class="bg-white text-text-main font-sans antialiased selection:bg-slate-200">
 
@@ -106,33 +106,30 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 </section>
 
 <!-- 2. Featured opportunities (rendered by home.js from jobs marked "Featured" in admin) -->
-<section class="w-full py-14 md:py-20 bg-white border-b border-surface-border">
-<div class="max-w-4xl mx-auto px-4 sm:px-6">
-<div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 pb-4 border-b border-slate-100">
-<div>
-<h2 class="text-2xl font-bold tracking-tight text-primary">Featured Opportunities</h2>
-<p class="text-sm text-text-muted mt-1">Hand-picked roles from our current openings.</p>
+<section class="w-full py-16 md:py-24 bg-white">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+<div class="lg:col-span-4 reveal">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary leading-tight">Featured opportunities</h2>
+<p class="mt-4 text-text-muted leading-relaxed">A selection of roles our team is actively hiring for right now. Every listing shows its pay before you apply.</p>
+<dl class="hidden mt-8 grid-cols-2 gap-6 border-t border-slate-200 pt-6" id="home-stats">
+<div><dt class="text-sm text-text-muted">Open roles</dt><dd class="mt-1 text-3xl font-extrabold text-primary" id="home-stat-roles"></dd></div>
+<div><dt class="text-sm text-text-muted">Pay range</dt><dd class="mt-1 text-3xl font-extrabold text-primary" id="home-stat-pay"></dd></div>
+</dl>
+<a class="mt-8 inline-flex items-center justify-center px-5 py-3 rounded-md bg-primary hover:bg-primary-container text-white text-sm font-semibold transition-colors" href="jobs.html">Browse all jobs</a>
 </div>
-<a class="text-sm font-medium text-secondary hover:text-secondary-hover mt-2 sm:mt-0 inline-flex items-center gap-1" href="jobs.html">Browse all jobs →</a>
-</div>
-<div id="featured-jobs">
+<div class="lg:col-span-8" id="featured-jobs">
 <!-- Shown when there are no featured jobs, the data can't be loaded, or JavaScript is off. -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-xl border border-slate-200 bg-surface-muted" id="featured-fallback">
-<div>
-<h3 class="text-base font-bold text-slate-900">Explore every open role</h3>
-<p class="text-sm text-text-muted mt-1">Browse current openings across tech, support, operations, marketing, video, sales, design and education.</p>
+<div class="h-full flex flex-col justify-center gap-4 p-8 rounded-2xl border border-slate-200 bg-surface-muted" id="featured-fallback">
+<h3 class="text-lg font-bold text-primary">Explore every open role</h3>
+<p class="text-text-muted">Browse current openings across tech, support, operations, marketing, video, sales, design and education.</p>
+<a class="self-start inline-flex items-center justify-center px-5 py-2.5 bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold rounded-md transition-colors" href="jobs.html">View open roles</a>
 </div>
-<a class="inline-flex items-center justify-center px-5 py-2.5 bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold rounded-md transition-colors shrink-0" href="jobs.html">View open roles</a>
-</div>
-</div>
-<div class="mt-8 text-center sm:text-left">
-<a class="inline-flex items-center text-sm font-semibold text-slate-800 hover:text-secondary transition-colors" href="jobs.html">View all open positions <span class="ml-1.5">→</span></a>
 </div>
 </div>
 </section>
 
 <!-- 3. Explore jobs by category (home.js refreshes these from the database; the tiles below are the fallback) -->
-<section class="w-full py-14 md:py-20 bg-surface-muted border-b border-surface-border" id="categories">
+<section class="w-full py-14 md:py-20 bg-surface-muted" id="categories">
 <div class="max-w-6xl mx-auto px-4 sm:px-6">
 <div class="reveal mb-8 md:mb-10">
 <h2 class="text-2xl font-bold tracking-tight text-primary">Explore Jobs by Category</h2>
@@ -207,114 +204,116 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 </div>
 </section>
 
-<!-- 4. How to apply -->
-<section class="w-full py-14 md:py-20 bg-white border-b border-surface-border" id="how-it-works">
-<div class="max-w-4xl mx-auto px-4 sm:px-6">
-<div class="mb-10 md:mb-12">
-<h2 class="text-2xl font-bold tracking-tight text-primary">How To Apply</h2>
-<p class="text-sm text-text-muted mt-1">A transparent four-step hiring sequence from profile submission to placement.</p>
+<!-- 4. How to apply: intro on the left, the four steps as a 2x2 grid on the right -->
+<section class="w-full py-16 md:py-24 bg-white" id="how-it-works">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+<div class="lg:col-span-4 reveal">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary leading-tight">How to apply</h2>
+<p class="mt-4 text-text-muted leading-relaxed">Four steps from finding a role to your first day. Applying is free, and we reply within <span data-setting="response_time">24 business hours</span>.</p>
+<a class="mt-8 inline-flex items-center justify-center px-5 py-3 rounded-md bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors" href="jobs.html">Find a role</a>
 </div>
-<ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-<li class="border-t-2 border-primary pt-4">
-<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">01</span>
-<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Browse Open Roles</h3>
-<p class="text-sm text-text-muted leading-relaxed">Find full-time or remote jobs that match your goals.</p>
+<ol class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200">
+<li class="reveal bg-white p-7 md:p-8">
+<span class="block text-4xl font-extrabold text-slate-200">01</span>
+<h3 class="mt-4 text-lg font-bold text-primary">Find a role</h3>
+<p class="mt-2 text-text-muted leading-relaxed">Search by skill, sector or location. Pay and working arrangement are on every listing.</p>
 </li>
-<li class="border-t-2 border-slate-300 pt-4">
-<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">02</span>
-<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Submit Your Application</h3>
-<p class="text-sm text-text-muted leading-relaxed">Upload your CV and fill the quick form to get started.</p>
+<li class="reveal bg-white p-7 md:p-8" style="--reveal-delay:80ms">
+<span class="block text-4xl font-extrabold text-slate-200">02</span>
+<h3 class="mt-4 text-lg font-bold text-primary">Apply in minutes</h3>
+<p class="mt-2 text-text-muted leading-relaxed">Fill in a short form and attach your CV if you have one.</p>
 </li>
-<li class="border-t-2 border-slate-300 pt-4">
-<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">03</span>
-<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Attend the Interview</h3>
-<p class="text-sm text-text-muted leading-relaxed">Meet with global employers and present your best self.</p>
+<li class="reveal bg-white p-7 md:p-8" style="--reveal-delay:160ms">
+<span class="block text-4xl font-extrabold text-slate-200">03</span>
+<h3 class="mt-4 text-lg font-bold text-primary">Interview with the employer</h3>
+<p class="mt-2 text-text-muted leading-relaxed">We introduce you, help you prepare and arrange the interview.</p>
 </li>
-<li class="border-t-2 border-slate-300 pt-4">
-<span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">04</span>
-<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5">Start Working Remotely</h3>
-<p class="text-sm text-text-muted leading-relaxed">Join trusted companies and work from anywhere in the world.</p>
+<li class="reveal bg-white p-7 md:p-8" style="--reveal-delay:240ms">
+<span class="block text-4xl font-extrabold text-slate-200">04</span>
+<h3 class="mt-4 text-lg font-bold text-primary">Start work</h3>
+<p class="mt-2 text-text-muted leading-relaxed">Sign your contract and start, remotely or on site, with our support in the first weeks.</p>
 </li>
 </ol>
 </div>
 </section>
 
-<!-- 5. Why Hubjob Platform -->
-<section class="w-full py-14 md:py-20 bg-surface-muted border-b border-surface-border" id="why-hubjob">
-<div class="max-w-4xl mx-auto px-4 sm:px-6">
-<div class="mb-10 md:mb-12">
-<h2 class="text-2xl font-bold tracking-tight text-primary">Why Hubjob Platform</h2>
-<p class="text-sm text-text-muted mt-1">Our platform standards designed to support candidates throughout their career lifecycle.</p>
+<!-- 5. Why Hubjob Platform: dark band, heading left, six points right -->
+<section class="w-full py-16 md:py-24 bg-primary text-white" id="why-hubjob">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+<div class="lg:col-span-4 reveal">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight leading-tight">Why Hubjob Platform</h2>
+<p class="mt-4 text-slate-300 leading-relaxed">We are on the candidate's side, from the first search to long after the offer.</p>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 md:gap-y-10">
-<div>
-<h3 class="text-base font-bold text-slate-900 mb-2">Personalized Job Matching</h3>
-<p class="text-sm text-text-muted leading-relaxed">We match your skills, experience, and goals with employers worldwide.</p>
+<div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
+<div class="reveal border-t border-white/20 pt-5">
+<h3 class="font-bold text-lg">Matched to your skills</h3>
+<p class="mt-2 text-slate-300 leading-relaxed">We put you forward for roles that fit your experience and goals, not every opening we have.</p>
 </div>
-<div>
-<h3 class="text-base font-bold text-slate-900 mb-2">End-to-End Career Support</h3>
-<p class="text-sm text-text-muted leading-relaxed">From interview prep to onboarding, we help you every step of the way.</p>
+<div class="reveal border-t border-white/20 pt-5" style="--reveal-delay:80ms">
+<h3 class="font-bold text-lg">Support at every step</h3>
+<p class="mt-2 text-slate-300 leading-relaxed">Interview preparation, contract questions and onboarding help are part of the service.</p>
 </div>
-<div>
-<h3 class="text-base font-bold text-slate-900 mb-2">Employer Checks</h3>
-<p class="text-sm text-text-muted leading-relaxed">Listings marked “Verified employer” have passed our legal, pay and compliance checks.</p>
+<div class="reveal border-t border-white/20 pt-5">
+<h3 class="font-bold text-lg">Checked employers</h3>
+<p class="mt-2 text-slate-300 leading-relaxed">Listings marked “Verified employer” have passed our legal, pay and compliance checks.</p>
 </div>
-<div>
-<h3 class="text-base font-bold text-slate-900 mb-2">Remote-First Opportunities</h3>
-<p class="text-sm text-text-muted leading-relaxed">Find flexible jobs designed for remote work.</p>
+<div class="reveal border-t border-white/20 pt-5" style="--reveal-delay:80ms">
+<h3 class="font-bold text-lg">Remote and flexible work</h3>
+<p class="mt-2 text-slate-300 leading-relaxed">Many roles can be done from anywhere, and some have flexible hours.</p>
 </div>
-<div>
-<h3 class="text-base font-bold text-slate-900 mb-2">Fast Hiring Process</h3>
-<p class="text-sm text-text-muted leading-relaxed">Get matched quickly and start your new role in days.</p>
+<div class="reveal border-t border-white/20 pt-5">
+<h3 class="font-bold text-lg">Quick decisions</h3>
+<p class="mt-2 text-slate-300 leading-relaxed">We reply within <span data-setting="response_time">24 business hours</span> and keep you updated until a decision is made.</p>
 </div>
-<div>
-<h3 class="text-base font-bold text-slate-900 mb-2">Continuous Growth Support</h3>
-<p class="text-sm text-text-muted leading-relaxed">We provide ongoing advice, training, and growth tools.</p>
+<div class="reveal border-t border-white/20 pt-5" style="--reveal-delay:80ms">
+<h3 class="font-bold text-lg">Free for candidates</h3>
+<p class="mt-2 text-slate-300 leading-relaxed">You never pay to apply, interview or be placed.</p>
 </div>
 </div>
 </div>
 </section>
 
-<!-- 6. Testimonials -->
-<section class="w-full py-14 md:py-20 bg-white border-b border-surface-border" id="testimonials">
-<div class="max-w-4xl mx-auto px-4 sm:px-6">
-<div class="mb-8 md:mb-10">
-<h2 class="text-2xl font-bold tracking-tight text-primary">Candidate Experiences</h2>
-<p class="text-sm text-text-muted mt-1">Direct feedback from professionals placed through the network.</p>
+<!-- 6. Testimonials: one large quote, four short ones beside it -->
+<section class="w-full py-16 md:py-24 bg-white" id="testimonials">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<h2 class="reveal text-3xl md:text-4xl font-bold tracking-tight text-primary leading-tight">What candidates say</h2>
+<div class="mt-10 md:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<figure class="reveal lg:col-span-5 flex flex-col justify-between rounded-2xl bg-surface-muted p-8 md:p-10">
+<blockquote class="text-2xl md:text-3xl font-semibold text-primary leading-snug">“The team guided me through every step of the visa process. Fantastic support!”</blockquote>
+<figcaption class="mt-8 text-sm"><span class="block font-bold text-primary">Ahmed</span><span class="text-text-muted">Dubai, UAE</span></figcaption>
+</figure>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10 content-center">
+<figure class="reveal border-t border-slate-200 pt-5">
+<blockquote class="text-text-main leading-relaxed">“Thanks to Hubjob Platform, I found part-time work in London easily.”</blockquote>
+<figcaption class="mt-4 text-sm"><span class="font-bold text-primary">Sarah</span><span class="text-text-muted"> · London, UK</span></figcaption>
+</figure>
+<figure class="reveal border-t border-slate-200 pt-5" style="--reveal-delay:80ms">
+<blockquote class="text-text-main leading-relaxed">“Hubjob Platform helped me land my first healthcare job in the UK.”</blockquote>
+<figcaption class="mt-4 text-sm"><span class="font-bold text-primary">Sofia</span><span class="text-text-muted"> · Spain</span></figcaption>
+</figure>
+<figure class="reveal border-t border-slate-200 pt-5">
+<blockquote class="text-text-main leading-relaxed">“Loved working with this team. Professional and super fast placement!”</blockquote>
+<figcaption class="mt-4 text-sm"><span class="font-bold text-primary">Michael Lee</span><span class="text-text-muted"> · Software Specialist</span></figcaption>
+</figure>
+<figure class="reveal border-t border-slate-200 pt-5" style="--reveal-delay:80ms">
+<blockquote class="text-text-main leading-relaxed">“This service was amazing! Highly recommend.”</blockquote>
+<figcaption class="mt-4 text-sm"><span class="font-bold text-primary">Daniel</span><span class="text-text-muted"> · United Kingdom</span></figcaption>
+</figure>
 </div>
-<figure class="pb-10 mb-10 border-b border-slate-200">
-<blockquote class="text-xl sm:text-2xl font-medium text-slate-900 leading-snug">“The team guided me through every step of the visa process. Fantastic support!”</blockquote>
-<figcaption class="mt-4 text-sm"><span class="font-bold text-slate-900">Ahmed</span><span class="text-text-muted"> — Dubai, UAE</span></figcaption>
-</figure>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-<figure>
-<blockquote class="text-sm text-slate-800 leading-relaxed italic">“This service was amazing! Highly recommend.”</blockquote>
-<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Daniel</span><span class="block text-text-muted">United Kingdom</span></figcaption>
-</figure>
-<figure>
-<blockquote class="text-sm text-slate-800 leading-relaxed italic">“Thanks to Hubjob Platform, I found part-time work in London easily.”</blockquote>
-<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Sarah</span><span class="block text-text-muted">London, UK</span></figcaption>
-</figure>
-<figure>
-<blockquote class="text-sm text-slate-800 leading-relaxed italic">“Loved working with this team. Professional and super fast placement!”</blockquote>
-<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Michael Lee</span><span class="block text-text-muted">Software Specialist</span></figcaption>
-</figure>
-<figure>
-<blockquote class="text-sm text-slate-800 leading-relaxed italic">“Hubjob Platform helped me land my first healthcare job in the UK.”</blockquote>
-<figcaption class="mt-3 text-xs"><span class="font-bold text-slate-900">Sofia</span><span class="block text-text-muted">Spain</span></figcaption>
-</figure>
 </div>
 </div>
 </section>
 
 <!-- 7. Closing CTA -->
-<section class="w-full py-14 md:py-20 bg-surface-muted" id="cv-upload">
-<div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-<h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-primary mb-3">Ready to take the next step in your career?</h2>
-<p class="text-sm sm:text-base text-text-muted mb-8 leading-relaxed">Submit your CV today to be considered for open positions across top international companies.</p>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-<a class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 sm:py-2.5 bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold rounded-md transition-colors" href="apply.html">Submit Your CV</a>
-<a class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 sm:py-2.5 bg-white border border-slate-300 hover:border-slate-400 text-slate-800 text-sm font-semibold rounded-md transition-colors" href="jobs.html">Browse Jobs</a>
+<section class="w-full border-t border-slate-200 bg-surface-muted py-16 md:py-20" id="cv-upload">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-center justify-between gap-8">
+<div class="max-w-xl">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary leading-tight">Didn't find the right role?</h2>
+<p class="mt-3 text-text-muted leading-relaxed">Send us your CV and we will contact you when a role that fits you opens.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 shrink-0">
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-md bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors" href="apply.html">Send your CV</a>
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-md border border-slate-300 bg-white hover:border-primary text-primary text-sm font-semibold transition-colors" href="jobs.html">Browse jobs</a>
 </div>
 </div>
 </section>
@@ -381,8 +380,8 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 <span class="hidden sm:inline">Submit Your Details with CV</span>
 </a>
 
-<script src="assets/js/site.js?v=3"></script>
-<script src="assets/js/settings.js?v=3"></script>
-<script src="assets/js/home.js?v=3"></script>
+<script src="assets/js/site.js?v=4"></script>
+<script src="assets/js/settings.js?v=4"></script>
+<script src="assets/js/home.js?v=4"></script>
 </body>
 </html>

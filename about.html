@@ -19,9 +19,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css?v=3" rel="stylesheet"/>
+<link href="assets/css/site.css?v=4" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="assets/js/tailwind-config.js?v=3"></script>
+<script src="assets/js/tailwind-config.js?v=4"></script>
 </head>
 <body class="bg-white text-text-main font-sans antialiased selection:bg-slate-200">
 
@@ -62,34 +62,41 @@
 
 <main class="w-full">
 
-<!-- Intro -->
+<!-- Intro: headline left, summary and actions right -->
 <section class="w-full">
-<div class="max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-12 md:pt-24 md:pb-16">
-<h1 class="max-w-3xl text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary tracking-tight leading-[1.08]">We help people find honest work, and employers find people they can rely on.</h1>
-<p class="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl text-text-muted leading-relaxed"><span data-setting="site_name">Hubjob Platform</span> is a recruitment service based in the United Kingdom. We match job seekers with employers in the UK, Europe and remote teams worldwide, and we never charge candidates a fee.</p>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-14 md:pt-24 md:pb-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 lg:items-end">
+<h1 class="lg:col-span-7 text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary tracking-tight leading-[1.08]">We help people find honest work, and employers find people they can rely on.</h1>
+<div class="lg:col-span-5">
+<p class="text-lg text-text-muted leading-relaxed"><span data-setting="site_name">Hubjob Platform</span> is a recruitment service based in the United Kingdom. We match job seekers with employers in the UK, Europe and remote teams worldwide, and we never charge candidates a fee.</p>
+<div class="mt-6 flex flex-wrap gap-3">
+<a class="inline-flex items-center justify-center px-5 py-3 rounded-md bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold transition-colors" href="jobs.html">See open roles</a>
+<a class="inline-flex items-center justify-center px-5 py-3 rounded-md border border-slate-300 hover:border-primary text-primary text-sm font-semibold transition-colors" href="contact.html">Contact us</a>
+</div>
+</div>
 </div>
 </section>
 
-<!-- Photo -->
-<section class="w-full">
-<div class="max-w-6xl mx-auto px-4 sm:px-6">
-<img alt="Colleagues working together around a table" class="w-full aspect-[16/9] md:aspect-[21/9] object-cover rounded-2xl bg-slate-100" loading="lazy" src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"/>
-</div>
-</section>
-
-<!-- Who we are -->
-<section class="w-full py-16 md:py-24">
-<div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-<h2 class="md:col-span-4 text-2xl md:text-3xl font-bold text-primary tracking-tight">Who we are</h2>
-<div class="md:col-span-8 space-y-5 text-base md:text-lg text-text-muted leading-relaxed">
+<!-- Who we are: photo beside the story, key facts underneath -->
+<section class="w-full pb-16 md:pb-24">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+<img alt="Colleagues working together around a table" class="lg:col-span-6 w-full aspect-[4/3] object-cover rounded-2xl bg-slate-100" loading="lazy" src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
+<div class="lg:col-span-6">
+<h2 class="text-2xl md:text-3xl font-bold text-primary tracking-tight">Who we are</h2>
+<div class="mt-5 space-y-4 text-base md:text-lg text-text-muted leading-relaxed">
 <p>We are recruiters who work with job seekers from many countries. Some want their first role abroad, some want flexible remote work, and some simply want a better-paid job. Our work is the same in every case: understand what the person can do, and introduce them to an employer who needs exactly that.</p>
-<p>Every role we list shows its pay. Applying is free. When an employer has passed our legal, pay and compliance checks, their listings are marked “Verified employer” so you know who you are dealing with.</p>
+<p>Every role we list shows its pay. When an employer has passed our legal, pay and compliance checks, their listings are marked “Verified employer” so you know who you are dealing with.</p>
+</div>
+<dl class="mt-8 grid grid-cols-3 gap-6 border-t border-slate-200 pt-6">
+<div><dt class="text-sm text-text-muted">Cost to apply</dt><dd class="mt-1 text-2xl font-extrabold text-primary">Free</dd></div>
+<div><dt class="text-sm text-text-muted">We reply within</dt><dd class="mt-1 text-2xl font-extrabold text-primary" data-setting="response_time_short">24h</dd></div>
+<div><dt class="text-sm text-text-muted">Based in</dt><dd class="mt-1 text-2xl font-extrabold text-primary">UK</dd></div>
+</dl>
 </div>
 </div>
 </section>
 
 <!-- Principles -->
-<section class="w-full border-t border-slate-200 py-16 md:py-24">
+<section class="w-full bg-surface-muted py-16 md:py-24">
 <div class="max-w-6xl mx-auto px-4 sm:px-6">
 <h2 class="text-2xl md:text-3xl font-bold text-primary tracking-tight mb-10 md:mb-14">How we work</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
@@ -110,15 +117,15 @@
 </section>
 
 <!-- Mission & vision -->
-<section class="w-full bg-surface-muted py-16 md:py-24">
+<section class="w-full bg-primary py-16 md:py-24">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
 <div>
-<h2 class="text-sm font-semibold text-secondary mb-4">Our mission</h2>
-<p class="text-xl md:text-2xl font-semibold text-primary leading-snug">To connect international talent with trusted employers through fair, transparent recruitment, and to support each person as their career grows.</p>
+<h2 class="text-sm font-semibold text-orange-200 mb-4">Our mission</h2>
+<p class="text-xl md:text-2xl font-semibold text-white leading-snug">To connect international talent with trusted employers through fair, transparent recruitment, and to support each person as their career grows.</p>
 </div>
 <div>
-<h2 class="text-sm font-semibold text-secondary mb-4">Our vision</h2>
-<p class="text-xl md:text-2xl font-semibold text-primary leading-snug">A job market where skill, not nationality, decides who gets hired, and every move abroad is safe, legal and fairly paid.</p>
+<h2 class="text-sm font-semibold text-orange-200 mb-4">Our vision</h2>
+<p class="text-xl md:text-2xl font-semibold text-white leading-snug">A job market where skill, not nationality, decides who gets hired, and every move abroad is safe, legal and fairly paid.</p>
 </div>
 </div>
 </section>
@@ -217,7 +224,7 @@
 </div>
 </footer>
 
-<script src="assets/js/site.js?v=3"></script>
-<script src="assets/js/settings.js?v=3"></script>
+<script src="assets/js/site.js?v=4"></script>
+<script src="assets/js/settings.js?v=4"></script>
 </body>
 </html>

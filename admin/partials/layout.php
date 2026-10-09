@@ -36,7 +36,7 @@ function hj_admin_head(string $title): void
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="../assets/js/tailwind-config.js?v=3"></script>
+<script src="../assets/js/tailwind-config.js?v=4"></script>
 <style>
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
   .hj-table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #64748b; font-weight: 700; padding: .65rem .75rem; background: #f8fafc; white-space: nowrap; }
@@ -111,7 +111,7 @@ function hj_admin_footer(): void
   </main>
 </div>
 </div>
-<script src="assets/js/admin.js?v=3"></script>
+<script src="assets/js/admin.js?v=4"></script>
 </body>
 </html>
 <?php
@@ -135,7 +135,7 @@ function hj_admin_guest_footer(): void
 {
     ?>
 </div>
-<script src="assets/js/admin.js?v=3"></script>
+<script src="assets/js/admin.js?v=4"></script>
 </body>
 </html>
 <?php

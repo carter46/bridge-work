@@ -1,9 +1,7 @@
 (function () {
   var SOURCES = window.HJ.JOB_SOURCES;
-  var PILL_ACTIVE = ["bg-primary", "text-on-primary"];
-  var PILL_INACTIVE = ["bg-surface-container", "text-on-surface", "hover:bg-surface-container-high"];
-  var BAND_ACTIVE = ["bg-primary", "text-on-primary"];
-  var BAND_INACTIVE = ["bg-surface-container-low", "text-on-surface", "hover:bg-surface-container"];
+  var LINK_ACTIVE = ["bg-primary", "text-white", "font-semibold"];
+  var LINK_INACTIVE = ["text-text-main", "hover:bg-slate-100"];
   var EMPLOYMENT_LABELS = { full_time: "Full-time", part_time: "Part-time", contract: "Contract", temporary: "Temporary" };
   var ARRANGEMENT_LABELS = { remote: "Remote", hybrid: "Hybrid", onsite: "On-site" };
   var REGION_LABELS = { worldwide: "Open worldwide", uk_europe: "UK & Europe", uk_only: "UK only" };
@@ -18,14 +16,15 @@
   var esc = window.HJ.escape;
   var form = document.getElementById("job-search-form");
   var searchInput = document.getElementById("role-search");
+  var locationInput = document.getElementById("location-search");
+  var locationOptions = document.getElementById("location-options");
   var categorySelect = document.getElementById("category-filter");
   var typeSelect = document.getElementById("type-filter");
   var arrangementSelect = document.getElementById("arrangement-filter");
   var regionSelect = document.getElementById("region-filter");
   var flexibleCheckbox = document.getElementById("flexible-filter");
   var sortSelect = document.getElementById("sort-select");
-  var pillBar = document.getElementById("quick-pills");
-  var checkboxBox = document.getElementById("category-checkboxes");
+  var categoryList = document.getElementById("category-list");
   var bandButtons = document.querySelectorAll(".band-btn");
   var groupsBox = document.getElementById("job-groups");
   var loadingBox = document.getElementById("jobs-loading");
@@ -48,7 +47,7 @@
   var state = freshState();
 
   function freshState() {
-    return { category: "all", type: "all", arrangement: "all", region: "all", flexible: false, band: null, hidden: {}, loc: "" };
+    return { category: "all", type: "all", arrangement: "all", region: "all", flexible: false, band: null, loc: "" };
   }
 
   function toggleClasses(el, classes, on) {
@@ -81,7 +80,7 @@
       var el = document.getElementById(id);
       if (el) el.textContent = "—";
     });
-    if (checkboxBox) checkboxBox.innerHTML = '<p class="font-body-sm text-body-sm text-on-surface-variant p-2">Categories are unavailable right now.</p>';
+    if (categoryList) categoryList.innerHTML = '<li class="py-2 text-sm text-text-muted">Unavailable right now.</li>';
     resultsCount.textContent = "0";
     sectorCount.textContent = "0";
   }
@@ -89,7 +88,7 @@
   function showSnapshotNote(payload) {
     var note = document.getElementById("jobs-snapshot-note");
     var fromSnapshot = payload._hjSource && payload._hjSource !== SOURCES[0];
-    setFlexVisible(note, !!fromSnapshot);
+    if (note) note.classList.toggle("hidden", !fromSnapshot);
     var dateEl = document.getElementById("jobs-snapshot-date");
     if (!fromSnapshot || !dateEl) return;
     var when = payload.generated_at ? new Date(payload.generated_at) : null;
@@ -112,8 +111,10 @@
     showSnapshotNote(payload);
     renderStats();
     renderCategoryControls();
+    renderLocationOptions();
     var hadFilterParams = /[?&](q|loc|category|type|arrangement|region|flexible|band|work)=/.test(window.location.search);
     applyUrlParams();
+    if (locationInput) locationInput.value = state.loc;
     update();
 
     if (hadFilterParams && results) {
@@ -136,57 +137,43 @@
     if (pay) {
       if (/\/hr$/.test(label)) {
         pay.textContent = label.replace(/\/hr$/, "");
-        if (payLabel) payLabel.textContent = "Hourly Pay Range";
+        if (payLabel) payLabel.textContent = "Hourly pay";
       } else {
         pay.textContent = label || "Varies";
-        if (payLabel) payLabel.textContent = "Pay Range";
+        if (payLabel) payLabel.textContent = "Pay";
       }
     }
   }
 
+  function categoryLink(slug, name, count) {
+    return '<li><button class="category-link w-full flex items-center justify-between gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors" data-cat="' + esc(slug) + '" type="button">' +
+      "<span>" + esc(name) + '</span><span class="text-xs opacity-70">' + count + "</span></button></li>";
+  }
+
   function renderCategoryControls() {
-    categorySelect.innerHTML = '<option value="all">All Sectors (' + data.categories.length + ")</option>" +
+    categorySelect.innerHTML = '<option value="all">All sectors</option>' +
       data.categories.map(function (c) {
         return '<option value="' + esc(c.slug) + '">' + esc(c.name) + "</option>";
       }).join("");
 
-    var pills = '<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors" data-cat="all" type="button">All Roles (' + data.jobs.length + ")</button>";
-    data.categories.forEach(function (c) {
-      pills += '<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors" data-cat="' + esc(c.slug) + '" type="button">' +
-        esc(c.name) + (c.pay_label ? " (" + esc(c.pay_label) + ")" : "") + "</button>";
-    });
-    var hasFlexible = data.jobs.some(function (j) { return j.schedule === "flexible"; });
-    if (hasFlexible) {
-      pills += '<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors" data-flexible="1" type="button">Flexible Hours</button>';
-    }
-    pillBar.innerHTML = pills;
-    pillBar.querySelectorAll(".pill-btn").forEach(function (pill) {
-      pill.addEventListener("click", function () {
-        if (pill.hasAttribute("data-flexible")) {
-          state.flexible = !state.flexible;
-        } else {
-          state.category = pill.getAttribute("data-cat");
-          if (state.category === "all") state.flexible = false;
-        }
-        update();
-      });
-    });
-
-    if (checkboxBox) {
-      checkboxBox.innerHTML = data.categories.map(function (c) {
-        return '<label class="flex items-center justify-between p-2 rounded hover:bg-surface-container-low cursor-pointer group">' +
-          '<span class="flex items-center gap-space-sm"><input checked class="category-cb w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox" value="' + esc(c.slug) + '"/>' +
-          '<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">' + esc(c.name) + "</span></span>" +
-          '<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">' + c.count + "</span></label>";
-      }).join("");
-      checkboxBox.querySelectorAll(".category-cb").forEach(function (cb) {
-        cb.addEventListener("change", function () {
-          if (cb.checked) delete state.hidden[cb.value];
-          else state.hidden[cb.value] = true;
+    if (categoryList) {
+      categoryList.innerHTML = categoryLink("all", "All roles", data.jobs.length) +
+        data.categories.map(function (c) { return categoryLink(c.slug, c.name, c.count); }).join("");
+      categoryList.querySelectorAll(".category-link").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          state.category = btn.getAttribute("data-cat");
           update();
+          if (results && results.getBoundingClientRect().top < 0) results.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
     }
+  }
+
+  function renderLocationOptions() {
+    if (!locationOptions) return;
+    locationOptions.innerHTML = window.HJ.placeOptions(data.jobs).map(function (p) {
+      return '<option value="' + esc(p.label) + '">' + p.count + (p.count === 1 ? " role" : " roles") + "</option>";
+    }).join("");
   }
 
   /* ---------- Filtering ---------- */
@@ -194,7 +181,6 @@
   function matches(job, terms, useLoc) {
     if (useLoc && !window.HJ.placeMatches(job._place, state.loc)) return false;
     if (state.category !== "all" && job.category !== state.category) return false;
-    if (state.hidden[job.category]) return false;
     if (state.type !== "all" && job.employment_types.indexOf(state.type) === -1) return false;
     if (state.arrangement !== "all" && job.work_arrangement !== state.arrangement) return false;
     if (state.region !== "all" && job.applicant_region !== state.region) return false;
@@ -226,59 +212,45 @@
 
   /* ---------- Rendering ---------- */
 
-  function metaItem(icon, text) {
-    return '<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">' + esc(icon) + "</span>" + esc(text) + "</span>";
-  }
-
-  function jobCard(job) {
-    var badges = '<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">' + esc(job.ref_code) + "</span>";
-    if (job.employer_verified) {
-      badges += '<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded"><span class="material-symbols-outlined text-[14px]">verified</span>Verified employer</span>';
-    }
-    if (job.badge) {
-      badges += '<span class="font-label-sm text-label-sm text-secondary">' + esc(job.badge) + "</span>";
-    }
-
-    var meta = [];
-    if (job.pay_label) meta.push(metaItem("payments", job.pay_label));
-    if (job.skills) meta.push(metaItem(job.icon || "work", job.skills));
-    if (job.company_name) meta.push(metaItem("apartment", job.company_name));
-    if (job.location_text) {
-      meta.push(metaItem(job.applicant_region === "uk_europe" || job.applicant_region === "uk_only" ? "location_on" : "public", job.location_text));
-    } else if (ARRANGEMENT_LABELS[job.work_arrangement]) {
-      meta.push(metaItem("home_work", ARRANGEMENT_LABELS[job.work_arrangement]));
-    }
-    if (job.schedule_note) {
-      meta.push(metaItem("schedule", job.schedule_note));
-    } else {
+  function jobRow(job) {
+    var place = job.location_text || ARRANGEMENT_LABELS[job.work_arrangement] || "";
+    var schedule = job.schedule_note;
+    if (!schedule) {
       var parts = job.employment_types.map(function (t) { return EMPLOYMENT_LABELS[t] || t; });
       if (job.schedule === "flexible") parts.push("Flexible hours");
-      if (parts.length) meta.push(metaItem("schedule", parts.join(" / ")));
+      schedule = parts.join(" / ");
     }
+    var meta = [job.company_name, place, schedule, job.skills].filter(Boolean);
+    var flags = [];
+    if (job.employer_verified) flags.push('<span class="text-emerald-700 font-semibold">Verified employer</span>');
+    if (job.badge) flags.push('<span class="text-secondary font-semibold">' + esc(job.badge) + "</span>");
 
     var href = "apply.html?job=" + encodeURIComponent(job.id) + "&role=" + encodeURIComponent(job.title);
-    return '<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md">' +
-      '<div class="flex flex-col gap-space-xs min-w-0">' +
-      '<div class="flex flex-wrap items-center gap-space-xs">' + badges + "</div>" +
-      '<h3 class="font-title-md text-title-md text-primary font-bold">' + esc(job.title) + "</h3>" +
-      (job.description ? '<p class="font-body-sm text-body-sm text-on-surface-variant">' + esc(job.description) + "</p>" : "") +
-      '<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">' + meta.join("") + "</div>" +
+    return '<li class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-5 py-5 sm:px-6 hover:bg-slate-50/70 transition-colors">' +
+      '<div class="min-w-0">' +
+      '<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">' +
+      '<h3 class="text-base sm:text-lg font-bold text-primary"><a class="hover:text-secondary transition-colors" href="' + esc(href) + '">' + esc(job.title) + "</a></h3>" +
+      '<span class="text-xs text-text-subtle">' + esc(job.ref_code) + "</span>" +
+      (flags.length ? '<span class="text-xs">' + flags.join(' <span class="text-slate-300">·</span> ') + "</span>" : "") +
       "</div>" +
-      '<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="' + esc(href) + '">Apply Now</a>' +
-      "</article>";
+      (meta.length ? '<p class="mt-1 text-sm text-text-muted">' + meta.map(esc).join(' <span class="text-slate-300">·</span> ') + "</p>" : "") +
+      (job.description ? '<p class="mt-2 text-sm text-text-muted leading-relaxed">' + esc(job.description) + "</p>" : "") +
+      "</div>" +
+      '<div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0">' +
+      (job.pay_label ? '<span class="font-semibold text-primary whitespace-nowrap">' + esc(job.pay_label) + "</span>" : "") +
+      '<a class="inline-flex items-center justify-center px-4 py-2 rounded-md border border-slate-300 text-sm font-semibold text-primary hover:border-secondary hover:bg-secondary hover:text-white transition-colors" href="' + esc(href) + '">Apply</a>' +
+      "</div></li>";
   }
 
   function groupSection(category, jobs) {
-    return '<section class="job-category-group flex flex-col gap-space-md" data-category="' + esc(category.slug) + '">' +
-      '<div class="bg-surface-container-low p-space-md rounded-xl">' +
-      '<div class="flex flex-wrap items-center gap-space-sm">' +
-      '<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">' + esc(category.icon || "work") + "</span></span>" +
-      '<h2 class="font-headline-md text-xl sm:text-headline-md text-primary font-bold">' + esc(category.name) + "</h2>" +
-      (category.pay_label ? '<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-full">' + esc(category.pay_label.replace("/hr", "/Hr")) + "</span>" : "") +
+    var summary = jobs.length + (jobs.length === 1 ? " role" : " roles") + (category.pay_label ? " · " + category.pay_label : "");
+    return '<section class="job-category-group" data-category="' + esc(category.slug) + '">' +
+      '<div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">' +
+      '<h2 class="text-xl font-bold text-primary tracking-tight">' + esc(category.name) + "</h2>" +
+      '<span class="text-sm text-text-muted">' + esc(summary) + "</span>" +
       "</div>" +
-      (category.description ? '<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">' + esc(category.description) + "</p>" : "") +
-      "</div>" +
-      '<div class="job-list flex flex-col gap-space-sm">' + jobs.map(jobCard).join("") + "</div>" +
+      (category.description ? '<p class="mt-1 text-sm text-text-muted">' + esc(category.description) + "</p>" : "") +
+      '<ul class="job-list mt-4 divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white overflow-hidden">' + jobs.map(jobRow).join("") + "</ul>" +
       "</section>";
   }
 
@@ -289,23 +261,19 @@
     regionSelect.value = state.region;
     flexibleCheckbox.checked = state.flexible;
 
-    pillBar.querySelectorAll(".pill-btn").forEach(function (pill) {
-      var active = pill.hasAttribute("data-flexible") ? state.flexible : pill.getAttribute("data-cat") === state.category;
-      toggleClasses(pill, PILL_ACTIVE, active);
-      toggleClasses(pill, PILL_INACTIVE, !active);
-      pill.setAttribute("aria-pressed", active ? "true" : "false");
-    });
-
-    if (checkboxBox) {
-      checkboxBox.querySelectorAll(".category-cb").forEach(function (cb) {
-        cb.checked = !state.hidden[cb.value];
+    if (categoryList) {
+      categoryList.querySelectorAll(".category-link").forEach(function (btn) {
+        var active = btn.getAttribute("data-cat") === state.category;
+        toggleClasses(btn, LINK_ACTIVE, active);
+        toggleClasses(btn, LINK_INACTIVE, !active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
       });
     }
 
     bandButtons.forEach(function (btn) {
       var active = !!state.band && state.band[0] === Number(btn.getAttribute("data-min")) && state.band[1] === Number(btn.getAttribute("data-max"));
-      toggleClasses(btn, BAND_ACTIVE, active);
-      toggleClasses(btn, BAND_INACTIVE, !active);
+      toggleClasses(btn, LINK_ACTIVE, active);
+      toggleClasses(btn, LINK_INACTIVE, !active);
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
   }
@@ -335,9 +303,13 @@
       }
     }
 
-    var html = found.groups.map(function (g) { return groupSection(g.category, sortJobs(g.jobs)); }).join("");
+    groupsBox.innerHTML = found.groups.map(function (g) { return groupSection(g.category, sortJobs(g.jobs)); }).join("");
     var total = found.total;
     var sectors = found.groups.length;
+    resultsCount.textContent = total;
+    resultsNoun.textContent = total === 1 ? "role" : "roles";
+    sectorCount.textContent = sectors;
+    sectorNoun.textContent = sectors === 1 ? "sector" : "sectors";
 
     if (state.loc) {
       locationText.textContent = locMissed
@@ -346,18 +318,12 @@
     }
     setFlexVisible(locationNote, !!state.loc);
 
-    groupsBox.innerHTML = html;
-    resultsCount.textContent = total;
-    resultsNoun.textContent = total === 1 ? "Role" : "Roles";
-    sectorCount.textContent = sectors;
-    sectorNoun.textContent = sectors === 1 ? "Sector" : "Sectors";
-
     if (data.jobs.length === 0) {
       emptyTitle.textContent = "No open roles right now";
-      emptyText.textContent = "New roles are added regularly. Send us your CV and our team will match you with suitable openings.";
+      emptyText.textContent = "New roles are added regularly. Send us your CV and we'll match you with suitable openings.";
     } else {
       emptyTitle.textContent = "No roles match your filters";
-      emptyText.textContent = "Try a different keyword or filter, or send us your CV and our team will match you with suitable openings.";
+      emptyText.textContent = "Try a different keyword or filter, or send us your CV and we'll match you with suitable openings.";
     }
     setFlexVisible(emptyState, total === 0);
   }
@@ -399,8 +365,8 @@
   function applyUrlParams() {
     var params = new URLSearchParams(window.location.search);
     var q = (params.get("q") || "").trim();
-    var loc = (params.get("loc") || "").trim();
     if (q) searchInput.value = q.slice(0, 100);
+    state.loc = (params.get("loc") || "").trim().slice(0, 80);
 
     var category = resolveCategory((params.get("category") || "").toLowerCase());
     if (category) state.category = category;
@@ -422,12 +388,11 @@
       if (legacy.arrangement) state.arrangement = legacy.arrangement;
       if (legacy.flexible) state.flexible = true;
     }
-
-    state.loc = loc.slice(0, 80);
   }
 
   function resetFilters() {
     searchInput.value = "";
+    if (locationInput) locationInput.value = "";
     state = freshState();
     sortSelect.value = "newest";
     update();
@@ -437,10 +402,22 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (locationInput) state.loc = locationInput.value.trim().slice(0, 80);
     update();
     if (results) results.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   searchInput.addEventListener("input", update);
+  if (locationInput) {
+    // Picking a suggestion (or clearing the box) applies straight away; free typing waits for Search.
+    locationInput.addEventListener("input", function () {
+      var value = locationInput.value.trim();
+      var picked = locationOptions && Array.prototype.some.call(locationOptions.options, function (o) { return o.value === value; });
+      if (picked || value === "") {
+        state.loc = value;
+        update();
+      }
+    });
+  }
   categorySelect.addEventListener("change", function () { state.category = categorySelect.value; update(); });
   typeSelect.addEventListener("change", function () { state.type = typeSelect.value; update(); });
   arrangementSelect.addEventListener("change", function () { state.arrangement = arrangementSelect.value; update(); });
@@ -461,7 +438,11 @@
     btn.addEventListener("click", resetFilters);
   });
 
-  if (locationClear) locationClear.addEventListener("click", function () { state.loc = ""; update(); });
+  if (locationClear) locationClear.addEventListener("click", function () {
+    state.loc = "";
+    if (locationInput) locationInput.value = "";
+    update();
+  });
   if (retryButton) retryButton.addEventListener("click", load);
 
   load();
