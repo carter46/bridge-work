@@ -1,5 +1,12 @@
 Options -Indexes
 
+# Public data files are rewritten when an admin saves; never serve a stale copy.
+<IfModule mod_headers.c>
+    <FilesMatch "\.json$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
 # Hidden files (.git, .env, .gitignore) and server-only file types
 <FilesMatch "(^\.|\.(md|sql|log|key|tmp|lock|dist)$|^composer\.(json|lock)$)">
     <IfModule mod_authz_core.c>

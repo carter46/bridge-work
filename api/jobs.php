@@ -27,5 +27,6 @@ if ($limit > 0) {
     $payload['jobs'] = array_slice($payload['jobs'], 0, min($limit, 100));
 }
 
-header('Cache-Control: public, max-age=60');
+// Admin changes must show on the next page load, so browsers and proxies always revalidate.
+header('Cache-Control: no-cache, must-revalidate');
 hj_json($payload);

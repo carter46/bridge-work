@@ -5,6 +5,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Hubjob Platform — Connecting Ambitious People with Global Opportunities</title>
 <meta content="Hubjob Platform helps talent worldwide find remote and in-demand jobs with international employers across the UK and beyond." name="description"/>
+<script>document.documentElement.classList.add("js");</script>
+<link as="image" href="assets/images/hero-bg.jpg" rel="preload"/>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
@@ -19,7 +21,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css" rel="stylesheet"/>
+<link href="assets/css/site.css?v=2" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <script src="assets/js/tailwind-config.js"></script>
 </head>
@@ -32,6 +34,7 @@
 <img alt="Hubjob Platform" class="h-9 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/>
 </a>
 <nav aria-label="Main" class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px]">
+<a aria-current="page" class="font-semibold text-secondary" href="index.html">Home</a>
 <a class="text-text-muted hover:text-primary transition-colors" href="jobs.html">Find Jobs</a>
 <a class="text-text-muted hover:text-primary transition-colors" href="about.html">About Us</a>
 <a class="text-text-muted hover:text-primary transition-colors" href="index.html#how-it-works">How It Works</a>
@@ -48,6 +51,7 @@
 </div>
 <div class="md:hidden hidden border-t border-surface-border bg-white" id="mobile-menu">
 <nav aria-label="Mobile" class="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex flex-col text-[15px]">
+<a aria-current="page" class="py-3 border-b border-slate-100 font-semibold text-secondary" href="index.html">Home</a>
 <a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="jobs.html">Find Jobs</a>
 <a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="about.html">About Us</a>
 <a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="index.html#how-it-works">How It Works</a>
@@ -60,9 +64,11 @@
 
 <main class="w-full">
 
-<!-- 1. Hero: search-first -->
-<section class="w-full bg-[#0b1324] text-white pt-14 pb-16 sm:pt-16 sm:pb-20 md:pt-24 md:pb-28">
-<div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+<!-- 1. Hero: search-first, fills the screen; photo behind a navy overlay -->
+<section class="hero-fullscreen relative w-full flex items-center text-white overflow-hidden">
+<div aria-hidden="true" class="absolute inset-0 bg-[#0b1324]/80"></div>
+<div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#0b1324]/40 via-transparent to-[#0b1324]/70"></div>
+<div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
 <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4">
 Connecting Ambitious People with Global Opportunities
 </h1>
@@ -123,44 +129,76 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 
 <!-- 3. Explore jobs by category (home.js refreshes these from the database; the tiles below are the fallback) -->
 <section class="w-full py-14 md:py-20 bg-surface-muted border-b border-surface-border" id="categories">
-<div class="max-w-4xl mx-auto px-4 sm:px-6">
-<div class="mb-8 md:mb-10">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<div class="reveal mb-8 md:mb-10">
 <h2 class="text-2xl font-bold tracking-tight text-primary">Explore Jobs by Category</h2>
 <p class="text-sm text-text-muted mt-1">Specialized career paths supported through the Hubjob network.</p>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7 md:gap-y-8" id="category-tiles">
-<a class="group block" href="jobs.html?category=tech">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Tech &amp; Development <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Build and test the websites, apps and tools that modern businesses run on.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-5" id="category-tiles">
+<div class="reveal h-full" style="--reveal-delay:0ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=tech">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">terminal</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Tech &amp; Development</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Build and test the websites, apps and tools that modern businesses run on.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="group block" href="jobs.html?category=support">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Customer &amp; Technical Support <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Help customers and clients solve problems, from first contact to technical troubleshooting.</p>
+</div>
+<div class="reveal h-full" style="--reveal-delay:80ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=support">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">support_agent</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Customer &amp; Technical Support</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Help customers and clients solve problems, from first contact to technical troubleshooting.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="group block" href="jobs.html?category=operations">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Admin &amp; Operations <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Keep businesses running smoothly with remote administration, data and coordination roles.</p>
+</div>
+<div class="reveal h-full" style="--reveal-delay:160ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=operations">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">inventory_2</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Admin &amp; Operations</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Keep businesses running smoothly with remote administration, data and coordination roles.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="group block" href="jobs.html?category=marketing">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Marketing &amp; Content <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Help brands grow through social media, writing, email and search.</p>
+</div>
+<div class="reveal h-full" style="--reveal-delay:240ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=marketing">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">campaign</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Marketing &amp; Content</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Help brands grow through social media, writing, email and search.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="group block" href="jobs.html?category=media">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Video &amp; Motion <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Edit, animate and produce video content for brands and creators.</p>
+</div>
+<div class="reveal h-full" style="--reveal-delay:0ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=media">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">movie</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Video &amp; Motion</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Edit, animate and produce video content for brands and creators.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="group block" href="jobs.html?category=sales">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Sales &amp; Business Development <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Work with global brands to win new clients, build partnerships and grow revenue.</p>
+</div>
+<div class="reveal h-full" style="--reveal-delay:80ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=sales">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">trending_up</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Sales &amp; Business Development</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Work with global brands to win new clients, build partnerships and grow revenue.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="group block" href="jobs.html?category=design">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Design &amp; Creative <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Shape the visual identity of global brands through graphic, product and brand design.</p>
+</div>
+<div class="reveal h-full" style="--reveal-delay:160ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=design">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">palette</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Design &amp; Creative</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Shape the visual identity of global brands through graphic, product and brand design.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
-<a class="group block" href="jobs.html?category=education">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Education &amp; Training <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Empower learners worldwide through online tutoring, coaching and course production.</p>
+</div>
+<div class="reveal h-full" style="--reveal-delay:240ms">
+<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=education">
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">school</span></span>
+<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Education &amp; Training</h3>
+<p class="mt-2 text-sm leading-relaxed text-text-muted">Empower learners worldwide through online tutoring, coaching and course production.</p>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
 </a>
+</div>
 </div>
 </div>
 </section>
@@ -339,8 +377,8 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 <span class="hidden sm:inline">Submit Your Details with CV</span>
 </a>
 
-<script src="assets/js/site.js"></script>
-<script src="assets/js/settings.js"></script>
-<script src="assets/js/home.js"></script>
+<script src="assets/js/site.js?v=2"></script>
+<script src="assets/js/settings.js?v=2"></script>
+<script src="assets/js/home.js?v=2"></script>
 </body>
 </html>

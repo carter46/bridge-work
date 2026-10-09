@@ -28,6 +28,35 @@ body {
   display: none;
 }
 
+/* ===== Homepage hero: fills the screen below the 4rem sticky header ===== */
+.hero-fullscreen {
+  min-height: calc(100vh - 4rem);
+  min-height: calc(100svh - 4rem);
+  background-color: #0b1324;
+  background-image: url("../images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== Fade in on scroll (html.js is set in <head>, so content stays visible without JavaScript) ===== */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js .reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* ===== Floating apply button ===== */
 .floating-apply-btn {
   opacity: 0;

@@ -28,6 +28,25 @@ window.HJ.fetchJson = function (urls, isValid) {
   return next();
 };
 
+// Fade in elements with class "reveal" as they scroll into view. Call again for content added later.
+window.HJ.observeReveal = (function () {
+  var observer = "IntersectionObserver" in window
+    ? new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -40px 0px", threshold: 0.1 })
+    : null;
+  return function (root) {
+    (root || document).querySelectorAll(".reveal:not(.is-revealed)").forEach(function (el) {
+      if (observer) observer.observe(el);
+      else el.classList.add("is-revealed");
+    });
+  };
+})();
+
 window.HJ.escape = function (value) {
   return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -90,6 +109,8 @@ window.HJ.escape = function (value) {
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
+
+  window.HJ.observeReveal();
 
   // Floating apply button: fades in after a delay, hides near the footer
   var floatingBtn = document.getElementById("floatingApplyBtn");

@@ -49,17 +49,23 @@
       "</div>";
   }
 
+  // Equal-size cards; the wrapper fades in on scroll, the card keeps its own hover effects.
   function renderTiles(data) {
     if (!tilesBox || !data.categories.length) return;
-    tilesBox.innerHTML = data.categories.map(function (c) {
-      return '<a class="group block" href="jobs.html?category=' + encodeURIComponent(c.slug) + '">' +
-        '<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">' + esc(c.name) +
-        ' <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>' +
-        (c.description ? '<p class="text-sm text-text-muted mt-1.5 leading-relaxed">' + esc(c.description) + "</p>" : "") +
-        '<p class="text-xs font-semibold text-secondary mt-2">' + c.count + (c.count === 1 ? " open role" : " open roles") +
-        (c.pay_label ? " · " + esc(c.pay_label) : "") + "</p>" +
-        "</a>";
+    tilesBox.innerHTML = data.categories.map(function (c, i) {
+      return '<div class="reveal h-full" style="--reveal-delay:' + (i % 4) * 80 + 'ms">' +
+        '<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=' + encodeURIComponent(c.slug) + '">' +
+        '<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white">' +
+        '<span class="material-symbols-outlined text-[24px]">' + esc(c.icon || "work") + "</span></span>" +
+        '<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">' + esc(c.name) + "</h3>" +
+        (c.description ? '<p class="mt-2 text-sm leading-relaxed text-text-muted">' + esc(c.description) + "</p>" : "") +
+        '<span class="mt-auto pt-5 flex items-center justify-between gap-2 text-sm font-semibold text-secondary">' +
+        "<span>" + c.count + (c.count === 1 ? " open role" : " open roles") +
+        (c.pay_label ? '<span class="font-medium text-text-muted"> · ' + esc(c.pay_label) + "</span>" : "") + "</span>" +
+        '<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>' +
+        "</a></div>";
     }).join("");
+    window.HJ.observeReveal(tilesBox);
   }
 
   window.HJ.fetchJson(SOURCES, function (d) {

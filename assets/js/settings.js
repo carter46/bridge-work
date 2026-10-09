@@ -5,13 +5,37 @@
  *                               any ?subject=… on an existing mailto: link is kept
  *   data-setting-src="key"   -> image source
  * The values already in the HTML stay in place if neither source can be loaded.
- * Reads the static snapshot first (fast, cacheable), then falls back to the API.
+ * Reads the live API first so admin changes show on the next page load; the static copy is the fallback.
+ * The site name written into the HTML ("Hubjob Platform") is replaced in page text and the tab title.
  */
 (function () {
-  var SOURCES = ["assets/data/site-settings.json", "api/settings.php"];
+  var SOURCES = ["api/settings.php", "assets/data/site-settings.json?v=" + Date.now()];
+  var HTML_SITE_NAME = "Hubjob Platform";
+
+  function renameSite(name) {
+    if (typeof name !== "string" || name === "" || name === HTML_SITE_NAME) return;
+    var swap = function (text) { return text.split(HTML_SITE_NAME).join(name); };
+    document.title = swap(document.title);
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var tag = node.parentNode && node.parentNode.nodeName;
+        if (tag === "SCRIPT" || tag === "STYLE" || tag === "NOSCRIPT") return NodeFilter.FILTER_REJECT;
+        return node.nodeValue.indexOf(HTML_SITE_NAME) !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+      }
+    });
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) { node.nodeValue = swap(node.nodeValue); });
+    document.querySelectorAll("[aria-label*='" + HTML_SITE_NAME + "'], [alt*='" + HTML_SITE_NAME + "']").forEach(function (el) {
+      ["aria-label", "alt"].forEach(function (attr) {
+        if (el.hasAttribute(attr)) el.setAttribute(attr, swap(el.getAttribute(attr)));
+      });
+    });
+  }
 
   function apply(settings) {
     window.HJ.settings = settings;
+    renameSite(settings.site_name);
 
     document.querySelectorAll("[data-setting]").forEach(function (el) {
       var value = settings[el.getAttribute("data-setting")];
