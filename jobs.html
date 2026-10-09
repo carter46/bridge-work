@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Jobs — Explore Open Roles | Hubjob Platform</title>
-<meta content="Explore flexible, high-paying remote roles across tech, operations, marketing, sales, design and education with verified employers worldwide." name="description"/>
+<meta content="Explore flexible, remote-friendly roles across tech, support, operations, marketing, video, sales, design and education. Transparent pay rates and no fees for job seekers." name="description"/>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
@@ -29,7 +29,7 @@
 <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-surface-border">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
 <a aria-label="Hubjob Platform home" class="flex items-center flex-shrink-0" href="index.html">
-<img alt="Hubjob Platform" class="h-9 w-auto object-contain" src="static/images/logo22.png"/>
+<img alt="Hubjob Platform" class="h-9 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/>
 </a>
 <nav aria-label="Main" class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px]">
 <a aria-current="page" class="font-semibold text-secondary" href="jobs.html">Find Jobs</a>
@@ -71,18 +71,18 @@
 </nav>
 <div class="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container rounded-full text-primary font-label-sm text-label-sm tracking-wider uppercase">
 <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-<span>Live Verified Opportunities • Remote &amp; Global</span>
+<span>Live Opportunities • Remote &amp; Global</span>
 </div>
 </div>
 <div class="max-w-3xl">
 <h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-primary mb-space-sm">Explore Open Roles &amp; Career Pathways</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Explore flexible, high-paying roles across industries — connecting you to trusted employers worldwide. Transparent pay rates, ethical placement, and zero talent fees.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Explore flexible roles across industries, with transparent pay rates, ethical placement and zero fees for job seekers.</p>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md mt-space-lg pt-space-lg border-t border-surface-container-high">
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary">30</span><span class="font-body-sm text-body-sm text-on-surface-variant">Verified Openings</span></div>
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-secondary">6</span><span class="font-body-sm text-body-sm text-on-surface-variant">Specialist Sectors</span></div>
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary">$15–$90</span><span class="font-body-sm text-body-sm text-on-surface-variant">Hourly Pay Range</span></div>
-<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary">&lt; 24h</span><span class="font-body-sm text-body-sm text-on-surface-variant">Application Review</span></div>
+<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary" id="stat-total">—</span><span class="font-body-sm text-body-sm text-on-surface-variant">Open Roles</span></div>
+<div class="flex flex-col"><span class="font-headline-md text-headline-md text-secondary" id="stat-sectors">—</span><span class="font-body-sm text-body-sm text-on-surface-variant">Specialist Sectors</span></div>
+<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary" id="stat-pay">—</span><span class="font-body-sm text-body-sm text-on-surface-variant" id="stat-pay-label">Hourly Pay Range</span></div>
+<div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary">&lt; <span data-setting="response_time_short">24h</span></span><span class="font-body-sm text-body-sm text-on-surface-variant">Application Review</span></div>
 </div>
 </div>
 </section>
@@ -90,7 +90,7 @@
 <!-- Search console -->
 <section class="w-full bg-surface-container-lowest shadow-sm py-space-lg">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col gap-space-md">
-<form class="bg-surface-container-low p-space-xs rounded-xl shadow-sm" id="job-search-form" role="search">
+<form class="bg-surface-container-low p-space-xs rounded-xl shadow-sm flex flex-col gap-space-xs" id="job-search-form" role="search">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-space-xs items-center">
 <div class="md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
 <span class="material-symbols-outlined text-outline">search</span>
@@ -101,23 +101,18 @@
 <span class="material-symbols-outlined text-outline">category</span>
 <label class="sr-only" for="category-filter">Sector</label>
 <select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="category-filter">
-<option value="all">All Sectors (6)</option>
-<option value="tech">Tech &amp; Development</option>
-<option value="operations">Operations &amp; Support</option>
-<option value="marketing">Marketing &amp; Content</option>
-<option value="sales">Sales &amp; Growth</option>
-<option value="design">Design &amp; Creative</option>
-<option value="education">Education &amp; Training</option>
+<option value="all">All Sectors</option>
 </select>
 </div>
 <div class="md:col-span-3 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
-<span class="material-symbols-outlined text-outline">public</span>
-<label class="sr-only" for="work-type-filter">Work type</label>
-<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="work-type-filter">
-<option value="all">All Work Types</option>
-<option value="worldwide">Remote — Worldwide</option>
-<option value="ukeu">Remote — UK &amp; Europe</option>
-<option value="flexible">Flexible / Part-Time</option>
+<span class="material-symbols-outlined text-outline">work_history</span>
+<label class="sr-only" for="type-filter">Job type</label>
+<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="type-filter">
+<option value="all">All Job Types</option>
+<option value="full_time">Full-time</option>
+<option value="part_time">Part-time</option>
+<option value="contract">Contract</option>
+<option value="temporary">Temporary</option>
 </select>
 </div>
 <div class="md:col-span-2">
@@ -126,17 +121,34 @@
 </button>
 </div>
 </div>
-</form>
-<div class="flex items-center gap-space-xs overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-1 pt-1 scrollbar-none" id="quick-pills">
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-primary text-on-primary" data-cat="all" type="button">All Roles (30)</button>
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-surface-container hover:bg-surface-container-high text-on-surface" data-cat="tech" type="button">Tech ($35–$90/hr)</button>
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-surface-container hover:bg-surface-container-high text-on-surface" data-cat="operations" type="button">Operations ($25–$55/hr)</button>
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-surface-container hover:bg-surface-container-high text-on-surface" data-cat="marketing" type="button">Marketing ($30–$65/hr)</button>
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-surface-container hover:bg-surface-container-high text-on-surface" data-cat="sales" type="button">Sales ($30–$75/hr)</button>
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-surface-container hover:bg-surface-container-high text-on-surface" data-cat="design" type="button">Design ($30–$70/hr)</button>
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-surface-container hover:bg-surface-container-high text-on-surface" data-cat="education" type="button">Education ($15–$35/hr)</button>
-<button class="pill-btn px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap transition-colors bg-surface-container hover:bg-surface-container-high text-on-surface" data-work="flexible" type="button">Flexible Hours</button>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-space-xs items-center">
+<div class="md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
+<span class="material-symbols-outlined text-outline">home_work</span>
+<label class="sr-only" for="arrangement-filter">Work arrangement</label>
+<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="arrangement-filter">
+<option value="all">Any Work Arrangement</option>
+<option value="remote">Remote</option>
+<option value="hybrid">Hybrid</option>
+<option value="onsite">On-site</option>
+</select>
 </div>
+<div class="md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg">
+<span class="material-symbols-outlined text-outline">public</span>
+<label class="sr-only" for="region-filter">Applicant location</label>
+<select class="w-full py-0 pl-0 border-0 bg-transparent font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer" id="region-filter">
+<option value="all">Any Applicant Location</option>
+<option value="worldwide">Open Worldwide</option>
+<option value="uk_europe">UK &amp; Europe</option>
+<option value="uk_only">UK Only</option>
+</select>
+</div>
+<label class="sm:col-span-2 md:col-span-4 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-3 rounded-lg cursor-pointer">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" id="flexible-filter" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Flexible hours only</span>
+</label>
+</div>
+</form>
+<div class="flex items-center gap-space-xs overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-1 pt-1 scrollbar-none" id="quick-pills"></div>
 </div>
 </section>
 
@@ -156,69 +168,47 @@
 </div>
 <fieldset class="flex flex-col gap-space-sm">
 <legend class="font-label-lg text-label-lg text-primary uppercase tracking-wide mb-space-sm">Category</legend>
-<div class="flex flex-col gap-space-xs">
-<label class="flex items-center justify-between p-2 rounded hover:bg-surface-container-low cursor-pointer group">
-<span class="flex items-center gap-space-sm"><input checked="" class="category-cb w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox" value="tech"/><span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Tech &amp; Development</span></span>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">5</span>
-</label>
-<label class="flex items-center justify-between p-2 rounded hover:bg-surface-container-low cursor-pointer group">
-<span class="flex items-center gap-space-sm"><input checked="" class="category-cb w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox" value="operations"/><span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Operations &amp; Support</span></span>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">5</span>
-</label>
-<label class="flex items-center justify-between p-2 rounded hover:bg-surface-container-low cursor-pointer group">
-<span class="flex items-center gap-space-sm"><input checked="" class="category-cb w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox" value="marketing"/><span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Marketing &amp; Content</span></span>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">5</span>
-</label>
-<label class="flex items-center justify-between p-2 rounded hover:bg-surface-container-low cursor-pointer group">
-<span class="flex items-center gap-space-sm"><input checked="" class="category-cb w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox" value="sales"/><span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Sales &amp; Growth</span></span>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">5</span>
-</label>
-<label class="flex items-center justify-between p-2 rounded hover:bg-surface-container-low cursor-pointer group">
-<span class="flex items-center gap-space-sm"><input checked="" class="category-cb w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox" value="design"/><span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Design &amp; Creative</span></span>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">5</span>
-</label>
-<label class="flex items-center justify-between p-2 rounded hover:bg-surface-container-low cursor-pointer group">
-<span class="flex items-center gap-space-sm"><input checked="" class="category-cb w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" type="checkbox" value="education"/><span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Education &amp; Training</span></span>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">5</span>
-</label>
+<div class="flex flex-col gap-space-xs" id="category-checkboxes">
+<p class="font-body-sm text-body-sm text-on-surface-variant p-2">Loading categories…</p>
 </div>
 </fieldset>
 <div class="flex flex-col gap-space-sm">
-<span class="font-label-lg text-label-lg text-primary uppercase tracking-wide">Compensation Band</span>
+<span class="font-label-lg text-label-lg text-primary uppercase tracking-wide">Hourly Pay (USD)</span>
 <div class="grid grid-cols-2 gap-space-xs font-body-sm text-body-sm">
 <button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="35" data-min="15" type="button">$15–$35 / hr</button>
 <button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="55" data-min="25" type="button">$25–$55 / hr</button>
 <button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="70" data-min="30" type="button">$30–$70 / hr</button>
 <button aria-pressed="false" class="band-btn p-2 text-left rounded transition-colors bg-surface-container-low hover:bg-surface-container text-on-surface" data-max="90" data-min="35" type="button">$35–$90 / hr+</button>
 </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pay bands match roles paid in US dollars (yearly and monthly pay converted to an hourly equivalent).</p>
 </div>
 <div class="flex flex-col gap-space-xs p-space-sm bg-surface-container rounded-lg">
 <span class="flex items-center gap-space-sm">
 <span class="material-symbols-outlined text-[18px] text-primary">verified</span>
-<span class="font-label-md text-label-md text-primary font-bold">Verified Direct Employers Only</span>
+<span class="font-label-md text-label-md text-primary font-bold">Look for the Verified badge</span>
 </span>
-<p class="font-body-sm text-body-sm text-on-surface-variant pl-[26px]">Every listing is checked for transparent rates and verified UK/Global entities.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-[26px]">Listings marked “Verified employer” have passed our legal, pay and compliance checks.</p>
 </div>
 </div>
 
 <div class="bg-primary text-on-primary p-space-lg rounded-xl shadow-md relative overflow-hidden flex flex-col gap-space-md">
 <div class="flex items-center gap-space-sm text-secondary-fixed">
-<span class="material-symbols-outlined text-[24px]">verified</span>
+<span class="material-symbols-outlined text-[24px]">support_agent</span>
 <span class="font-label-lg text-label-lg uppercase tracking-wide">Talent Advisory</span>
 </div>
 <div>
 <h3 class="font-headline-sm text-headline-sm text-on-primary mb-space-xs">Need Professional CV Guidance?</h3>
-<p class="font-body-md text-body-md text-inverse-primary">Our UK career team reviews candidate applications for free within 24 hours to maximize interview conversions.</p>
+<p class="font-body-md text-body-md text-inverse-primary">Our UK career team reviews candidate applications for free within <span data-setting="response_time">24 business hours</span> to maximise interview conversions.</p>
 </div>
 <a class="inline-flex items-center justify-center px-space-md py-3 bg-secondary hover:bg-secondary-container hover:text-on-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg transition-colors font-bold" href="apply.html">Upload CV for Fast Review</a>
 </div>
 
-<a class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors" href="tel:+441202958648">
+<a class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors" data-setting-href="phone_href" href="tel:+441202958648">
 <span class="flex items-center gap-space-sm">
 <span class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">support_agent</span></span>
 <span class="flex flex-col">
-<span class="font-label-md text-label-md text-primary font-bold">Bournemouth Placement Hub</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">+44 1202 958648</span>
+<span class="font-label-md text-label-md text-primary font-bold"><span data-setting="address_city">Bournemouth</span> Placement Hub</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" data-setting="contact_phone">+44 1202 958648</span>
 </span>
 </span>
 <span class="material-symbols-outlined text-[20px] text-primary">call</span>
@@ -230,8 +220,8 @@
 <div class="flex flex-col gap-space-sm">
 <div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
 <div class="flex flex-wrap items-baseline gap-x-space-sm gap-y-1">
-<span class="font-headline-sm text-headline-sm text-primary" role="status">Showing <span id="results-count">30</span> Verified <span id="results-noun">Roles</span></span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">across <span id="sector-count">6</span> <span id="sector-noun">Sectors</span></span>
+<span class="font-headline-sm text-headline-sm text-primary" role="status">Showing <span id="results-count">0</span> <span id="results-noun">Roles</span></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">across <span id="sector-count">0</span> <span id="sector-noun">Sectors</span></span>
 </div>
 <div class="flex items-center gap-space-xs">
 <label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="sort-select">Sort:</label>
@@ -243,458 +233,52 @@
 </div>
 <p class="hidden items-start gap-space-xs bg-surface-container p-space-sm rounded-lg font-body-sm text-body-sm text-primary" id="location-note">
 <span class="material-symbols-outlined text-[18px]">info</span>
-<span>Searching from “<span id="location-text"></span>”? Most roles below are fully remote and open to international candidates.</span>
+<span>Searching from “<span id="location-text"></span>”? Use the applicant location filter above to see roles open to candidates in your region.</span>
 </p>
 </div>
 
-<!-- Tech & Development -->
-<section class="job-category-group flex flex-col gap-space-md" data-category="tech">
-<div class="bg-surface-container-low p-space-md rounded-xl">
-<div class="flex flex-wrap items-center gap-space-sm">
-<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">terminal</span></span>
-<h2 class="font-headline-md text-xl sm:text-headline-md text-primary font-bold">Tech &amp; Development</h2>
-<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-full">$35–$90/Hr</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Develop websites, apps, and tools that empower modern businesses.</p>
-</div>
-<div class="job-list flex flex-col gap-space-sm">
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="90" data-min="35" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">TECH-01</span><span class="font-label-sm text-label-sm text-secondary">Posted Today</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Frontend Developer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$90/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">laptop_mac</span>Full-Stack / UI</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote Worldwide</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Frontend%20Developer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="85" data-min="40" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">TECH-02</span><span class="font-label-sm text-label-sm text-on-surface-variant">Verified Partner</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Backend Developer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$40–$85/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">cloud</span>Node / Python / Cloud</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Backend%20Developer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="90" data-min="45" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">TECH-03</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Full-Stack Developer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$45–$90/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">code</span>React / TypeScript / Go</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Full-Stack%20Developer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="50" data-min="35" data-work="ukeu">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">TECH-04</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Web Tester</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$50/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">bug_report</span>QA / Automated Testing</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span>Remote Europe / UK</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Web%20Tester">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="55" data-min="35" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">TECH-05</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Technical Support Specialist</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$55/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">lan</span>Tier 2 / Client Systems</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Technical%20Support%20Specialist">Apply Now</a>
-</article>
-</div>
-</section>
+<p class="hidden items-start gap-space-xs bg-amber-50 border border-amber-200 p-space-sm rounded-lg font-body-sm text-body-sm text-amber-900" id="jobs-snapshot-note" role="status">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Live listings are temporarily unavailable, so we're showing our saved list<span id="jobs-snapshot-date"></span>. You can still apply to any role below.</span>
+</p>
 
-<!-- Operations & Support -->
-<section class="job-category-group flex flex-col gap-space-md" data-category="operations">
-<div class="bg-surface-container-low p-space-md rounded-xl">
-<div class="flex flex-wrap items-center gap-space-sm">
-<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">inventory_2</span></span>
-<h2 class="font-headline-md text-xl sm:text-headline-md text-primary font-bold">Operations &amp; Support</h2>
-<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-full">$25–$55/Hr</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Empower businesses with essential remote operations and support services.</p>
-</div>
-<div class="job-list flex flex-col gap-space-sm">
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="35" data-min="25" data-work="worldwide flexible">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">OPS-01</span><span class="font-label-sm text-label-sm text-secondary">High Volume</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Data Entry Clerk</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$25–$35/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">description</span>Operations &amp; Admin</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span>Full-Time / Part-Time</span>
+<!-- Listings are rendered here from api/jobs.php (or assets/data/jobs-snapshot.json if the API is unreachable). -->
+<div class="flex flex-col gap-8 md:gap-space-xl" id="job-groups" aria-live="polite">
+<div class="flex flex-col gap-space-sm" id="jobs-loading">
+<div class="h-20 rounded-xl bg-surface-container-low animate-pulse"></div>
+<div class="h-24 rounded-xl bg-surface-container-lowest shadow-sm animate-pulse"></div>
+<div class="h-24 rounded-xl bg-surface-container-lowest shadow-sm animate-pulse"></div>
+<div class="h-24 rounded-xl bg-surface-container-lowest shadow-sm animate-pulse"></div>
+<span class="sr-only">Loading open roles…</span>
 </div>
 </div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Data%20Entry%20Clerk">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="50" data-min="30" data-work="ukeu">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">OPS-02</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Executive Assistant</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$30–$50/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">badge</span>Executive Liaison</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span>Remote UK / Europe</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Executive%20Assistant">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="52" data-min="32" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">OPS-03</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Operations Coordinator</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$32–$52/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">account_tree</span>Workflow &amp; Logistics</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Operations%20Coordinator">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="40" data-min="25" data-work="worldwide flexible">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">OPS-04</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Customer Support Agent</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$25–$40/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">translate</span>Multilingual Support</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span>Flexible Shift</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Customer%20Support%20Agent">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="45" data-min="25" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">OPS-05</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Virtual Assistant</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$25–$45/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">assistant</span>Digital Coordination</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Virtual%20Assistant">Apply Now</a>
-</article>
-</div>
-</section>
 
-<!-- Marketing & Content -->
-<section class="job-category-group flex flex-col gap-space-md" data-category="marketing">
-<div class="bg-surface-container-low p-space-md rounded-xl">
-<div class="flex flex-wrap items-center gap-space-sm">
-<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">campaign</span></span>
-<h2 class="font-headline-md text-xl sm:text-headline-md text-primary font-bold">Marketing &amp; Content</h2>
-<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-full">$30–$65/Hr</span>
+<noscript>
+<div class="flex flex-col items-center text-center py-12 px-4 bg-surface-container-lowest rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-[48px] text-outline mb-2">code_off</span>
+<h3 class="font-title-md text-title-md text-primary mb-1">Turn on JavaScript to browse roles</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">Our job listings need JavaScript. You can still send us your CV and our team will match you with suitable openings.</p>
+<a class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg" href="apply.html">Submit Your CV</a>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Help brands grow through creativity, communication, and strategy.</p>
-</div>
-<div class="job-list flex flex-col gap-space-sm">
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="55" data-min="30" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">MKT-01</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Social Media Manager</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$30–$55/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">share</span>Brand &amp; Growth</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Social%20Media%20Manager">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="60" data-min="32" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">MKT-02</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Content Writer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$32–$60/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">edit_note</span>Editorial &amp; Copy</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote Worldwide</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Content%20Writer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="48" data-min="30" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">MKT-03</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Email Marketing Assistant</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$30–$48/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">mail</span>Automation &amp; Lifecycle</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Email%20Marketing%20Assistant">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="65" data-min="35" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">MKT-04</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">SEO Specialist</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$65/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">troubleshoot</span>Technical SEO &amp; Traffic</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=SEO%20Specialist">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="60" data-min="35" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">MKT-05</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Video Editor</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$60/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">movie</span>Motion &amp; Post-Production</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Video%20Editor">Apply Now</a>
-</article>
-</div>
-</section>
+</noscript>
 
-<!-- Sales & Growth -->
-<section class="job-category-group flex flex-col gap-space-md" data-category="sales">
-<div class="bg-surface-container-low p-space-md rounded-xl">
-<div class="flex flex-wrap items-center gap-space-sm">
-<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">trending_up</span></span>
-<h2 class="font-headline-md text-xl sm:text-headline-md text-primary font-bold">Sales &amp; Growth</h2>
-<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-full">$30–$75/Hr</span>
+<div class="hidden flex-col items-center text-center py-12 px-4 bg-surface-container-lowest rounded-xl shadow-sm" id="jobs-error" role="alert">
+<span class="material-symbols-outlined text-[48px] text-error mb-2">cloud_off</span>
+<h3 class="font-title-md text-title-md text-primary mb-1">We couldn’t load the job listings</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">Please check your connection and try again. You can also send us your CV and our team will match you with suitable openings.</p>
+<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+<button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-surface-container text-primary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" id="jobs-retry" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>Try Again
+</button>
+<a class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-hover font-label-lg text-label-lg transition-colors" href="apply.html">Send Us Your CV Anyway</a>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Work with global brands to drive customer engagement and increase revenue.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-6">Or contact us: <a class="underline hover:text-primary" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a> · <a class="underline hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
 </div>
-<div class="job-list flex flex-col gap-space-sm">
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="65" data-min="30" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">SLS-01</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Sales Representative</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$30–$65/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">handshake</span>B2B Client Acquisition</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Sales%20Representative">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="50" data-min="30" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">SLS-02</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Lead Generator</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$30–$50/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">contact_mail</span>Outbound Prospecting</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Lead%20Generator">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="70" data-min="35" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">SLS-03</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Business Development Rep</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$70/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">corporate_fare</span>Enterprise Corridors</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Business%20Development%20Rep">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="68" data-min="35" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">SLS-04</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Affiliate Manager</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$68/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">hub</span>Partnership Network</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Affiliate%20Manager">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="75" data-min="40" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">SLS-05</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Account Executive</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$40–$75/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">supervised_user_circle</span>Client Management</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Account%20Executive">Apply Now</a>
-</article>
-</div>
-</section>
-
-<!-- Design & Creative -->
-<section class="job-category-group flex flex-col gap-space-md" data-category="design">
-<div class="bg-surface-container-low p-space-md rounded-xl">
-<div class="flex flex-wrap items-center gap-space-sm">
-<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">palette</span></span>
-<h2 class="font-headline-md text-xl sm:text-headline-md text-primary font-bold">Design &amp; Creative</h2>
-<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-full">$30–$70/Hr</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Shape the visual identity of global brands through creative design.</p>
-</div>
-<div class="job-list flex flex-col gap-space-sm">
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="55" data-min="30" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">DES-01</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Graphic Designer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$30–$55/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">brush</span>Visual Identity</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Graphic%20Designer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="70" data-min="38" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">DES-02</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">UI/UX Designer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$38–$70/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">devices</span>Product &amp; Web Interface</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=UI%2FUX%20Designer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="55" data-min="32" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">DES-03</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Presentation Designer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$32–$55/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">slideshow</span>Corporate Pitch Decks</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Presentation%20Designer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="65" data-min="35" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">DES-04</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Brand Designer</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$35–$65/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">draw</span>Typography &amp; Systems</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Brand%20Designer">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="70" data-min="38" data-work="worldwide">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">DES-05</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Motion Graphics Artist</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$38–$70/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">animation</span>2D/3D Animation</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Motion%20Graphics%20Artist">Apply Now</a>
-</article>
-</div>
-</section>
-
-<!-- Education & Training -->
-<section class="job-category-group flex flex-col gap-space-md" data-category="education">
-<div class="bg-surface-container-low p-space-md rounded-xl">
-<div class="flex flex-wrap items-center gap-space-sm">
-<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">school</span></span>
-<h2 class="font-headline-md text-xl sm:text-headline-md text-primary font-bold">Education &amp; Training</h2>
-<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm rounded-full">$15–$35/Hr</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Empower learners worldwide through flexible online education roles.</p>
-</div>
-<div class="job-list flex flex-col gap-space-sm">
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="35" data-min="18" data-work="worldwide flexible">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">EDU-01</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Online Tutor</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$18–$35/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">menu_book</span>Academic &amp; Test Prep</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Online%20Tutor">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="30" data-min="18" data-work="worldwide flexible">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">EDU-02</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Course Content Assistant</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$18–$30/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">auto_stories</span>Curriculum Production</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Course%20Content%20Assistant">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="35" data-min="22" data-work="worldwide flexible">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">EDU-03</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">eLearning Coordinator</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$22–$35/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">cast_for_education</span>LMS &amp; Digital Learning</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=eLearning%20Coordinator">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="35" data-min="20" data-work="worldwide flexible">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">EDU-04</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Language Coach</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$20–$35/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">record_voice_over</span>ESL &amp; Business English</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Language%20Coach">Apply Now</a>
-</article>
-<article class="job-item bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-space-md" data-max="28" data-min="15" data-work="worldwide flexible">
-<div class="flex flex-col gap-space-xs min-w-0">
-<div class="flex flex-wrap items-center gap-space-xs"><span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary rounded">EDU-05</span></div>
-<h3 class="font-title-md text-title-md text-primary font-bold">Academic Proofreader</h3>
-<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">payments</span>$15–$28/hr</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">spellcheck</span>Editorial Review</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">public</span>Remote</span>
-</div>
-</div>
-<a class="w-full md:w-auto flex-shrink-0 inline-flex justify-center px-space-md py-2.5 bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-lg text-label-lg rounded-lg transition-colors font-bold shadow-sm" href="apply.html?role=Academic%20Proofreader">Apply Now</a>
-</article>
-</div>
-</section>
 
 <div class="hidden flex-col items-center text-center py-12 px-4 bg-surface-container-lowest rounded-xl shadow-sm" id="jobs-empty">
 <span class="material-symbols-outlined text-[48px] text-outline mb-2">work_off</span>
-<h3 class="font-title-md text-title-md text-primary mb-1">No roles match your filters</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">Try a different keyword or sector — or send us your CV and our team will match you with suitable openings.</p>
+<h3 class="font-title-md text-title-md text-primary mb-1" id="jobs-empty-title">No roles match your filters</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md" id="jobs-empty-text">Try a different keyword or sector, or send us your CV and our team will match you with suitable openings.</p>
 <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
 <button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-surface-container text-primary font-label-lg text-label-lg hover:bg-surface-container-high transition-colors" data-reset-filters="" type="button">
 <span class="material-symbols-outlined text-[18px]">restart_alt</span>Reset Filters
@@ -735,12 +319,12 @@
 <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10 md:mb-12">
 <div class="col-span-2 md:col-span-1">
-<a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" src="static/images/logo22.png"/></a>
+<a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/></a>
 <p class="text-xs text-text-muted leading-relaxed mb-4">A career and job discovery platform connecting talent with organisations across the United Kingdom and globally.</p>
 <div class="text-xs text-text-muted space-y-1.5">
-<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" href="tel:+441202958648">+44 1202 958648</a></p>
+<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span data-setting="address_full">42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
 </div>
 </div>
 <div>
@@ -757,7 +341,7 @@
 <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Job Seekers</h4>
 <ul class="space-y-2 text-text-muted text-sm md:text-xs">
 <li><a class="hover:text-primary transition-colors" href="index.html#categories">Browse Categories</a></li>
-<li><a class="hover:text-primary transition-colors" href="jobs.html?work=remote">Remote Opportunities</a></li>
+<li><a class="hover:text-primary transition-colors" href="jobs.html?arrangement=remote">Remote Opportunities</a></li>
 <li><a class="hover:text-primary transition-colors" href="apply.html">Upload CV</a></li>
 <li><a class="hover:text-primary transition-colors" href="index.html#how-it-works">How It Works</a></li>
 </ul>
@@ -765,16 +349,17 @@
 <div>
 <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Employers</h4>
 <ul class="space-y-2 text-text-muted text-sm md:text-xs">
-<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">Post a Job</a></li>
-<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Talent%20Search">Search Talent</a></li>
+<li><a class="hover:text-primary transition-colors" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">Post a Job</a></li>
+<li><a class="hover:text-primary transition-colors" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Talent%20Search">Search Talent</a></li>
 <li><a class="hover:text-primary transition-colors" href="about.html#global-reach">Hiring Solutions</a></li>
 <li><a class="hover:text-primary transition-colors" href="contact.html">Contact Support</a></li>
 </ul>
 </div>
 </div>
 <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-text-subtle gap-4 text-center">
-<p>© <span data-year>2025</span> Hubjob Platform. All Rights Reserved.</p>
+<p>© <span data-year>2025</span> <span data-setting="copyright_name">Hubjob Platform</span>. All Rights Reserved.</p>
 <div class="flex items-center gap-6">
+<a class="hover:text-slate-600 transition-colors" href="privacy.html">Privacy</a>
 <a class="hover:text-slate-600 transition-colors" href="faq.html">FAQ</a>
 <a class="hover:text-slate-600 transition-colors" href="contact.html">Contact</a>
 <a class="hover:text-slate-600 transition-colors" href="apply.html">Apply</a>
@@ -784,6 +369,7 @@
 </footer>
 
 <script src="assets/js/site.js"></script>
+<script src="assets/js/settings.js"></script>
 <script src="assets/js/jobs.js"></script>
 </body>
 </html>

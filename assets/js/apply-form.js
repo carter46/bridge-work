@@ -256,37 +256,127 @@
   });
   phonePicker.select(ukCountry);
 
-  // Nationality picker
-  var nationalityInput = document.getElementById("nationality");
-  var nationalityCode = document.getElementById("nationality-code");
-  var nationalityError = document.getElementById("nationality-error");
+  // Country of residence picker
+  var residenceInput = document.getElementById("residence");
+  var residenceCode = document.getElementById("residence-code");
+  var residenceError = document.getElementById("residence-error");
 
-  function clearNationalityError() {
-    nationalityError.classList.add("hidden");
-    nationalityInput.setCustomValidity("");
-    nationalityInput.classList.remove("error");
+  function clearResidenceError() {
+    residenceError.classList.add("hidden");
+    residenceInput.setCustomValidity("");
+    residenceInput.classList.remove("error");
   }
 
-  var nationalityPicker = createCountryPicker({
-    inputId: "nationality",
-    flagId: "nationality-flag-display",
-    dropdownId: "nationality-dropdown",
-    searchId: "nationality-search",
-    listId: "nationality-options",
+  var residencePicker = createCountryPicker({
+    inputId: "residence",
+    flagId: "residence-flag-display",
+    dropdownId: "residence-dropdown",
+    searchId: "residence-search",
+    listId: "residence-options",
     labelFor: function (c) { return c.name; },
     valueFor: function (c) { return c.name; },
     onSelect: function (c) {
-      nationalityCode.value = c.code;
-      clearNationalityError();
+      residenceCode.value = c.code;
+      clearResidenceError();
     }
   });
 
-  nationalityInput.addEventListener("click", clearNationalityError);
+  residenceInput.addEventListener("click", clearResidenceError);
 
-  // Role of interest, pre-filled from "Apply" links (?role=...)
+  // Role and job, pre-filled from "Apply" links (?job=ID&role=Title)
+  var params = new URLSearchParams(window.location.search);
   var roleInput = document.getElementById("role");
-  var roleParam = new URLSearchParams(window.location.search).get("role");
+  var jobIdInput = form.querySelector('input[name="job_id"]');
+  var roleParam = params.get("role");
+  var jobParam = params.get("job");
   if (roleInput && roleParam) roleInput.value = roleParam.slice(0, 120);
+
+  function showJobContext(job) {
+    var box = document.getElementById("job-context");
+    if (!box) return;
+    document.getElementById("job-context-title").textContent = job.title;
+    document.getElementById("job-context-ref").textContent = job.ref_code ? "(Ref " + job.ref_code + ")" : "";
+    box.classList.remove("hidden");
+    box.classList.add("flex");
+  }
+
+  var validJobParam = jobParam && /^\d{1,9}$/.test(jobParam);
+  if (jobIdInput && (validJobParam || roleParam)) {
+    window.HJ.fetchJson(["api/jobs.php", "assets/data/jobs-snapshot.json"], function (d) {
+      return d && Array.isArray(d.jobs);
+    }).then(function (data) {
+      var job = null;
+      var wantedTitle = (roleParam || "").trim().toLowerCase();
+      data.jobs.forEach(function (j) {
+        if (validJobParam ? String(j.id) === jobParam : String(j.title).toLowerCase() === wantedTitle) job = job || j;
+      });
+      if (!job) return;
+      jobIdInput.value = String(job.id);
+      if (roleInput && !roleInput.value) roleInput.value = job.title.slice(0, 120);
+      showJobContext(job);
+    }, function () { /* the role text from the link is still submitted */ });
+  }
+
+  // Campaign tracking captured by site.js on the landing page
+  try {
+    var utm = JSON.parse(sessionStorage.getItem("hj_utm") || "{}");
+    Object.keys(utm).forEach(function (key) {
+      var field = form.querySelector('input[type="hidden"][name="' + key + '"]');
+      if (field && typeof utm[key] === "string") field.value = utm[key].slice(0, 255);
+    });
+  } catch (e) { /* storage blocked: tracking is optional */ }
+
+  // Spam timing token
+  var tokenInput = form.querySelector('input[name="form_token"]');
+
+  function loadToken() {
+    return fetch("api/form-token.php", { cache: "no-store", credentials: "same-origin" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d && d.token && tokenInput) tokenInput.value = d.token; })
+      .catch(function () { /* the server will ask the applicant to reload */ });
+  }
+  loadToken();
+
+  // Optional captcha, enabled from the admin settings
+  var captchaBox = document.getElementById("captcha-box");
+  var captchaProvider = "none";
+  var captchaLoaded = false;
+
+  function loadCaptcha(settings) {
+    if (captchaLoaded || !captchaBox || !settings) return;
+    var provider = settings.captcha_provider;
+    var siteKey = settings.captcha_site_key;
+    if ((provider !== "turnstile" && provider !== "recaptcha") || !siteKey) return;
+    captchaLoaded = true;
+    captchaProvider = provider;
+    var widget = document.createElement("div");
+    widget.className = provider === "turnstile" ? "cf-turnstile" : "g-recaptcha";
+    widget.setAttribute("data-sitekey", siteKey);
+    captchaBox.appendChild(widget);
+    captchaBox.classList.remove("hidden");
+    var script = document.createElement("script");
+    script.src = provider === "turnstile"
+      ? "https://challenges.cloudflare.com/turnstile/v0/api.js"
+      : "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
+  function resetCaptcha() {
+    try {
+      if (captchaProvider === "turnstile" && window.turnstile) window.turnstile.reset();
+      if (captchaProvider === "recaptcha" && window.grecaptcha) window.grecaptcha.reset();
+    } catch (e) { /* widget not ready */ }
+  }
+
+  if (window.HJ.settings) loadCaptcha(window.HJ.settings);
+  document.addEventListener("hj:settings", function (e) { loadCaptcha(e.detail); });
+
+  function contactEmail() {
+    var s = window.HJ.settings;
+    return s && s.contact_email ? s.contact_email : "info@hubjobplatform.com";
+  }
 
   // CV upload
   var uploadArea = document.getElementById("upload-area");
@@ -361,15 +451,15 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    if (!nationalityCode.value.trim()) {
-      nationalityError.classList.remove("hidden");
-      nationalityInput.setCustomValidity("Please select your nationality");
-      nationalityInput.classList.add("error");
-      nationalityInput.scrollIntoView({ behavior: "smooth", block: "center" });
-      nationalityInput.focus();
+    if (!residenceCode.value.trim()) {
+      residenceError.classList.remove("hidden");
+      residenceInput.setCustomValidity("Please select your country of residence");
+      residenceInput.classList.add("error");
+      residenceInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      residenceInput.focus();
       return;
     }
-    clearNationalityError();
+    clearResidenceError();
 
     var formData = new FormData(form);
     formData.set("phone", phoneCodeInput.value + " " + document.getElementById("phone").value);
@@ -377,7 +467,7 @@
     setSubmitting(true);
     showMessage("info", "Submitting your application...");
 
-    fetch("sendmail.php", { method: "POST", body: formData })
+    fetch(form.getAttribute("action") || "api/apply.php", { method: "POST", body: formData, credentials: "same-origin" })
       .then(function (response) {
         return response.json().catch(function () {
           throw new Error("Invalid response");
@@ -385,14 +475,21 @@
       })
       .then(function (data) {
         var success = data.status === "success";
-        var msg = showMessage(success ? "success" : "error", data.message ||
-          "An error occurred. Please try again or contact us directly.");
+        var text = data.message || "An error occurred. Please try again.";
+        if (!success && text.indexOf("@") === -1) {
+          text += " If the problem continues, email us at " + contactEmail() + ".";
+        }
+        var msg = showMessage(success ? "success" : "error", text);
 
         if (success) {
+          var keepJobId = jobIdInput ? jobIdInput.value : "";
+          var keepRole = roleInput ? roleInput.value : "";
           form.reset();
+          if (jobIdInput) jobIdInput.value = keepJobId;
+          if (roleInput && keepJobId) roleInput.value = keepRole;
           phonePicker.select(ukCountry);
-          nationalityPicker.clear();
-          nationalityCode.value = "";
+          residencePicker.clear();
+          residenceCode.value = "";
           showFileMessage("", false);
           msg.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
@@ -402,9 +499,12 @@
         }, 10000);
       })
       .catch(function () {
-        showMessage("error", "An error occurred. Please try again or contact us directly at info@hubjobplatform.com.");
+        showMessage("error", "An error occurred. Please try again or contact us directly at " + contactEmail() + ".");
       })
       .then(function () {
+        // Every attempt gets a fresh token and captcha so a retry is not rejected.
+        resetCaptcha();
+        loadToken();
         setSubmitting(false);
       });
   });

@@ -1,0 +1,32 @@
+# Admin-uploaded images (logo). Only images are served; nothing here can run as a script.
+Options -Indexes -ExecCGI
+RemoveHandler .php .phtml .phar .php3 .php4 .php5 .php7 .pht .cgi .pl .py
+RemoveType .php .phtml .phar .php3 .php4 .php5 .php7 .pht
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+
+<FilesMatch ".*">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+<FilesMatch "(?i)^[a-z0-9_-]+\.(png|jpe?g|webp)$">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Allow from all
+    </IfModule>
+</FilesMatch>
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>

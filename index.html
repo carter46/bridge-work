@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Hubjob Platform — Connecting Ambitious People with Global Opportunities</title>
-<meta content="Hubjob Platform helps talent worldwide find remote and in-demand jobs with verified international employers across the UK and beyond." name="description"/>
+<meta content="Hubjob Platform helps talent worldwide find remote and in-demand jobs with international employers across the UK and beyond." name="description"/>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17786385681"></script>
@@ -29,7 +29,7 @@
 <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-surface-border">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
 <a aria-label="Hubjob Platform home" class="flex items-center flex-shrink-0" href="index.html">
-<img alt="Hubjob Platform" class="h-9 w-auto object-contain" src="static/images/logo22.png"/>
+<img alt="Hubjob Platform" class="h-9 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/>
 </a>
 <nav aria-label="Main" class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px]">
 <a class="text-text-muted hover:text-primary transition-colors" href="jobs.html">Find Jobs</a>
@@ -67,7 +67,7 @@
 Connecting Ambitious People with Global Opportunities
 </h1>
 <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 font-normal">
-We help talents worldwide find remote &amp; in-demand jobs with top verified companies. Let us handle the process, so you can focus on growing your career.
+We help talents worldwide find remote &amp; in-demand jobs with trusted companies. Let us handle the process, so you can focus on growing your career.
 </p>
 <form action="jobs.html" class="bg-white rounded-lg p-2 shadow-lg text-text-main flex flex-col md:flex-row items-stretch gap-1 md:gap-2 border border-slate-200" method="get" role="search">
 <div class="flex-1 flex items-center px-3 py-2 gap-2.5">
@@ -95,114 +95,25 @@ We help talents worldwide find remote &amp; in-demand jobs with top verified com
 </div>
 </section>
 
-<!-- 2. Featured opportunities -->
+<!-- 2. Featured opportunities (rendered by home.js from jobs marked "Featured" in admin) -->
 <section class="w-full py-14 md:py-20 bg-white border-b border-surface-border">
 <div class="max-w-4xl mx-auto px-4 sm:px-6">
 <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 pb-4 border-b border-slate-100">
 <div>
 <h2 class="text-2xl font-bold tracking-tight text-primary">Featured Opportunities</h2>
-<p class="text-sm text-text-muted mt-1">Verified direct contracts and permanent roles added this week.</p>
+<p class="text-sm text-text-muted mt-1">Hand-picked roles from our current openings.</p>
 </div>
 <a class="text-sm font-medium text-secondary hover:text-secondary-hover mt-2 sm:mt-0 inline-flex items-center gap-1" href="jobs.html">Browse all jobs →</a>
 </div>
-<div class="divide-y divide-slate-200 border-t border-b border-slate-200">
-
-<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
-<div class="min-w-0 flex-1">
-<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Senior%20Frontend%20Engineer">Senior Frontend Engineer</a>
-<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
-<span class="font-medium text-slate-700">NexaTech Global</span><span aria-hidden="true">•</span>
-<span>Remote (Worldwide)</span><span aria-hidden="true">•</span>
-<span>$65,000 – $95,000/yr</span><span aria-hidden="true">•</span>
-<span>Full-Time</span>
+<div id="featured-jobs">
+<!-- Shown when there are no featured jobs, the data can't be loaded, or JavaScript is off. -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-xl border border-slate-200 bg-surface-muted" id="featured-fallback">
+<div>
+<h3 class="text-base font-bold text-slate-900">Explore every open role</h3>
+<p class="text-sm text-text-muted mt-1">Browse current openings across tech, support, operations, marketing, video, sales, design and education.</p>
 </div>
+<a class="inline-flex items-center justify-center px-5 py-2.5 bg-secondary hover:bg-secondary-hover text-white text-sm font-semibold rounded-md transition-colors shrink-0" href="jobs.html">View open roles</a>
 </div>
-<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
-<span class="text-xs text-text-subtle">Posted 2h ago</span>
-<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Senior%20Frontend%20Engineer">Apply →</a>
-</div>
-</div>
-
-<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
-<div class="min-w-0 flex-1">
-<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Global%20Operations%20Specialist">Global Operations Specialist</a>
-<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
-<span class="font-medium text-slate-700">Horizon Logistics UK</span><span aria-hidden="true">•</span>
-<span>London, UK (Hybrid)</span><span aria-hidden="true">•</span>
-<span>£38,000 – £48,000/yr</span><span aria-hidden="true">•</span>
-<span>Full-Time</span>
-</div>
-</div>
-<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
-<span class="text-xs text-text-subtle">Posted 5h ago</span>
-<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Global%20Operations%20Specialist">Apply →</a>
-</div>
-</div>
-
-<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
-<div class="min-w-0 flex-1">
-<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Growth%20Marketing%20Lead">Growth Marketing Lead</a>
-<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
-<span class="font-medium text-slate-700">Apex Media Group</span><span aria-hidden="true">•</span>
-<span>Remote (Europe/US)</span><span aria-hidden="true">•</span>
-<span>$70,000 – $100,000/yr</span><span aria-hidden="true">•</span>
-<span>Full-Time</span>
-</div>
-</div>
-<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
-<span class="text-xs text-text-subtle">Posted 1d ago</span>
-<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Growth%20Marketing%20Lead">Apply →</a>
-</div>
-</div>
-
-<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
-<div class="min-w-0 flex-1">
-<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Customer%20Success%20Manager">Customer Success Manager</a>
-<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
-<span class="font-medium text-slate-700">CloudScale Systems</span><span aria-hidden="true">•</span>
-<span>Remote</span><span aria-hidden="true">•</span>
-<span>$45,000 – $65,000/yr</span><span aria-hidden="true">•</span>
-<span>Full-Time</span>
-</div>
-</div>
-<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
-<span class="text-xs text-text-subtle">Posted 1d ago</span>
-<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Customer%20Success%20Manager">Apply →</a>
-</div>
-</div>
-
-<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
-<div class="min-w-0 flex-1">
-<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Product%20Designer%20(UI%2FUX)">Product Designer (UI/UX)</a>
-<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
-<span class="font-medium text-slate-700">FinFlow Labs</span><span aria-hidden="true">•</span>
-<span>Remote</span><span aria-hidden="true">•</span>
-<span>$40 – $75/hr</span><span aria-hidden="true">•</span>
-<span>Contract</span>
-</div>
-</div>
-<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
-<span class="text-xs text-text-subtle">Posted 2d ago</span>
-<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Product%20Designer%20(UI%2FUX)">Apply →</a>
-</div>
-</div>
-
-<div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/70 -mx-4 px-4 transition-colors">
-<div class="min-w-0 flex-1">
-<a class="text-base sm:text-lg font-bold text-slate-900 hover:text-secondary transition-colors" href="apply.html?role=Healthcare%20Support%20Coordinator">Healthcare Support Coordinator</a>
-<div class="mt-1 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-sm text-text-muted">
-<span class="font-medium text-slate-700">MedVance UK</span><span aria-hidden="true">•</span>
-<span>Bournemouth, UK</span><span aria-hidden="true">•</span>
-<span>£32,000 – £40,000/yr</span><span aria-hidden="true">•</span>
-<span>Full-Time</span>
-</div>
-</div>
-<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0">
-<span class="text-xs text-text-subtle">Posted 3d ago</span>
-<a class="text-sm font-semibold text-secondary hover:underline" href="apply.html?role=Healthcare%20Support%20Coordinator">Apply →</a>
-</div>
-</div>
-
 </div>
 <div class="mt-8 text-center sm:text-left">
 <a class="inline-flex items-center text-sm font-semibold text-slate-800 hover:text-secondary transition-colors" href="jobs.html">View all open positions <span class="ml-1.5">→</span></a>
@@ -210,37 +121,45 @@ We help talents worldwide find remote &amp; in-demand jobs with top verified com
 </div>
 </section>
 
-<!-- 3. Explore jobs by category -->
+<!-- 3. Explore jobs by category (home.js refreshes these from the database; the tiles below are the fallback) -->
 <section class="w-full py-14 md:py-20 bg-surface-muted border-b border-surface-border" id="categories">
 <div class="max-w-4xl mx-auto px-4 sm:px-6">
 <div class="mb-8 md:mb-10">
 <h2 class="text-2xl font-bold tracking-tight text-primary">Explore Jobs by Category</h2>
 <p class="text-sm text-text-muted mt-1">Specialized career paths supported through the Hubjob network.</p>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7 md:gap-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7 md:gap-y-8" id="category-tiles">
+<a class="group block" href="jobs.html?category=tech">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Tech &amp; Development <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Build and test the websites, apps and tools that modern businesses run on.</p>
+</a>
+<a class="group block" href="jobs.html?category=support">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Customer &amp; Technical Support <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Help customers and clients solve problems, from first contact to technical troubleshooting.</p>
+</a>
 <a class="group block" href="jobs.html?category=operations">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Operations &amp; Support <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Logistics, coordination, admin, and supply chain management.</p>
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Admin &amp; Operations <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Keep businesses running smoothly with remote administration, data and coordination roles.</p>
 </a>
 <a class="group block" href="jobs.html?category=marketing">
 <h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Marketing &amp; Content <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Growth marketing, SEO, paid media, copywriting, and brand storytelling.</p>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Help brands grow through social media, writing, email and search.</p>
+</a>
+<a class="group block" href="jobs.html?category=media">
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Video &amp; Motion <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Edit, animate and produce video content for brands and creators.</p>
 </a>
 <a class="group block" href="jobs.html?category=sales">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Sales &amp; Growth <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Account management, SDRs, enterprise partnerships, and client success.</p>
+<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Sales &amp; Business Development <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Work with global brands to win new clients, build partnerships and grow revenue.</p>
 </a>
 <a class="group block" href="jobs.html?category=design">
 <h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Design &amp; Creative <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Product UI/UX, visual design, design systems, and creative direction.</p>
-</a>
-<a class="group block" href="jobs.html?category=tech">
-<h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Tech &amp; Development <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Full-stack, mobile engineering, DevOps, cloud architecture, and security.</p>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Shape the visual identity of global brands through graphic, product and brand design.</p>
 </a>
 <a class="group block" href="jobs.html?category=education">
 <h3 class="text-base font-bold text-slate-900 group-hover:text-secondary transition-colors flex items-center justify-between">Education &amp; Training <span class="text-slate-400 group-hover:text-secondary group-hover:translate-x-0.5 transition-all text-xs">→</span></h3>
-<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Instructional design, corporate coaching, curriculum, and language learning.</p>
+<p class="text-sm text-text-muted mt-1.5 leading-relaxed">Empower learners worldwide through online tutoring, coaching and course production.</p>
 </a>
 </div>
 </div>
@@ -288,15 +207,15 @@ We help talents worldwide find remote &amp; in-demand jobs with top verified com
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 md:gap-y-10">
 <div>
 <h3 class="text-base font-bold text-slate-900 mb-2">Personalized Job Matching</h3>
-<p class="text-sm text-text-muted leading-relaxed">We match your skills, experience, and goals with verified employers worldwide.</p>
+<p class="text-sm text-text-muted leading-relaxed">We match your skills, experience, and goals with employers worldwide.</p>
 </div>
 <div>
 <h3 class="text-base font-bold text-slate-900 mb-2">End-to-End Career Support</h3>
 <p class="text-sm text-text-muted leading-relaxed">From interview prep to onboarding, we help you every step of the way.</p>
 </div>
 <div>
-<h3 class="text-base font-bold text-slate-900 mb-2">Verified Global Employers</h3>
-<p class="text-sm text-text-muted leading-relaxed">Work with trusted, vetted companies across various industries.</p>
+<h3 class="text-base font-bold text-slate-900 mb-2">Employer Checks</h3>
+<p class="text-sm text-text-muted leading-relaxed">Listings marked “Verified employer” have passed our legal, pay and compliance checks.</p>
 </div>
 <div>
 <h3 class="text-base font-bold text-slate-900 mb-2">Remote-First Opportunities</h3>
@@ -365,12 +284,12 @@ We help talents worldwide find remote &amp; in-demand jobs with top verified com
 <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10 md:mb-12">
 <div class="col-span-2 md:col-span-1">
-<a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" src="static/images/logo22.png"/></a>
+<a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/></a>
 <p class="text-xs text-text-muted leading-relaxed mb-4">A career and job discovery platform connecting talent with organisations across the United Kingdom and globally.</p>
 <div class="text-xs text-text-muted space-y-1.5">
-<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" href="tel:+441202958648">+44 1202 958648</a></p>
+<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span data-setting="address_full">42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
 </div>
 </div>
 <div>
@@ -387,7 +306,7 @@ We help talents worldwide find remote &amp; in-demand jobs with top verified com
 <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Job Seekers</h4>
 <ul class="space-y-2 text-text-muted text-sm md:text-xs">
 <li><a class="hover:text-primary transition-colors" href="index.html#categories">Browse Categories</a></li>
-<li><a class="hover:text-primary transition-colors" href="jobs.html?work=remote">Remote Opportunities</a></li>
+<li><a class="hover:text-primary transition-colors" href="jobs.html?arrangement=remote">Remote Opportunities</a></li>
 <li><a class="hover:text-primary transition-colors" href="apply.html">Upload CV</a></li>
 <li><a class="hover:text-primary transition-colors" href="index.html#how-it-works">How It Works</a></li>
 </ul>
@@ -395,16 +314,17 @@ We help talents worldwide find remote &amp; in-demand jobs with top verified com
 <div>
 <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Employers</h4>
 <ul class="space-y-2 text-text-muted text-sm md:text-xs">
-<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">Post a Job</a></li>
-<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Talent%20Search">Search Talent</a></li>
+<li><a class="hover:text-primary transition-colors" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">Post a Job</a></li>
+<li><a class="hover:text-primary transition-colors" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Talent%20Search">Search Talent</a></li>
 <li><a class="hover:text-primary transition-colors" href="about.html#global-reach">Hiring Solutions</a></li>
 <li><a class="hover:text-primary transition-colors" href="contact.html">Contact Support</a></li>
 </ul>
 </div>
 </div>
 <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-text-subtle gap-4 text-center">
-<p>© <span data-year>2025</span> Hubjob Platform. All Rights Reserved.</p>
+<p>© <span data-year>2025</span> <span data-setting="copyright_name">Hubjob Platform</span>. All Rights Reserved.</p>
 <div class="flex items-center gap-6">
+<a class="hover:text-slate-600 transition-colors" href="privacy.html">Privacy</a>
 <a class="hover:text-slate-600 transition-colors" href="faq.html">FAQ</a>
 <a class="hover:text-slate-600 transition-colors" href="contact.html">Contact</a>
 <a class="hover:text-slate-600 transition-colors" href="apply.html">Apply</a>
@@ -420,5 +340,7 @@ We help talents worldwide find remote &amp; in-demand jobs with top verified com
 </a>
 
 <script src="assets/js/site.js"></script>
+<script src="assets/js/settings.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>

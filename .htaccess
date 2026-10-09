@@ -1,0 +1,12 @@
+Options -Indexes
+
+# Hidden files (.git, .env, .gitignore) and server-only file types
+<FilesMatch "(^\.|\.(md|sql|log|key|tmp|lock|dist)$|^composer\.(json|lock)$)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

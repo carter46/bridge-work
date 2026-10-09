@@ -29,7 +29,7 @@
 <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-surface-border">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
 <a aria-label="Hubjob Platform home" class="flex items-center flex-shrink-0" href="index.html">
-<img alt="Hubjob Platform" class="h-9 w-auto object-contain" src="static/images/logo22.png"/>
+<img alt="Hubjob Platform" class="h-9 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/>
 </a>
 <nav aria-label="Main" class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px]">
 <a class="text-text-muted hover:text-primary transition-colors" href="jobs.html">Find Jobs</a>
@@ -93,27 +93,44 @@
 <h2 class="text-2xl font-bold text-primary tracking-tight mb-2">Your details</h2>
 <p class="text-sm text-text-muted leading-relaxed mb-7">Looking for a job or exploring better opportunities? Fill out the form below and we'll get in touch with you shortly. You can upload your CV if available, or just submit your contact details.</p>
 
-<form action="sendmail.php" class="flex flex-col gap-5" enctype="multipart/form-data" id="applicationForm" method="POST">
+<form action="api/apply.php" class="flex flex-col gap-5" enctype="multipart/form-data" id="applicationForm" method="POST">
 <input name="utm_source" type="hidden" value=""/>
 <input name="utm_medium" type="hidden" value=""/>
 <input name="utm_campaign" type="hidden" value=""/>
 <input name="utm_term" type="hidden" value=""/>
 <input name="utm_content" type="hidden" value=""/>
 <input name="utm_landing" type="hidden" value=""/>
+<input name="form_token" type="hidden" value=""/>
+<input name="job_id" type="hidden" value=""/>
+<input name="source_page" type="hidden" value="apply"/>
+<div aria-hidden="true" class="absolute -left-[9999px] w-px h-px overflow-hidden">
+<label for="website">Leave this field empty</label>
+<input autocomplete="off" id="website" name="website" tabindex="-1" type="text"/>
+</div>
+
+<div class="hidden items-start gap-2 rounded-lg bg-surface-muted border border-slate-200 px-3.5 py-3 text-sm text-primary" id="job-context">
+<span class="material-symbols-outlined text-[18px] text-secondary">work</span>
+<span>Applying for <strong id="job-context-title"></strong> <span class="text-text-subtle" id="job-context-ref"></span></span>
+</div>
 
 <div>
 <label class="block text-sm font-semibold text-primary mb-1.5" for="fullname">Full Name <span class="text-secondary">*</span></label>
-<input autocomplete="name" class="w-full rounded-lg border-slate-300 bg-white px-3.5 py-2.5 text-sm text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="fullname" name="fullname" placeholder="e.g. Jane Doe" required type="text"/>
+<input autocomplete="name" class="w-full rounded-lg border-slate-300 bg-white px-3.5 py-2.5 text-sm text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="fullname" maxlength="160" name="fullname" placeholder="e.g. Jane Doe" required type="text"/>
 </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 <div>
 <label class="block text-sm font-semibold text-primary mb-1.5" for="email">Email <span class="text-secondary">*</span></label>
-<input autocomplete="email" class="w-full rounded-lg border-slate-300 bg-white px-3.5 py-2.5 text-sm text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="email" name="email" placeholder="you@example.com" required type="email"/>
+<input autocomplete="email" class="w-full rounded-lg border-slate-300 bg-white px-3.5 py-2.5 text-sm text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="email" maxlength="190" name="email" placeholder="you@example.com" required type="email"/>
 </div>
 <div>
-<label class="block text-sm font-semibold text-primary mb-1.5" for="age">Age <span class="text-secondary">*</span></label>
-<input class="w-full rounded-lg border-slate-300 bg-white px-3.5 py-2.5 text-sm text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="age" inputmode="numeric" max="100" min="18" name="age" placeholder="Enter your age" required type="number"/>
+<label class="block text-sm font-semibold text-primary mb-1.5" for="right_to_work">Right to work in the UK/EU <span class="font-normal text-text-subtle">(optional)</span></label>
+<select class="w-full rounded-lg border-slate-300 bg-white px-3.5 py-2.5 text-sm text-text-main focus:border-primary focus:ring-primary" id="right_to_work" name="right_to_work">
+<option value="">Prefer not to say</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+<option value="not_sure">Not sure</option>
+</select>
 </div>
 </div>
 
@@ -137,18 +154,18 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 <div>
-<label class="block text-sm font-semibold text-primary mb-1.5" for="nationality">Nationality <span class="text-secondary">*</span></label>
+<label class="block text-sm font-semibold text-primary mb-1.5" for="residence">Country of residence <span class="text-secondary">*</span></label>
 <div class="nationality-wrapper">
-<input class="nationality-input w-full rounded-lg border-slate-300 px-3.5 py-2.5 text-sm text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="nationality" name="nationality" placeholder="Select your nationality" readonly required type="text"/>
-<input id="nationality-code" name="nationality_code" type="hidden"/>
-<span class="nationality-flag-display" id="nationality-flag-display"></span>
+<input class="nationality-input w-full rounded-lg border-slate-300 px-3.5 py-2.5 text-sm text-text-main placeholder:text-slate-400 focus:border-primary focus:ring-primary" id="residence" name="residence_country" placeholder="Where do you live?" readonly required type="text"/>
+<input id="residence-code" name="residence_country_code" type="hidden"/>
+<span class="nationality-flag-display" id="residence-flag-display"></span>
 <span class="nationality-chevron material-symbols-outlined text-[20px]">expand_more</span>
-<div class="nationality-dropdown" id="nationality-dropdown">
-<div class="nationality-search"><input aria-label="Search countries" autocomplete="off" class="w-full rounded-md border-slate-200 px-3 py-2 text-sm focus:border-primary focus:ring-primary" id="nationality-search" placeholder="Search country..." type="text"/></div>
-<div id="nationality-options" role="listbox"></div>
+<div class="nationality-dropdown" id="residence-dropdown">
+<div class="nationality-search"><input aria-label="Search countries" autocomplete="off" class="w-full rounded-md border-slate-200 px-3 py-2 text-sm focus:border-primary focus:ring-primary" id="residence-search" placeholder="Search country..." type="text"/></div>
+<div id="residence-options" role="listbox"></div>
 </div>
 </div>
-<p class="hidden mt-1.5 text-xs font-medium text-error" id="nationality-error">Please select your nationality</p>
+<p class="hidden mt-1.5 text-xs font-medium text-error" id="residence-error">Please select your country of residence</p>
 </div>
 <div>
 <label class="block text-sm font-semibold text-primary mb-1.5" for="work_type">Work Type <span class="text-secondary">*</span></label>
@@ -179,9 +196,22 @@
 <p class="mt-2 text-xs text-text-subtle">Allowed formats: .pdf, .doc, .docx, .rtf, .txt · Max size: 2MB</p>
 </div>
 
+<div class="flex flex-col gap-3">
+<label class="flex items-start gap-2.5 text-sm text-text-main cursor-pointer">
+<input class="mt-0.5 w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary" id="is_adult" name="is_adult" required type="checkbox" value="1"/>
+<span>I confirm I am 18 or over. <span class="text-secondary">*</span></span>
+</label>
+<label class="flex items-start gap-2.5 text-sm text-text-main cursor-pointer">
+<input class="mt-0.5 w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary" id="consent" name="consent" required type="checkbox" value="1"/>
+<span>I agree to my details and CV being stored and used to process my application, as described in the <a class="underline hover:text-primary" href="privacy.html" target="_blank">privacy notice</a>. <span class="text-secondary">*</span></span>
+</label>
+</div>
+
+<div class="hidden" id="captcha-box"></div>
+
 <p class="flex items-start gap-2 text-xs text-text-muted leading-relaxed">
 <span class="material-symbols-outlined text-[16px] text-primary">lock</span>
-<span>Your details are stored securely and shared only with verified employers for relevant opportunities, in line with UK GDPR. See our <a class="underline hover:text-primary" href="faq.html">FAQ</a> for more.</span>
+<span>Your details are stored securely and shared only with employers relevant to the roles you apply for, in line with UK GDPR. Applications and CVs are deleted 12 months after their last update. See our <a class="underline hover:text-primary" href="privacy.html">privacy notice</a>.</span>
 </p>
 
 <button class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-6 py-3.5 text-sm font-bold text-white shadow-sm hover:bg-secondary-hover transition-colors disabled:cursor-not-allowed" type="submit">
@@ -198,11 +228,11 @@
 <ol class="space-y-5">
 <li class="flex items-start gap-3">
 <span class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-<div><h3 class="text-sm font-bold text-primary">We review your application</h3><p class="text-sm text-text-muted leading-relaxed">Our UK career team reviews every submission within 24 hours.</p></div>
+<div><h3 class="text-sm font-bold text-primary">We review your application</h3><p class="text-sm text-text-muted leading-relaxed">Our UK career team reviews every submission within <span data-setting="response_time">24 business hours</span>.</p></div>
 </li>
 <li class="flex items-start gap-3">
 <span class="w-7 h-7 rounded-full bg-surface-container text-primary flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-<div><h3 class="text-sm font-bold text-primary">We match you with roles</h3><p class="text-sm text-text-muted leading-relaxed">We pair your skills and goals with verified employers.</p></div>
+<div><h3 class="text-sm font-bold text-primary">We match you with roles</h3><p class="text-sm text-text-muted leading-relaxed">We pair your skills and goals with suitable employers.</p></div>
 </li>
 <li class="flex items-start gap-3">
 <span class="w-7 h-7 rounded-full bg-surface-container text-primary flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
@@ -222,7 +252,7 @@
 </div>
 <div class="flex items-start gap-3.5 bg-white p-5 rounded-xl border border-slate-200/70 shadow-sm">
 <div class="w-10 h-10 rounded-lg bg-indigo-100/70 text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[22px]">gpp_good</span></div>
-<div><h3 class="text-sm font-bold text-primary mb-1">Verified employers only</h3><p class="text-xs text-text-muted leading-relaxed">Every company goes through legal, pay and visa feasibility checks.</p></div>
+<div><h3 class="text-sm font-bold text-primary mb-1">Employer checks</h3><p class="text-xs text-text-muted leading-relaxed">Employers marked “Verified” have passed legal, pay and visa feasibility checks.</p></div>
 </div>
 </div>
 
@@ -230,10 +260,10 @@
 <div class="absolute -right-16 -bottom-16 w-56 h-56 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
 <div class="relative">
 <h2 class="text-lg font-bold mb-1">Questions before you apply?</h2>
-<p class="text-sm text-slate-300 mb-5">Our Bournemouth placement desk is here to help, Mon – Fri, 8:30 AM – 6:00 PM GMT.</p>
+<p class="text-sm text-slate-300 mb-5">Our <span data-setting="address_city">Bournemouth</span> placement desk is here to help: <span data-setting="office_hours">Mon – Fri: 8:30 AM – 6:00 PM GMT</span>.</p>
 <div class="flex flex-col gap-2.5 text-sm">
-<a class="inline-flex items-center gap-2 hover:text-orange-200 transition-colors" href="mailto:info@hubjobplatform.com"><span class="material-symbols-outlined text-[18px] text-orange-200">mail</span>info@hubjobplatform.com</a>
-<a class="inline-flex items-center gap-2 hover:text-orange-200 transition-colors" href="tel:+441202958648"><span class="material-symbols-outlined text-[18px] text-orange-200">call</span>+44 1202 958648</a>
+<a class="inline-flex items-center gap-2 hover:text-orange-200 transition-colors" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com"><span class="material-symbols-outlined text-[18px] text-orange-200">mail</span><span data-setting="contact_email">info@hubjobplatform.com</span></a>
+<a class="inline-flex items-center gap-2 hover:text-orange-200 transition-colors" data-setting-href="phone_href" href="tel:+441202958648"><span class="material-symbols-outlined text-[18px] text-orange-200">call</span><span data-setting="contact_phone">+44 1202 958648</span></a>
 </div>
 </div>
 </div>
@@ -250,12 +280,12 @@
 <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10 md:mb-12">
 <div class="col-span-2 md:col-span-1">
-<a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" src="static/images/logo22.png"/></a>
+<a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/></a>
 <p class="text-xs text-text-muted leading-relaxed mb-4">A career and job discovery platform connecting talent with organisations across the United Kingdom and globally.</p>
 <div class="text-xs text-text-muted space-y-1.5">
-<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span>42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" href="tel:+441202958648">+44 1202 958648</a></p>
+<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span data-setting="address_full">42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
+<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
 </div>
 </div>
 <div>
@@ -272,7 +302,7 @@
 <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Job Seekers</h4>
 <ul class="space-y-2 text-text-muted text-sm md:text-xs">
 <li><a class="hover:text-primary transition-colors" href="index.html#categories">Browse Categories</a></li>
-<li><a class="hover:text-primary transition-colors" href="jobs.html?work=remote">Remote Opportunities</a></li>
+<li><a class="hover:text-primary transition-colors" href="jobs.html?arrangement=remote">Remote Opportunities</a></li>
 <li><a class="font-semibold text-secondary" href="apply.html">Upload CV</a></li>
 <li><a class="hover:text-primary transition-colors" href="index.html#how-it-works">How It Works</a></li>
 </ul>
@@ -280,16 +310,17 @@
 <div>
 <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-wider">Employers</h4>
 <ul class="space-y-2 text-text-muted text-sm md:text-xs">
-<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">Post a Job</a></li>
-<li><a class="hover:text-primary transition-colors" href="mailto:info@hubjobplatform.com?subject=Talent%20Search">Search Talent</a></li>
+<li><a class="hover:text-primary transition-colors" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Post%20a%20Job">Post a Job</a></li>
+<li><a class="hover:text-primary transition-colors" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com?subject=Talent%20Search">Search Talent</a></li>
 <li><a class="hover:text-primary transition-colors" href="about.html#global-reach">Hiring Solutions</a></li>
 <li><a class="hover:text-primary transition-colors" href="contact.html">Contact Support</a></li>
 </ul>
 </div>
 </div>
 <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-text-subtle gap-4 text-center">
-<p>© <span data-year>2025</span> Hubjob Platform. All Rights Reserved.</p>
+<p>© <span data-year>2025</span> <span data-setting="copyright_name">Hubjob Platform</span>. All Rights Reserved.</p>
 <div class="flex items-center gap-6">
+<a class="hover:text-slate-600 transition-colors" href="privacy.html">Privacy</a>
 <a class="hover:text-slate-600 transition-colors" href="faq.html">FAQ</a>
 <a class="hover:text-slate-600 transition-colors" href="contact.html">Contact</a>
 <a class="hover:text-slate-600 transition-colors" href="apply.html">Apply</a>
@@ -299,6 +330,7 @@
 </footer>
 
 <script src="assets/js/site.js"></script>
+<script src="assets/js/settings.js"></script>
 <script src="assets/js/apply-form.js"></script>
 </body>
 </html>

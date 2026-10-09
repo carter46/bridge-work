@@ -1,0 +1,15 @@
+# Server secrets
+config/config.php
+storage/app.key
+
+# Uploaded CVs, backups and admin uploads (server-only data)
+storage/cvs/*
+!storage/cvs/.gitkeep
+storage/backups/*
+!storage/backups/.gitkeep
+uploads/*
+!uploads/.htaccess
+
+# Temp files from snapshot writes
+assets/data/*.tmp
+*.log

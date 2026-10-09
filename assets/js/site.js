@@ -1,3 +1,57 @@
+// Shared helpers for settings.js, jobs.js, home.js and apply-form.js.
+window.HJ = window.HJ || {};
+
+// Fetch JSON from each URL in turn; resolves with the first response that passes isValid.
+window.HJ.fetchJson = function (urls, isValid) {
+  var index = 0;
+  function next() {
+    if (index >= urls.length) return Promise.reject(new Error("No data source available"));
+    var url = urls[index++];
+    return fetch(url, { cache: "no-cache", credentials: "same-origin" })
+      .then(function (response) {
+        if (!response.ok) throw new Error(url + " returned " + response.status);
+        return response.json();
+      })
+      .then(function (data) {
+        if (isValid && !isValid(data)) throw new Error(url + " returned unexpected data");
+        // Lets callers tell live data from the saved fallback copy.
+        if (data && typeof data === "object") {
+          try { Object.defineProperty(data, "_hjSource", { value: url, enumerable: false }); } catch (e) { /* frozen */ }
+        }
+        return data;
+      })
+      .catch(function (err) {
+        if (window.console) console.warn("[hubjob] " + err.message);
+        return next();
+      });
+  }
+  return next();
+};
+
+window.HJ.escape = function (value) {
+  return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+};
+
+// Remember campaign parameters from the landing page so the application form can send them.
+(function () {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+    var found = {};
+    var any = false;
+    keys.forEach(function (key) {
+      var value = params.get(key);
+      if (value) { found[key] = value.slice(0, 255); any = true; }
+    });
+    if (any && !sessionStorage.getItem("hj_utm")) {
+      found.utm_landing = (window.location.pathname + window.location.search).slice(0, 255);
+      sessionStorage.setItem("hj_utm", JSON.stringify(found));
+    }
+  } catch (e) { /* storage blocked: tracking is optional */ }
+})();
+
 (function () {
   // Mobile navigation
   var toggle = document.getElementById("mobile-menu-toggle");
