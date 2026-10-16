@@ -33,6 +33,12 @@ return [
     // ],
     'smtp_override' => null,
 
+    // Admin password reset page (admin/reset-password.php).
+    // true  = the page works and the sign-in form shows a "Reset admin password" link.
+    // false = the page is locked and the link is hidden.
+    // Turn it on only while you need it, then set it back to false.
+    'admin_password_reset' => false,
+
     // Show PHP errors in the browser. Keep false in production.
     'debug' => false,
 ];

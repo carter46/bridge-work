@@ -70,7 +70,11 @@ hj_admin_guest_header('Sign in');
       </div>
       <button class="hj-btn hj-btn-primary w-full" type="submit"><span class="material-symbols-outlined text-[18px]">login</span>Sign in</button>
     </form>
-    <p class="text-xs text-text-subtle mt-5">Forgot your password? Ask the site owner to reset it from Admin users.</p>
+    <?php if (hj_config('admin_password_reset', false) === true): ?>
+      <p class="text-sm mt-5"><a class="font-semibold text-primary hover:underline" href="reset-password.php">Reset admin password</a></p>
+    <?php else: ?>
+      <p class="text-xs text-text-subtle mt-5">Forgot your password? Ask the site owner to reset it from Admin users.</p>
+    <?php endif; ?>
   <?php endif; ?>
 </div>
 <?php
