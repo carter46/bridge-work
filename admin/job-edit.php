@@ -197,7 +197,7 @@ if (hj_is_post()) {
         }
     }
     if (!preg_match('/^[a-z0-9_]{1,60}$/', $in['icon'])) {
-        $errors[] = 'Icon must be a Material Symbols name such as "work" or "support_agent".';
+        $errors[] = 'Icon must be a simple icon name such as "work" or "support_agent".';
     }
 
     $values = array_merge($values, $in);
@@ -223,9 +223,9 @@ hj_admin_header($isNew ? 'Add job' : 'Edit job', 'jobs');
 hj_admin_page_title(
     $isNew ? 'Add a job' : 'Edit ' . $job['ref_code'],
     $isNew ? ($duplicateOf ? 'Copy of ' . $duplicateOf['ref_code'] . '. ' : '') . 'New jobs start as drafts. Set the status to Active to publish.' : 'Last updated ' . hj_format_datetime($job['updated_at'] ?? $job['created_at']) . ' · ' . $appCount . ' application(s)',
-    '<a class="hj-btn hj-btn-light" href="jobs.php"><span class="material-symbols-outlined text-[18px]">arrow_back</span>All jobs</a>'
-    . (!$isNew ? '<a class="hj-btn hj-btn-light" href="job-edit.php?duplicate=' . (int)$id . '"><span class="material-symbols-outlined text-[18px]">content_copy</span>Duplicate</a>' : '')
-    . (!$isNew && $job['status'] === 'active' ? '<a class="hj-btn hj-btn-light" target="_blank" href="../apply.html?job=' . (int)$id . '&amp;role=' . rawurlencode($job['title']) . '"><span class="material-symbols-outlined text-[18px]">open_in_new</span>Apply page</a>' : '')
+    '<a class="hj-btn hj-btn-light" href="jobs.php"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All jobs</a>'
+    . (!$isNew ? '<a class="hj-btn hj-btn-light" href="job-edit.php?duplicate=' . (int)$id . '"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Duplicate</a>' : '')
+    . (!$isNew && $job['status'] === 'active' ? '<a class="hj-btn hj-btn-light" target="_blank" href="../apply.html?job=' . (int)$id . '&amp;role=' . rawurlencode($job['title']) . '"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>Apply page</a>' : '')
 );
 
 if ($errors): ?>
@@ -380,12 +380,12 @@ if ($errors): ?>
       <div>
         <label class="hj-label" for="icon">Icon</label>
         <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-primary text-[28px] w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center" id="icon-preview">work</span>
+          <span id="icon-preview" class="text-primary w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center"><?= hj_icon($values['icon'] ?: 'work', '', 24) ?></span>
           <input class="hj-input" id="icon" name="icon" maxlength="60" value="<?= e($values['icon']) ?>" data-icon-preview="icon-preview">
         </div>
-        <p class="hj-help">Any <a class="underline" href="https://fonts.google.com/icons" target="_blank" rel="noopener">Material Symbols</a> name.</p>
+        <p class="hj-help">Icon name, e.g. work, terminal, support_agent, movie, school. Names we don't have a drawing for show the briefcase icon.</p>
       </div>
-      <button class="hj-btn hj-btn-accent w-full" type="submit" name="action" value="save"><span class="material-symbols-outlined text-[18px]">save</span><?= $isNew ? 'Create job' : 'Save changes' ?></button>
+      <button class="hj-btn hj-btn-accent w-full" type="submit" name="action" value="save"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg><?= $isNew ? 'Create job' : 'Save changes' ?></button>
     </section>
 
     <?php if (!$isNew && hj_is_owner($admin)): ?>

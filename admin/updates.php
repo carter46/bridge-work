@@ -89,8 +89,8 @@ hj_admin_header('Database updates', 'updates');
 hj_admin_page_title(
     'Database updates',
     'Database changes ship as files in database/auto-migrations and apply themselves when an admin opens any admin page. No phpMyAdmin imports are needed.',
-    ($pending ? '<a class="hj-btn hj-btn-primary" href="updates.php"><span class="material-symbols-outlined text-[18px]">refresh</span>Retry now</a>' : '')
-    . '<a class="hj-btn hj-btn-light" href="verify.php"><span class="material-symbols-outlined text-[18px]">fact_check</span>Job data check</a>'
+    ($pending ? '<a class="hj-btn hj-btn-primary" href="updates.php"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/><path d="M21 3v5h-5"/></svg>Retry now</a>' : '')
+    . '<a class="hj-btn hj-btn-light" href="verify.php"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>Job data check</a>'
 );
 ?>
 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
@@ -130,7 +130,7 @@ hj_admin_page_title(
         <form method="post" action="updates.php">
           <?= hj_csrf_field() ?>
           <input type="hidden" name="action" value="backup">
-          <button class="hj-btn hj-btn-primary hj-btn-sm" type="submit"><span class="material-symbols-outlined text-[18px]">backup</span>Back up now</button>
+          <button class="hj-btn hj-btn-primary hj-btn-sm" type="submit"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>Back up now</button>
         </form>
       </div>
       <p class="px-5 pt-4 text-sm text-text-muted">A backup is taken automatically before every database update and before every restore. The newest 10 are kept in the private <code>storage/backups</code> folder. CV files are not included — back up <code>storage/cvs</code> with your hosting file manager.</p>
@@ -172,7 +172,7 @@ hj_admin_page_title(
       <ul class="space-y-2.5 text-sm">
         <?php foreach ($checks as $check): ?>
           <li class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[18px] <?= $check[2] ? 'text-emerald-600' : 'text-amber-600' ?>"><?= $check[2] ? 'check_circle' : 'error' ?></span>
+            <svg class="hj-icon <?= $check[2] ? 'text-emerald-600' : 'text-amber-600' ?>" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
             <span><span class="font-semibold"><?= e($check[0]) ?></span><br><span class="text-xs text-text-subtle break-all"><?= e($check[1]) ?></span></span>
           </li>
         <?php endforeach; ?>

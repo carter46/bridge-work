@@ -64,7 +64,7 @@ $cards = [
     <a class="hj-card p-5 hover:shadow-md transition-shadow block" href="<?= e($card['href']) ?>">
       <div class="flex items-center justify-between mb-3">
         <span class="text-xs font-bold uppercase tracking-wider text-text-subtle"><?= e($card['label']) ?></span>
-        <span class="material-symbols-outlined text-primary"><?= e($card['icon']) ?></span>
+        <svg class="hj-icon text-primary" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
       </div>
       <p class="text-3xl font-extrabold text-primary"><?= (int)$card['value'] ?></p>
       <p class="text-xs text-text-muted mt-1"><?= e($card['note']) ?></p>
@@ -88,7 +88,7 @@ $cards = [
           <?php foreach ($recent as $row): ?>
             <tr>
               <td><a class="font-semibold text-primary hover:underline" href="application.php?id=<?= (int)$row['id'] ?>"><?= e($row['fullname']) ?></a><div class="text-xs text-text-subtle"><?= e($row['email']) ?></div></td>
-              <td><?= e($row['role_title'] ?: 'General application') ?><?= $row['ref_code'] ? ' <span class="text-xs text-text-subtle">(' . e($row['ref_code']) . ')</span>' : '' ?><?= $row['cv_stored_name'] ? ' <span class="material-symbols-outlined text-[16px] text-text-subtle" title="CV attached">attach_file</span>' : '' ?></td>
+              <td><?= e($row['role_title'] ?: 'General application') ?><?= $row['ref_code'] ? ' <span class="text-xs text-text-subtle">(' . e($row['ref_code']) . ')</span>' : '' ?><?= $row['cv_stored_name'] ? ' <svg title="CV attached" class="hj-icon text-text-subtle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>' : '' ?></td>
               <td><?= hj_admin_status_badge('app_status', $row['status']) ?></td>
               <td class="whitespace-nowrap text-text-muted"><?= e(hj_format_datetime($row['created_at'])) ?></td>
             </tr>
@@ -108,14 +108,14 @@ $cards = [
       <?php foreach ($categories as $cat): ?>
         <li class="flex items-center justify-between px-5 py-3 text-sm">
           <a class="flex items-center gap-2 text-primary hover:underline" href="jobs.php?category=<?= (int)$cat['id'] ?>">
-            <span class="material-symbols-outlined text-[18px] text-text-subtle"><?= e($cat['icon'] ?: 'work') ?></span><?= e($cat['name']) ?>
+            <svg class="hj-icon text-text-subtle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><?= e($cat['name']) ?>
           </a>
           <span class="text-text-muted"><?= (int)$cat['active_count'] ?> live<?= (int)$cat['total_count'] !== (int)$cat['active_count'] ? ' / ' . (int)$cat['total_count'] : '' ?><?= (int)$cat['is_visible'] ? '' : ' · hidden' ?></span>
         </li>
       <?php endforeach; ?>
     </ul>
     <div class="px-5 py-4 border-t border-slate-100">
-      <a class="hj-btn hj-btn-accent w-full" href="job-edit.php"><span class="material-symbols-outlined text-[18px]">add</span>Add a job</a>
+      <a class="hj-btn hj-btn-accent w-full" href="job-edit.php"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>Add a job</a>
     </div>
   </section>
 </div>

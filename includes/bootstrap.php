@@ -36,6 +36,7 @@ if (!empty($GLOBALS['HJ_CONFIG']['debug'])) {
 set_exception_handler('hj_unexpected_error');
 
 require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/icons.php';
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/crypto.php';
 require_once __DIR__ . '/settings.php';

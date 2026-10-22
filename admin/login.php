@@ -68,7 +68,7 @@ hj_admin_guest_header('Sign in');
         <label class="hj-label" for="password">Password</label>
         <input class="hj-input" id="password" name="password" type="password" autocomplete="current-password" required>
       </div>
-      <button class="hj-btn hj-btn-primary w-full" type="submit"><span class="material-symbols-outlined text-[18px]">login</span>Sign in</button>
+      <button class="hj-btn hj-btn-primary w-full" type="submit"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/></svg>Sign in</button>
     </form>
     <?php if (hj_config('admin_password_reset', false) === true): ?>
       <p class="text-sm mt-5"><a class="font-semibold text-primary hover:underline" href="reset-password.php">Reset admin password</a></p>

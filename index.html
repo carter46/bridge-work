@@ -20,10 +20,9 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/>
-<link href="assets/css/site.css?v=4" rel="stylesheet"/>
+<link href="assets/css/site.css?v=5" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="assets/js/tailwind-config.js?v=4"></script>
+<script src="assets/js/tailwind-config.js?v=5"></script>
 </head>
 <body class="bg-white text-text-main font-sans antialiased selection:bg-slate-200">
 
@@ -45,7 +44,7 @@
 <a class="hidden sm:inline-flex text-[14px] font-medium text-slate-700 hover:text-primary px-3 py-1.5 transition-colors" href="apply.html">Upload CV</a>
 <a class="inline-flex items-center justify-center text-[13px] font-semibold text-white bg-secondary hover:bg-secondary-hover px-4 py-2 rounded-md transition-colors shadow-sm" href="apply.html">Apply Now</a>
 <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-md text-primary hover:bg-slate-100 transition-colors" id="mobile-menu-toggle" type="button">
-<span class="material-symbols-outlined text-[26px]">menu</span>
+<svg class="hj-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
 </button>
 </div>
 </div>
@@ -57,7 +56,7 @@
 <a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="index.html#how-it-works">How It Works</a>
 <a class="py-3 border-b border-slate-100 text-slate-700 hover:text-primary" href="faq.html">FAQ</a>
 <a class="py-3 text-slate-700 hover:text-primary" href="contact.html">Contact</a>
-<a class="sm:hidden my-3 inline-flex items-center justify-center gap-2 rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold text-primary" href="apply.html"><span class="material-symbols-outlined text-[18px]">upload_file</span>Upload CV</a>
+<a class="sm:hidden my-3 inline-flex items-center justify-center gap-2 rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold text-primary" href="apply.html"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>Upload CV</a>
 </nav>
 </div>
 </header>
@@ -78,7 +77,7 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 <div class="relative text-left">
 <form action="jobs.html" autocomplete="off" class="bg-white rounded-lg p-2 shadow-lg text-text-main flex flex-col md:flex-row items-stretch gap-1 md:gap-2 border border-slate-200" id="hero-search" method="get" role="search">
 <div class="flex-1 flex items-center px-3 py-2 gap-2.5">
-<span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+<svg class="hj-icon text-slate-400 text-xl" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
 <div class="flex flex-col text-left w-full min-w-0">
 <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider" for="search-what">What</label>
 <input class="w-full p-0 border-0 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:ring-0 leading-normal" id="search-what" name="q" placeholder="Job title, skill, or keyword" type="text"/>
@@ -87,7 +86,7 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 <div class="md:hidden h-px mx-3 bg-slate-200"></div>
 <div class="hidden md:block w-px self-stretch bg-slate-200 my-1"></div>
 <div class="flex-1 flex items-center px-3 py-2 gap-2.5">
-<span class="material-symbols-outlined text-slate-400 text-xl">location_on</span>
+<svg class="hj-icon text-slate-400 text-xl" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
 <div class="flex flex-col text-left w-full min-w-0">
 <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider" for="search-where">Where</label>
 <input class="w-full p-0 border-0 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:ring-0 leading-normal" id="search-where" name="loc" placeholder='City, country, or "Remote"' type="text"/>
@@ -138,66 +137,66 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-5" id="category-tiles">
 <div class="reveal h-full" style="--reveal-delay:0ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=tech">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">terminal</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Tech &amp; Development</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Build and test the websites, apps and tools that modern businesses run on.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 <div class="reveal h-full" style="--reveal-delay:80ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=support">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">support_agent</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M3 14h3a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2v-4Zm18 0h-3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1a2 2 0 0 0 2-2v-4Z"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Customer &amp; Technical Support</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Help customers and clients solve problems, from first contact to technical troubleshooting.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 <div class="reveal h-full" style="--reveal-delay:160ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=operations">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">inventory_2</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Admin &amp; Operations</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Keep businesses running smoothly with remote administration, data and coordination roles.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 <div class="reveal h-full" style="--reveal-delay:240ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=marketing">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">campaign</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Marketing &amp; Content</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Help brands grow through social media, writing, email and search.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 <div class="reveal h-full" style="--reveal-delay:0ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=media">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">movie</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Video &amp; Motion</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Edit, animate and produce video content for brands and creators.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 <div class="reveal h-full" style="--reveal-delay:80ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=sales">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">trending_up</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Sales &amp; Business Development</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Work with global brands to win new clients, build partnerships and grow revenue.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 <div class="reveal h-full" style="--reveal-delay:160ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=design">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">palette</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4 10 9c0 3.3-2.7 6-6 6h-1.8c-.3 0-.5.2-.5.5 0 .1.1.2.1.3.4.5.7 1.1.7 1.7A2.5 2.5 0 0 1 12 22z"/><circle cx="7.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/><circle cx="16.5" cy="10.5" r="1" fill="currentColor" stroke="none"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Design &amp; Creative</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Shape the visual identity of global brands through graphic, product and brand design.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 <div class="reveal h-full" style="--reveal-delay:240ms">
 <a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=education">
-<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><span class="material-symbols-outlined text-[24px]">school</span></span>
+<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.5"/><path d="M22 10v6"/></svg></span>
 <h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">Education &amp; Training</h3>
 <p class="mt-2 text-sm leading-relaxed text-text-muted">Empower learners worldwide through online tutoring, coaching and course production.</p>
-<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+<span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-secondary">View roles <svg class="hj-icon transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 </a>
 </div>
 </div>
@@ -328,9 +327,9 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 <a class="inline-flex items-center mb-3" href="index.html"><img alt="Hubjob Platform" class="h-8 w-auto object-contain" data-setting-src="logo_url" src="static/images/logo22.png"/></a>
 <p class="text-xs text-text-muted leading-relaxed mb-4">A career and job discovery platform connecting talent with organisations across the United Kingdom and globally.</p>
 <div class="text-xs text-text-muted space-y-1.5">
-<p class="flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span><span data-setting="address_full">42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">mail</span><a class="hover:text-primary underline" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
-<p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">call</span><a class="hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
+<p class="flex items-start gap-1.5"><svg class="hj-icon text-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-setting="address_full">42 Windham Road, Bournemouth, Dorset, BH1 2AW, UK</span></p>
+<p class="flex items-center gap-1.5"><svg class="hj-icon text-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a class="hover:text-primary underline" data-setting="contact_email" data-setting-href="contact_email" href="mailto:info@hubjobplatform.com">info@hubjobplatform.com</a></p>
+<p class="flex items-center gap-1.5"><svg class="hj-icon text-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a class="hover:text-primary" data-setting="contact_phone" data-setting-href="phone_href" href="tel:+441202958648">+44 1202 958648</a></p>
 </div>
 </div>
 <div>
@@ -375,13 +374,15 @@ We help talents worldwide find remote &amp; in-demand jobs with trusted companie
 </footer>
 
 <a class="floating-apply-btn fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 rounded-full bg-secondary hover:bg-secondary-hover px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-secondary/30" href="apply.html" id="floatingApplyBtn">
-<span class="material-symbols-outlined text-[18px]">upload_file</span>
+<svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
 <span class="sm:hidden">Submit Your CV</span>
 <span class="hidden sm:inline">Submit Your Details with CV</span>
 </a>
 
-<script src="assets/js/site.js?v=4"></script>
-<script src="assets/js/settings.js?v=4"></script>
-<script src="assets/js/home.js?v=4"></script>
+<script src="assets/js/icons.js?v=5"></script>
+<script src="assets/js/site.js?v=5"></script>
+<script src="assets/js/settings.js?v=5"></script>
+<script src="assets/js/live-chat.js?v=5"></script>
+<script src="assets/js/home.js?v=5"></script>
 </body>
 </html>

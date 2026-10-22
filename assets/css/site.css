@@ -15,10 +15,10 @@ body {
   scroll-margin-top: 5rem;
 }
 
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  line-height: 1;
-  user-select: none;
+/* Inline SVG icons (assets/js/icons.js): drawn in the page, so no icon font has to download first. */
+.hj-icon {
+  flex: none;
+  vertical-align: middle;
 }
 
 .scrollbar-none {
@@ -76,6 +76,10 @@ body {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+/* With live chat on, the Apply button stacks above the chat bubble instead of covering it. */
+html.hj-chat-on .floating-apply-btn {
+  bottom: 5.75rem;
 }
 .floating-apply-btn.is-hidden {
   opacity: 0;

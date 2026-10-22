@@ -101,7 +101,7 @@ hj_admin_header('Application', 'applications');
 hj_admin_page_title(
     $title,
     'Application #' . $id . ' · received ' . hj_format_datetime($app['created_at']),
-    '<a class="hj-btn hj-btn-light" href="applications.php"><span class="material-symbols-outlined text-[18px]">arrow_back</span>All applications</a>'
+    '<a class="hj-btn hj-btn-light" href="applications.php"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All applications</a>'
 );
 ?>
 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
@@ -151,13 +151,13 @@ hj_admin_page_title(
       <h2 class="font-bold text-primary mb-3">CV</h2>
       <?php if ($app['cv_stored_name']): ?>
         <div class="flex flex-wrap items-center gap-3">
-          <span class="material-symbols-outlined text-primary text-[32px]">description</span>
+          <svg class="hj-icon text-primary" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
           <div class="flex-1 min-w-0">
             <p class="font-semibold text-sm truncate"><?= e($app['cv_original_name']) ?></p>
             <p class="text-xs text-text-subtle"><?= e(hj_admin_format_bytes($app['cv_size'])) ?> · <?= e($app['cv_mime']) ?></p>
           </div>
-          <a class="hj-btn hj-btn-light hj-btn-sm" href="cv.php?id=<?= $id ?>" target="_blank"><span class="material-symbols-outlined text-[18px]">visibility</span>View</a>
-          <a class="hj-btn hj-btn-primary hj-btn-sm" href="cv.php?id=<?= $id ?>&amp;download=1"><span class="material-symbols-outlined text-[18px]">download</span>Download</a>
+          <a class="hj-btn hj-btn-light hj-btn-sm" href="cv.php?id=<?= $id ?>" target="_blank"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+          <a class="hj-btn hj-btn-primary hj-btn-sm" href="cv.php?id=<?= $id ?>&amp;download=1"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Download</a>
         </div>
         <p class="hj-help mt-2">PDF and text files open in the browser; Word and RTF files download. Every view is recorded.</p>
       <?php else: ?>

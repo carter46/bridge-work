@@ -128,13 +128,11 @@ window.HJ.escape = function (value) {
   var menu = document.getElementById("mobile-menu");
 
   if (toggle && menu) {
-    var icon = toggle.querySelector(".material-symbols-outlined");
-
     function setOpen(open) {
       menu.classList.toggle("hidden", !open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      if (icon) icon.textContent = open ? "close" : "menu";
+      toggle.innerHTML = window.HJ.icon(open ? "close" : "menu", 26);
     }
 
     toggle.addEventListener("click", function () {

@@ -22,5 +22,6 @@
     "retention_months": "12",
     "captcha_provider": "none",
     "captcha_site_key": "",
+    "smartsupp_key": "",
     "version": "1"
 }

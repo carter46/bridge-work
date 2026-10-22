@@ -34,6 +34,8 @@ function hj_setting_defaults(): array
         'mail_from_email'         => 'noreply@hubjobplatform.com',
         'mail_from_name'          => 'Hubjob Platform',
 
+        'smartsupp_key'           => '',
+
         'rate_limit_hour'         => '5',
         'rate_limit_day'          => '20',
         'min_fill_seconds'        => '3',
@@ -127,6 +129,8 @@ function hj_public_settings(): array
         'retention_months'    => (string)max(1, (int)$s['retention_months']),
         'captcha_provider'    => $captcha,
         'captcha_site_key'    => $captcha !== 'none' ? $s['captcha_site_key'] : '',
+        // Public Smartsupp chat key (it is printed on every public page by design). Empty = chat off.
+        'smartsupp_key'       => trim($s['smartsupp_key'] ?? ''),
         'version'             => $s['snapshot_version'],
     ];
 }

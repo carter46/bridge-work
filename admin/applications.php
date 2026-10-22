@@ -96,7 +96,7 @@ foreach (hj_db_all('SELECT id, ref_code, title FROM jobs ORDER BY ref_code') as 
 }
 
 $actions = hj_is_owner($admin)
-    ? '<a class="hj-btn hj-btn-light" href="' . e(hj_admin_url('applications.php', array_merge($filters, ['export' => 'csv']))) . '"><span class="material-symbols-outlined text-[18px]">download</span>Export CSV</a>'
+    ? '<a class="hj-btn hj-btn-light" href="' . e(hj_admin_url('applications.php', array_merge($filters, ['export' => 'csv']))) . '"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Export CSV</a>'
     : '';
 
 hj_admin_header('Applications', 'applications');
@@ -155,7 +155,7 @@ hj_admin_page_title('Applications', $total . ' application(s). Applications are 
           <td class="text-sm"><?= e($row['residence_country'] ?: '—') ?></td>
           <td>
             <?php if ($row['cv_stored_name']): ?>
-              <a class="inline-flex items-center gap-1 text-primary hover:underline text-sm" href="cv.php?id=<?= (int)$row['id'] ?>" target="_blank"><span class="material-symbols-outlined text-[18px]">description</span>View</a>
+              <a class="inline-flex items-center gap-1 text-primary hover:underline text-sm" href="cv.php?id=<?= (int)$row['id'] ?>" target="_blank"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>View</a>
             <?php else: ?><span class="text-xs text-text-subtle">None</span><?php endif; ?>
           </td>
           <td><?= hj_admin_status_badge('app_status', $row['status']) ?></td>

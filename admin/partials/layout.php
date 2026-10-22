@@ -34,11 +34,11 @@ function hj_admin_head(string $title): void
 <meta name="robots" content="noindex, nofollow">
 <title><?= e($title) ?> — <?= e($siteName) ?> Admin</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="../assets/js/tailwind-config.js?v=4"></script>
+<script src="../assets/js/tailwind-config.js?v=5"></script>
+<script src="../assets/js/icons.js?v=5"></script>
 <style>
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  .hj-icon { flex: none; vertical-align: middle; }
   .hj-table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #64748b; font-weight: 700; padding: .65rem .75rem; background: #f8fafc; white-space: nowrap; }
   .hj-table td { padding: .7rem .75rem; border-top: 1px solid #eef2f7; vertical-align: top; font-size: 14px; }
   .hj-input { width: 100%; border-radius: .5rem; border-color: #cbd5e1; font-size: 14px; padding: .55rem .75rem; }
@@ -70,13 +70,13 @@ function hj_admin_header(string $title, string $active = ''): void
 <aside class="hidden left-0 md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 bg-primary text-white z-40" id="admin-sidebar">
   <div class="h-16 flex items-center justify-between px-5 border-b border-white/10">
     <a class="font-extrabold tracking-tight" href="index.php"><?= e($siteName) ?> <span class="text-orange-300 font-semibold text-sm">Admin</span></a>
-    <button aria-label="Close menu" class="md:hidden text-white/80" data-sidebar-close type="button"><span class="material-symbols-outlined">close</span></button>
+    <button aria-label="Close menu" class="md:hidden text-white/80" data-sidebar-close type="button"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
   </div>
   <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-1 text-[14px]">
     <?php foreach (hj_admin_nav_items($admin) as $item):
         $isActive = $item['key'] === $active; ?>
       <a class="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors <?= $isActive ? 'bg-white/15 text-white font-semibold' : 'text-white/75 hover:bg-white/10 hover:text-white' ?>" href="<?= e($item['href']) ?>">
-        <span class="material-symbols-outlined text-[20px]"><?= e($item['icon']) ?></span><?= e($item['label']) ?>
+        <?= hj_icon($item['icon'], 'shrink-0', 20) ?><?= e($item['label']) ?>
       </a>
     <?php endforeach; ?>
   </nav>
@@ -86,19 +86,19 @@ function hj_admin_header(string $title, string $active = ''): void
       <p class="truncate"><?= e($admin['email']) ?> · <?= e(ucfirst($admin['role'])) ?></p>
       <form action="logout.php" class="mt-3" method="post">
         <?= hj_csrf_field() ?>
-        <button class="inline-flex items-center gap-1.5 text-white/80 hover:text-white" type="submit"><span class="material-symbols-outlined text-[18px]">logout</span>Sign out</button>
+        <button class="inline-flex items-center gap-1.5 text-white/80 hover:text-white" type="submit"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sign out</button>
       </form>
     <?php endif; ?>
-    <a class="inline-flex items-center gap-1.5 mt-2 text-white/60 hover:text-white" href="../index.html" target="_blank"><span class="material-symbols-outlined text-[16px]">open_in_new</span>View website</a>
+    <a class="inline-flex items-center gap-1.5 mt-2 text-white/60 hover:text-white" href="../index.html" target="_blank"><svg class="hj-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>View website</a>
   </div>
 </aside>
 <div class="hidden fixed inset-0 bg-black/40 z-30 md:hidden" data-sidebar-backdrop></div>
 
 <div class="flex-1 md:ml-64 min-w-0">
   <header class="md:hidden sticky top-0 z-20 h-14 bg-primary text-white flex items-center justify-between px-4">
-    <button aria-label="Open menu" data-sidebar-open type="button"><span class="material-symbols-outlined">menu</span></button>
+    <button aria-label="Open menu" data-sidebar-open type="button"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     <span class="font-bold"><?= e($title) ?></span>
-    <a aria-label="View website" href="../index.html" target="_blank"><span class="material-symbols-outlined">open_in_new</span></a>
+    <a aria-label="View website" href="../index.html" target="_blank"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
   </header>
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
     <?php hj_admin_banners($admin); ?>
@@ -111,7 +111,7 @@ function hj_admin_footer(): void
   </main>
 </div>
 </div>
-<script src="assets/js/admin.js?v=4"></script>
+<script src="assets/js/admin.js?v=5"></script>
 </body>
 </html>
 <?php
@@ -135,7 +135,7 @@ function hj_admin_guest_footer(): void
 {
     ?>
 </div>
-<script src="assets/js/admin.js?v=4"></script>
+<script src="assets/js/admin.js?v=5"></script>
 </body>
 </html>
 <?php

@@ -95,7 +95,7 @@ hj_admin_page_title('Job data check', 'Compares the database with the 30 listing
   <ul class="space-y-2 text-sm">
     <?php foreach ($checks as $c): ?>
       <li class="flex items-start gap-2">
-        <span class="material-symbols-outlined text-[20px] <?= $c[1] ? 'text-emerald-600' : 'text-red-600' ?>"><?= $c[1] ? 'check_circle' : 'cancel' ?></span>
+        <?= hj_icon($c[1] ? 'check_circle' : 'cancel', $c[1] ? 'text-emerald-600' : 'text-red-600', 20) ?>
         <span><?= e($c[0]) ?><?= !$c[1] && $c[2] !== '' ? ' — <strong>' . e($c[2]) . '</strong>' : '' ?></span>
       </li>
     <?php endforeach; ?>

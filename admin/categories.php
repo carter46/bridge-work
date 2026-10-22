@@ -28,7 +28,7 @@ function hj_category_input(array $post, int $id): array
         $errors[] = 'Another category already uses the URL name "' . $v['slug'] . '".';
     }
     if (!preg_match('/^[a-z0-9_]{1,60}$/', $v['icon'])) {
-        $errors[] = 'Icon must be a Material Symbols name such as "work".';
+        $errors[] = 'Icon must be a simple icon name such as "work".';
     }
     return [$v, $errors];
 }
@@ -168,7 +168,7 @@ hj_admin_page_title('Categories', 'Rename categories, change their icon and orde
       <input type="hidden" name="id" value="<?= $cid ?>">
       <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
         <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center" id="cat-icon-<?= $cid ?>"><?= e($cat['icon']) ?></span>
+          <span class="text-primary w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center" id="cat-icon-<?= $cid ?>"><?= hj_icon($cat['icon'], '', 24) ?></span>
           <div>
             <h2 class="font-bold text-primary"><?= e($cat['name']) ?></h2>
             <p class="text-xs text-text-muted"><a class="underline" href="jobs.php?category=<?= $cid ?>"><?= (int)$cat['active_count'] ?> active / <?= (int)$cat['total_count'] ?> total jobs</a><?= (int)$cat['is_visible'] ? '' : ' · ' . hj_admin_badge('Hidden', 'amber') ?></p>
@@ -240,7 +240,7 @@ hj_admin_page_title('Categories', 'Rename categories, change their icon and orde
       <div>
         <label class="hj-label" for="new-icon">Icon</label>
         <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-primary" id="new-icon-preview">work</span>
+          <span id="new-icon-preview" class="text-primary"><svg class="hj-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
           <input class="hj-input" id="new-icon" name="icon" maxlength="60" value="work" data-icon-preview="new-icon-preview">
         </div>
       </div>
@@ -256,7 +256,7 @@ hj_admin_page_title('Categories', 'Rename categories, change their icon and orde
         <input class="hj-input" id="new-description" name="description" maxlength="500">
       </div>
     </div>
-    <button class="hj-btn hj-btn-accent hj-btn-sm mt-4" type="submit"><span class="material-symbols-outlined text-[18px]">add</span>Add category</button>
+    <button class="hj-btn hj-btn-accent hj-btn-sm mt-4" type="submit"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>Add category</button>
   </form>
 </div>
 <?php

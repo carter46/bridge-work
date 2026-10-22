@@ -93,7 +93,7 @@ $typeLabels = hj_labels('employment_types');
 
 hj_admin_header('Jobs', 'jobs');
 hj_admin_page_title('Jobs', count($jobs) . ' job(s) shown. Only active jobs in visible categories appear on the website.',
-    '<a class="hj-btn hj-btn-accent" href="job-edit.php"><span class="material-symbols-outlined text-[18px]">add</span>Add job</a>');
+    '<a class="hj-btn hj-btn-accent" href="job-edit.php"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>Add job</a>');
 ?>
 <form class="hj-card p-4 mb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end" method="get" action="jobs.php">
   <div class="lg:col-span-2">

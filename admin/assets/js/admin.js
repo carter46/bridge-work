@@ -36,11 +36,11 @@
     });
   });
 
-  // Material icon name preview: <input data-icon-preview="target-id">
+  // Icon name preview: <input data-icon-preview="target-id"> (SVG drawn by assets/js/icons.js)
   document.querySelectorAll("[data-icon-preview]").forEach(function (input) {
     var target = document.getElementById(input.getAttribute("data-icon-preview"));
     if (!target) return;
-    function update() { target.textContent = input.value.trim() || "work"; }
+    function update() { target.innerHTML = window.HJ.icon(input.value.trim() || "work", 24); }
     input.addEventListener("input", update);
     update();
   });

@@ -188,6 +188,15 @@ if (hj_is_post()) {
             $changed = hj_save_settings($v);
             $publicChanged = true;
         }
+    } elseif ($section === 'chat') {
+        $v = ['smartsupp_key' => hj_input($_POST, 'smartsupp_key', 100)];
+        if ($v['smartsupp_key'] !== '' && !preg_match('/^[A-Za-z0-9_-]{10,100}$/', $v['smartsupp_key'])) {
+            $errors[] = 'That does not look like a Smartsupp key. Copy it exactly from your Smartsupp dashboard, or leave it empty to turn chat off.';
+        }
+        if (!$errors) {
+            $changed = hj_save_settings($v);
+            $publicChanged = true;
+        }
     } elseif ($section === 'retention') {
         $v = ['retention_months' => (string)max(1, min(60, (int)($_POST['retention_months'] ?? 12)))];
         $changed = hj_save_settings($v);
@@ -251,7 +260,7 @@ if ($errors): ?>
 <?php endif; ?>
 
 <nav class="flex flex-wrap gap-2 mb-6 text-sm">
-  <?php foreach (['site' => 'Site & contact', 'email' => 'Email delivery', 'confirmation' => 'Applicant confirmation', 'spam' => 'Spam protection', 'retention' => 'Data retention'] as $anchor => $label): ?>
+  <?php foreach (['site' => 'Site & contact', 'email' => 'Email delivery', 'confirmation' => 'Applicant confirmation', 'spam' => 'Spam protection', 'chat' => 'Live chat', 'retention' => 'Data retention'] as $anchor => $label): ?>
     <a class="hj-btn hj-btn-light hj-btn-sm" href="#<?= $anchor ?>"><?= e($label) ?></a>
   <?php endforeach; ?>
 </nav>
@@ -342,7 +351,7 @@ if ($errors): ?>
   <form class="border-t border-slate-100 pt-4 flex flex-wrap items-center gap-3" method="post" action="settings.php">
     <?= hj_csrf_field() ?>
     <input type="hidden" name="section" value="test_notify">
-    <button class="hj-btn hj-btn-light" type="submit" <?= $mailConfig['host'] === '' ? 'disabled' : '' ?>><span class="material-symbols-outlined text-[18px]">send</span>Send test notification</button>
+    <button class="hj-btn hj-btn-light" type="submit" <?= $mailConfig['host'] === '' ? 'disabled' : '' ?>><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Send test notification</button>
     <span class="text-sm text-text-muted">Sends a sample "new application" email to <strong><?= e(hj_notification_email()) ?></strong>.</span>
   </form>
 </div>
@@ -368,7 +377,7 @@ if ($errors): ?>
       <label class="hj-label" for="test_to">Send a test confirmation to</label>
       <input class="hj-input" id="test_to" name="test_to" type="email" required value="<?= e($admin['email']) ?>">
     </div>
-    <button class="hj-btn hj-btn-light" type="submit" <?= $mailConfig['host'] === '' ? 'disabled' : '' ?>><span class="material-symbols-outlined text-[18px]">send</span>Send test confirmation</button>
+    <button class="hj-btn hj-btn-light" type="submit" <?= $mailConfig['host'] === '' ? 'disabled' : '' ?>><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Send test confirmation</button>
   </form>
   <?php if ($mailConfig['host'] === ''): ?><p class="text-sm text-amber-800">Set up the SMTP server above before sending tests.</p><?php endif; ?>
 </div>
@@ -399,6 +408,15 @@ if ($errors): ?>
   <button class="hj-btn hj-btn-accent" type="submit">Save spam protection</button>
 </form>
 
+<form class="hj-card p-5 sm:p-6 space-y-4 scroll-mt-6" id="chat" method="post" action="settings.php">
+  <?= hj_csrf_field() ?>
+  <input type="hidden" name="section" value="chat">
+  <h2 class="text-lg font-bold text-primary">Live chat (Smartsupp)</h2>
+  <p class="text-sm text-text-muted">Paste your Smartsupp key and the chat bubble appears on every public page (home, jobs, apply, about, contact, FAQ and privacy). Leave it empty to turn chat off. Get the key from <a class="underline" href="https://www.smartsupp.com" target="_blank" rel="noopener">smartsupp.com</a>: sign in, open Settings &rarr; Chat box, and copy the key shown in the chat code.</p>
+  <?php hj_text_field('smartsupp_key', 'Smartsupp key', $s['smartsupp_key'] ?? '', 'maxlength="100" autocomplete="off" placeholder="e.g. 0123456789abcdef..."', 'This key is public by design: it is printed on the website so the chat can load.'); ?>
+  <button class="hj-btn hj-btn-accent" type="submit">Save live chat</button>
+</form>
+
 <div class="hj-card p-5 sm:p-6 space-y-4 scroll-mt-6" id="retention">
   <h2 class="text-lg font-bold text-primary">Data retention</h2>
   <form class="flex flex-wrap items-end gap-3" method="post" action="settings.php">
@@ -414,7 +432,7 @@ if ($errors): ?>
   <form method="post" action="settings.php" data-confirm="Anonymise every application past its retention date now?">
     <?= hj_csrf_field() ?>
     <input type="hidden" name="section" value="purge_now">
-    <button class="hj-btn hj-btn-light" type="submit"><span class="material-symbols-outlined text-[18px]">auto_delete</span>Run the retention check now</button>
+    <button class="hj-btn hj-btn-light" type="submit"><svg class="hj-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6M14 11v6"/></svg>Run the retention check now</button>
   </form>
 </div>
 

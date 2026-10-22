@@ -78,13 +78,13 @@
       return '<div class="reveal h-full" style="--reveal-delay:' + (i % 4) * 80 + 'ms">' +
         '<a class="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-secondary/40 hover:shadow-lg" href="jobs.html?category=' + encodeURIComponent(c.slug) + '">' +
         '<span class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-secondary group-hover:text-white">' +
-        '<span class="material-symbols-outlined text-[24px]">' + esc(c.icon || "work") + "</span></span>" +
+        window.HJ.icon(c.icon || "work", 24) + "</span>" +
         '<h3 class="text-base font-bold text-slate-900 transition-colors group-hover:text-secondary">' + esc(c.name) + "</h3>" +
         (c.description ? '<p class="mt-2 text-sm leading-relaxed text-text-muted">' + esc(c.description) + "</p>" : "") +
         '<span class="mt-auto pt-5 flex items-center justify-between gap-2 text-sm font-semibold text-secondary">' +
         "<span>" + c.count + (c.count === 1 ? " open role" : " open roles") +
         (c.pay_label ? '<span class="font-medium text-text-muted"> · ' + esc(c.pay_label) + "</span>" : "") + "</span>" +
-        '<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span></span>' +
+        window.HJ.icon("arrow_forward", 18, "transition-transform group-hover:translate-x-1") + "</span>" +
         "</a></div>";
     }).join("");
     window.HJ.observeReveal(tilesBox);
