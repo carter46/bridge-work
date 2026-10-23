@@ -160,24 +160,4 @@ window.HJ.escape = function (value) {
   });
 
   window.HJ.observeReveal();
-
-  // Floating apply button: fades in after a delay, hides near the footer
-  var floatingBtn = document.getElementById("floatingApplyBtn");
-  if (floatingBtn) {
-    var footer = document.querySelector("footer");
-
-    setTimeout(function () {
-      floatingBtn.classList.add("is-visible");
-    }, 5000);
-
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (!footer) return;
-        var nearFooter = footer.getBoundingClientRect().top < window.innerHeight - 50;
-        floatingBtn.classList.toggle("is-hidden", nearFooter);
-      },
-      { passive: true }
-    );
-  }
 })();

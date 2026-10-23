@@ -11,8 +11,6 @@
     var key = typeof settings.smartsupp_key === "string" ? settings.smartsupp_key.trim() : "";
     if (!/^[A-Za-z0-9_-]{10,100}$/.test(key)) return;
     loaded = true;
-    // Keep the floating Apply button clear of the chat bubble (both sit bottom-right).
-    document.documentElement.classList.add("hj-chat-on");
 
     window._smartsupp = window._smartsupp || {};
     window._smartsupp.key = key;

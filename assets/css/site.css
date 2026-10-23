@@ -64,29 +64,6 @@ body {
 .faq-item > summary::-webkit-details-marker {
   display: none;
 }
-
-/* ===== Floating apply button ===== */
-.floating-apply-btn {
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-  transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.2s ease;
-}
-.floating-apply-btn.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-/* With live chat on, the Apply button stacks above the chat bubble instead of covering it. */
-html.hj-chat-on .floating-apply-btn {
-  bottom: 5.75rem;
-}
-.floating-apply-btn.is-hidden {
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-}
-
 /* ===== Application form: country pickers ===== */
 .nationality-wrapper {
   position: relative;
